@@ -1,0 +1,31 @@
+.home {
+  width: 100%;
+  padding: 1rem;
+  background-image: url('../images/portrait-cool-man-with-sunglasses.png');
+  background-size: cover;
+  background-position: center top;
+  /* background-attachment: fixed; */
+  /* background-size: 100% auto; */
+  background-repeat: no-repeat;
+  /* width:100%;
+  /* background: url('../images/portrait-cool-man-with-sunglasses.svg') center center cover no-repeat fixed; */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+  padding-left: 3rem;
+}
+
+.main {
+  padding: 3rem;
+}
+
+.main h1 {
+  font-size: 65px;
+}
+
+.text-white {
+  color: white;
+}
