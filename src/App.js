@@ -1,6 +1,7 @@
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
-import Home from './views/auth/Home';
+import Home from './views/Home';
+import Auth from './views/auth/Auth';
 
 import './App.css';
 
@@ -9,6 +10,7 @@ function App() {
     <div className='App'>
       <Switch>
         <Route exact path='/' component={Home} />
+        <Route path='/auth' component={Auth} />
       </Switch>
     </div>
   );

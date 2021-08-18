@@ -10,17 +10,18 @@ export default Button;
 const invertedStyles = css`
   background-color: grey;
   color: var(--darkblue);
+  font-family: 'MontserratBold', san-serif;
   padding: 13px 50px;
+  border-radius: 4px;
   background: linear-gradient(
     275.85deg,
     #d9e8ef -22.37%,
     rgba(217, 232, 239, 0) 124.27%
   );
   filter: drop-shadow(6px 6px 16px rgba(149, 149, 149, 0.08));
-  border-radius: 4px;
   &:hover {
-    /* background-color: darker; */
-    color: white;
+    opacity: 0.8;
+    color: var(--darkblue);
   }
 `;
 
@@ -39,10 +40,10 @@ const CreditButton = styled.button`
   cursor: pointer;
   font-size: 18px;
   font-family: 'Montserrat', san-serif;
+  user-select: none;
   ${props => props.styles}
-  ${getButtonStyles}
-
   &:hover {
     color: #ffffff7d;
   }
+  ${getButtonStyles}
 `;

@@ -4,6 +4,10 @@
   background-image: url('../images/portrait-cool-man-with-sunglasses.png');
   background-size: cover;
   background-position: center top;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: center; */
+  flex-direction: column;
   /* background-attachment: fixed; */
   /* background-size: 100% auto; */
   background-repeat: no-repeat;

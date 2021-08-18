@@ -18,6 +18,10 @@
   font-family: 'MontserratBold', sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
