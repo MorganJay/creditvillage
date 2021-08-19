@@ -5,3 +5,30 @@
   /* align-items: stretch; */
   justify-content: center;
 }
+
+.form-group {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+@keyframes autofill {
+  0%,
+  100% {
+    /* color: #666; */
+    background: red;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active, 
+input:-webkit-autofill:focus {
+  -webkit-animation-delay: 1s; /* Safari support - any positive time runs instantly */
+  animation-delay: 1s; /* Safari support - any positive time runs instantly */
+  animation-name: autofill;
+  -webkit-animation-name: autofill;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-background-clip: text;
+  background-clip: text;
+}

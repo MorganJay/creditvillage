@@ -9,8 +9,8 @@ export default GlassModal;
 
 const GlassContainer = styled.div`
   min-width: 60%;
-  padding: 1rem;
-  height: 70%;
+  padding: 2rem;
+  min-height: 70%;
   background: radial-gradient(
     128.14% 132.58% at 0% 19.79%,
     rgba(178, 202, 214, 0.7) 0%,

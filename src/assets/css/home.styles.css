@@ -6,13 +6,9 @@
   background-position: center top;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
   flex-direction: column;
-  /* background-attachment: fixed; */
-  /* background-size: 100% auto; */
+  background-attachment: fixed;
   background-repeat: no-repeat;
-  /* width:100%;
-  /* background: url('../images/portrait-cool-man-with-sunglasses.svg') center center cover no-repeat fixed; */
 }
 
 .header {
@@ -23,11 +19,11 @@
 }
 
 .main {
-  padding: 3rem;
+  padding: 0 0 3rem;
 }
 
 .main h1 {
-  font-size: 65px;
+  font-size: 68px;
 }
 
 .text-white {

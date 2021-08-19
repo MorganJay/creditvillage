@@ -16,10 +16,12 @@
 
 * {
   font-family: 'MontserratBold', sans-serif;
+  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
+  font-family: 'Montserrat', san-serif;
 }
 
 body {
