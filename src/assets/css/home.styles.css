@@ -3,9 +3,9 @@
   padding: 1rem;
   background-image: url('../images/portrait-cool-man-with-sunglasses.png');
   background-size: cover;
-  background-position: center top;
+  height: auto;
+  background-position: center;
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -16,10 +16,11 @@
   justify-content: space-between;
   padding: 2rem;
   padding-left: 3rem;
+  text-align: center;
 }
 
 .main {
-  padding: 0 0 3rem;
+  padding: 2rem 0 3rem 3rem;
 }
 
 .main h1 {

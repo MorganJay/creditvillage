@@ -8,8 +8,8 @@ const GlassModal = ({ children }) => {
 export default GlassModal;
 
 const GlassContainer = styled.div`
-  min-width: 60%;
-  padding: 2rem;
+  min-width: 45%;
+  padding: 1rem;
   min-height: 70%;
   background: radial-gradient(
     128.14% 132.58% at 0% 19.79%,
@@ -24,6 +24,7 @@ const GlassContainer = styled.div`
   h1 {
     text-align: center;
     background: linear-gradient(180deg, #001521 0%, #80afca 100%);
+    text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
