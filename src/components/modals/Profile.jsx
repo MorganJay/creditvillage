@@ -2,56 +2,111 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Button from '../buttons/Button';
+import withDashboardView from './../../hoc/withDashboard';
 
 import { ReactComponent as Avatar } from '../../assets/images/profilepic.svg';
+import LabelledInput from './../inputs/LabelledInput';
+import LabelledSelect from './../inputs/LabelledSelect';
+
+const states = ['Lagos'];
+const nations = ['Nigerian'];
 
 const Profile = () => {
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
   return (
     <Wrapper>
       <ProfileImageContainer>
         <h2>PROFILE</h2>
-        <Avatar style={{ borderRadius: '50' }} />
+        <Avatar />
       </ProfileImageContainer>
       <FormContainer>
-        <form>
-          <input type='text' />
-          <select name='nationality' id=''>
-            <option value='Nigerian'>Nigerian</option>
-          </select>
-          <input type='text' />
-          <select name='nationality' id=''>
-            <option value='Nigerian'>Nigerian</option>
-          </select>
-          <input type='text' />
-          <input
-            name='bio'
-            defaultValue='An avid reader that also loves to write, send me money.
-'
+        <Form onSubmit={handleSubmit}>
+          <LabelledInput label='Full Name' id='fullname'>
+            Mary the content creator
+          </LabelledInput>
+
+          <LabelledSelect
+            label='Nationality'
+            id='nationality'
+            options={nations}
           />
 
-          <Button type='submit'>Submit</Button>
-        </form>
+          <LabelledInput label='Address' id='address'>
+            1 Adeola Odeku Street, Victoria Island
+          </LabelledInput>
+
+          <LabelledSelect label='State' id='state' options={states} />
+
+          <LabelledInput label='Phone Number' id='phone'>
+            080123456
+          </LabelledInput>
+
+          <LabelledInput label='Bio' id='bio' type='textarea'>
+            An avid reader that also loves to write, send me money.
+          </LabelledInput>
+
+          <Button>Submit</Button>
+        </Form>
       </FormContainer>
     </Wrapper>
   );
 };
 
-export default Profile;
+export default withDashboardView(Profile);
 
 const Wrapper = styled.div`
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
   height: 100%;
+  margin-top: -2rem;
 `;
 
 const ProfileImageContainer = styled.div`
-  /* display: grid;
-  place-items: center; */
-  width: 40%;
+  width: 35%;
   height: 100%;
   text-align: center;
   padding: 3rem 0;
+  margin-right: 3rem;
+
+  h2 {
+    font-family: 'Montserrat', san-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.1em;
+    color: black;
+  }
 `;
 
-const FormContainer = styled.div``;
+const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  width: 70%;
+  background: #eff8fc;
+  border-radius: 6px;
+  padding: 3rem 1rem;
+  padding-right: 7em;
+  margin-right: 3rem;
+`;
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+
+  button {
+    position: absolute;
+    bottom: -82px;
+    right: -50px;
+  }
+`;

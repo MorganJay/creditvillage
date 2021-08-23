@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import CreditButton from '../components/buttons/Button';
+import Button from '../components/buttons/Button';
 import AuthHeader from './../components/headers/AuthHeader';
 
 import '../assets/css/home.styles.css';
@@ -15,7 +15,7 @@ const Home = () => {
           Know your <br /> Credit score!
         </h1>
         <Link to='/auth'>
-          <CreditButton>Click to Start</CreditButton>
+          <Button>Click to Start</Button>
         </Link>
       </div>
     </div>

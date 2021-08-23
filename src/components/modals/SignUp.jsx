@@ -13,7 +13,6 @@ import { FormGroup } from 'reactstrap';
 const SignUp = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
 
-  console.log(history);
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submitting');
