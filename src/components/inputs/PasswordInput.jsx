@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const PasswordInput = ({ ...props }) => {
-  return (
-    <>
-      <Input {...props} />
-    </>
-  );
-};
+const PasswordInput = ({ ...props }) => <Input {...props} />;
 
 export default PasswordInput;
 

@@ -38,7 +38,7 @@ const CreditButton = styled.button`
   border: none;
   font-weight: 500;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 16px;
   font-family: 'Montserrat', san-serif;
   user-select: none;
   ${props => props.styles}

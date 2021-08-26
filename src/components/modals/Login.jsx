@@ -1,25 +1,32 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { isEdge } from 'react-device-detect';
+import { FormGroup } from 'reactstrap';
 
 import GlassModal from './GlassModal';
 import CreditButton from '../buttons/Button';
 import CustomInput from './../inputs/CustomInput';
 import PasswordInput from '../inputs/PasswordInput';
 import usePasswordToggle from './../../hooks/usePasswordToggle';
-import { FormGroup } from 'reactstrap';
 
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
-
-  console.log(history);
+  const [showIcon, setShowIcon] = useState(false);
   const handleSubmit = e => {
     e.preventDefault();
     console.log('submitting');
     setTimeout(() => {
       history.replace('/auth/verifyemail');
     }, 2000);
+  };
+
+  const handlePasswordChange = event => {
+    const {
+      target: { value }
+    } = event;
+    const isEmpty = value.length < 1 ? true : false;
+    setShowIcon(isEmpty);
   };
 
   return (
@@ -39,9 +46,10 @@ const LogIn = ({ history }) => {
             name='password'
             placeholder='Password'
             autoComplete='off'
+            onChange={handlePasswordChange}
             required
           />
-          {!isEdge && (
+          {!isEdge && showIcon && (
             <PasswordToggle className='password-toggle-icon'>
               {ToggleIcon}
             </PasswordToggle>
@@ -60,11 +68,15 @@ const LogIn = ({ history }) => {
       </LogInForm>
       <p>
         Don't have an account?
-        <Link to='/auth/signup'> <CreditButton 
-          styles={{
-            marginLeft: '10px'
-          }}
-        >Signup</CreditButton></Link>
+        <Link to='/auth/signup'>
+          {' '}
+          <CreditButton
+            styles={{
+              marginLeft: '10px'
+            }}>
+            Signup
+          </CreditButton>
+        </Link>
       </p>
     </GlassModal>
   );

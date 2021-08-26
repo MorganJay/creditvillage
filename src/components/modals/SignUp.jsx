@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { isEdge } from 'react-device-detect';
@@ -12,6 +12,7 @@ import { FormGroup } from 'reactstrap';
 
 const SignUp = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
+  const [showIcon, setShowIcon] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -21,9 +22,17 @@ const SignUp = ({ history }) => {
     }, 2000);
   };
 
+  const handlePasswordChange = event => {
+    const {
+      target: { value }
+    } = event;
+    const hideIcon = value.length < 1 ? false : true;
+    setShowIcon(hideIcon);
+  };
+
   return (
     <GlassModal>
-      <h1>Register an Account</h1>
+      <h1 style={{ margin: '24px 16px' }}>Register an Account</h1>
       <SignUpForm autoComplete='off' onSubmit={handleSubmit}>
         <CustomInput
           type='email'
@@ -32,15 +41,17 @@ const SignUp = ({ history }) => {
           autoComplete='off'
           required
         />
+        {/* TODO: Extract password input */}
         <PasswordInputContainer>
           <PasswordInput
             type={Type}
             name='password'
             placeholder='Password'
             autoComplete='off'
+            onChange={handlePasswordChange}
             required
           />
-          {!isEdge && (
+          {!isEdge && showIcon && (
             <PasswordToggle className='password-toggle-icon'>
               {ToggleIcon}
             </PasswordToggle>

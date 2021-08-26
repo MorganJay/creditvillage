@@ -1,19 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Button from '../buttons/Button';
-import withDashboardView from './../../hoc/withDashboard';
+import Button from '../../components/buttons/Button';
+import withDashboardView from '../../hoc/withDashboard';
 
 import { ReactComponent as Avatar } from '../../assets/images/profilepic.svg';
-import LabelledInput from './../inputs/LabelledInput';
-import LabelledSelect from './../inputs/LabelledSelect';
+import LabelledInput from '../../components/inputs/LabelledInput';
+import LabelledSelect from '../../components/inputs/LabelledSelect';
 
 const states = ['Lagos'];
 const nations = ['Nigerian'];
 
-const Profile = () => {
+const Profile = ({ history }) => {
   const handleSubmit = e => {
     e.preventDefault();
+    history.push('/profile/updated');
   };
   return (
     <Wrapper>
