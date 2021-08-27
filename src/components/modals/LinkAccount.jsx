@@ -5,7 +5,7 @@ import { FiLock, FiShield, FiEyeOff } from "react-icons/fi";
 
 import Button from "./../../components/buttons/Button";
 
-const LinkAccountModal = () => {
+const LinkAccountModal = ({ handleNextStep }) => {
   return (
     <AccountContainer>
       <h4>Link your account</h4>
@@ -56,6 +56,7 @@ const LinkAccountModal = () => {
           fontWeight: "500",
           fontFamily: "MontserratBold",
         }}
+        onClick={handleNextStep}
       >
         Link Accounts
       </Button>

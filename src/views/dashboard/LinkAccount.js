@@ -15,43 +15,56 @@ const LinkAccount = () => {
     logo: "",
   });
 
+  
+  const getPage = step => pages[step];
+  
   const nextStep = () => {
     setStep(step + 1);
   };
-
+  
   const prevStep = () => {
     setStep(step - 1);
   };
-
+  
   const handleChange = e => {
     setBank({ ...bank, name: e.target.value });
   };
 
-  return (
-    <Container>
-      {() => {
-        switch (step) {
-          case 0:
-            <LinkAccountModal nextStep={nextStep} />;
-            break;
-          case 1:
-            <ChooseBank nextStep={nextStep}/>;
-            break;
-          case 2:
-            <ChooseBankLogin nextStep={nextStep} />;
-            break;
-          case 3:
-            <LoginBankDetails nextStep={nextStep} />;
-            break;
-          case 4:
-            <BankLoginSuccessful />;
-            break;
-          default:
-            break;
-        }
-      }}
-    </Container>
-  );
+  const pages = [
+    <LinkAccountModal handleNextStep={nextStep} />,
+    <ChooseBank handleNextStep={nextStep} handleChange={handleChange} />,
+    <ChooseBankLogin handleNextStep={nextStep} />,
+    <LoginBankDetails handleNextStep={nextStep} />,
+    <BankLoginSuccessful />,
+  ];
+
+  return <Container>{getPage(step)}</Container>;
+  // return (
+  //   <Container>
+  //     {/* {(() => {
+  //       switch (step) {
+  //         case 0:
+  //           <LinkAccountModal nextStep={nextStep} />;
+  //           break;
+  //         case 1:
+  //           <ChooseBank nextStep={nextStep}/>;
+  //           break;
+  //         case 2:
+  //           <ChooseBankLogin nextStep={nextStep} />;
+  //           break;
+  //         case 3:
+  //           <LoginBankDetails nextStep={nextStep} />;
+  //           break;
+  //         case 4:
+  //           <BankLoginSuccessful />;
+  //           break;
+  //         default:
+  //           break;
+  //       }
+  //     })} */}
+  //     {() => getPage(step)}
+  //   </Container>
+  // );
 };
 
 export default withDashboardView(LinkAccount);
