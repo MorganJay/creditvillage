@@ -16,9 +16,7 @@ const LogIn = ({ history }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("submitting");
-    setTimeout(() => {
-      history.replace("/home");
-    }, 2000);
+    history.replace("/home");
   };
 
   const handlePasswordChange = (event) => {
@@ -59,7 +57,6 @@ const LogIn = ({ history }) => {
           styles={{
             fontSize: "20px",
             fontWeight: "600",
-            marginBottom: "-1rem",
           }}
           type="submit"
           inverted
@@ -97,7 +94,7 @@ const LogInForm = styled.form`
 
 const PasswordInputContainer = styled(FormGroup)`
   position: relative;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 `;
 
 const PasswordToggle = styled.span`

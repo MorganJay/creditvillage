@@ -65,6 +65,7 @@ const Container = styled.div`
     
     h1 {
       font: normal bold 30px/37px 'MontserratBold', san-serif;
+      margin-bottom: 2rem;
     }
   }
 `;

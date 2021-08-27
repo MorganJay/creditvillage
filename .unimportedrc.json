@@ -1,0 +1,17 @@
+{
+  "ignoreUnresolved": [],
+  "ignoreUnused": [
+    "@fortawesome/react-fontawesome",
+    "@testing-library/jest-dom",
+    "@testing-library/react",
+    "@testing-library/user-event",
+    "react-scripts",
+    "unimported",
+    "web-vitals"
+  ],
+  "ignoreUnimported": [
+    "src/components/forms/LoginForm.jsx",
+    "src/components/forms/SignUpForm.jsx",
+    "src/index.js"
+  ]
+}

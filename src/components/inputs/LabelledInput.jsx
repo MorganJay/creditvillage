@@ -49,7 +49,7 @@ export const FormGroup = styled.div`
   }
 
   textarea {
-    height: 81px;
+    height: 82px;
     resize: none;
   }
 `;

@@ -1,30 +1,28 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
-import { isEdge } from 'react-device-detect';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import { isEdge } from "react-device-detect";
 
-import GlassModal from './GlassModal';
-import CreditButton from '../buttons/Button';
-import CustomInput from './../inputs/CustomInput';
-import PasswordInput from '../inputs/PasswordInput';
-import usePasswordToggle from './../../hooks/usePasswordToggle';
-import { FormGroup } from 'reactstrap';
+import GlassModal from "./GlassModal";
+import CreditButton from "../buttons/Button";
+import CustomInput from "./../inputs/CustomInput";
+import PasswordInput from "../inputs/PasswordInput";
+import usePasswordToggle from "./../../hooks/usePasswordToggle";
+import { FormGroup } from "reactstrap";
 
 const SignUp = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitting');
-    setTimeout(() => {
-      history.replace('/auth/verifyemail');
-    }, 2000);
+    console.log("submitting");
+    history.replace("/auth/verifyemail");
   };
 
-  const handlePasswordChange = event => {
+  const handlePasswordChange = (event) => {
     const {
-      target: { value }
+      target: { value },
     } = event;
     const hideIcon = value.length < 1 ? false : true;
     setShowIcon(hideIcon);
@@ -32,45 +30,45 @@ const SignUp = ({ history }) => {
 
   return (
     <GlassModal>
-      <h1 style={{ margin: '24px 16px' }}>Register an Account</h1>
-      <SignUpForm autoComplete='off' onSubmit={handleSubmit}>
+      <h1 style={{ margin: "24px 16px" }}>Register an Account</h1>
+      <SignUpForm autoComplete="off" onSubmit={handleSubmit}>
         <CustomInput
-          type='email'
-          name='email'
-          placeholder='Email'
-          autoComplete='off'
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="off"
           required
         />
         {/* TODO: Extract password input */}
         <PasswordInputContainer>
           <PasswordInput
             type={Type}
-            name='password'
-            placeholder='Password'
-            autoComplete='off'
+            name="password"
+            placeholder="Password"
+            autoComplete="off"
             onChange={handlePasswordChange}
             required
           />
           {!isEdge && showIcon && (
-            <PasswordToggle className='password-toggle-icon'>
+            <PasswordToggle className="password-toggle-icon">
               {ToggleIcon}
             </PasswordToggle>
           )}
         </PasswordInputContainer>
         <CreditButton
           styles={{
-            fontSize: '20px',
-            fontWeight: '600',
-            marginBottom: '-1rem'
+            fontSize: "20px",
+            fontWeight: "600",
           }}
-          type='submit'
-          inverted>
+          type="submit"
+          inverted
+        >
           Register
         </CreditButton>
       </SignUpForm>
       <p>
         Already have an account?
-        <Link to='/auth/login'> Log In</Link>
+        <Link to="/auth/login"> Log In</Link>
       </p>
     </GlassModal>
   );

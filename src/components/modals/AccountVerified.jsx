@@ -1,20 +1,20 @@
-import React from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-import GlassModal from './GlassModal';
-import CreditButton from '../buttons/Button';
+import GlassModal from "./GlassModal";
+import CreditButton from "../buttons/Button";
 
-import { ReactComponent as Image } from '../../assets/images/accountverficationcircle.svg';
+import { ReactComponent as Image } from "../../assets/images/accountverficationcircle.svg";
 
 const AccountVerified = () => {
   return (
     <GlassModal>
       <Container>
-        <div style={{ width: '229px', height: '230px' }}></div>
+        <div style={{ width: "229px", height: "230px" }}></div>
         <Image />
         <h1>Account Verified Successfully</h1>
-        <Link to='/profile'>
+        <Link to="/profile">
           <CreditButton>Proceed</CreditButton>
         </Link>
       </Container>
@@ -34,6 +34,7 @@ const Container = styled.div`
   position: relative;
   h1 {
     -webkit-text-fill-color: white;
+    margin-bottom: 1.5rem;
   }
 
   svg {

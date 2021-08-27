@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { MDBIcon } from "mdbreact";
+import { FiLock, FiShield, FiEyeOff } from "react-icons/fi";
 
 import withDashboardView from "../../hoc/withDashboard";
 import Button from "./../../components/buttons/Button";
@@ -17,7 +17,7 @@ const LinkAccount = () => {
             <li>
               <h5>
                 <span>
-                  <MDBIcon icon="lock" />
+                  <FiLock size="1rem" />
                 </span>
                 Secured
               </h5>
@@ -27,7 +27,7 @@ const LinkAccount = () => {
               <h5>
                 {/* <span className="material-icons-outlined">visibility_off</span> */}
                 <span>
-                  <MDBIcon far icon="eye-slash" />
+                  <FiEyeOff size="1rem" />
                 </span>
                 Private
               </h5>
@@ -35,9 +35,8 @@ const LinkAccount = () => {
             </li>
             <li>
               <h5>
-                {/* <span className="material-icons-outlined">shield</span> */}
                 <span>
-                  <MDBIcon icon="shield-alt" flip="horizontal" />
+                  <FiShield size="1rem" />
                 </span>
                 Protected
               </h5>
@@ -92,7 +91,7 @@ const AccountContainer = styled.div`
   place-items: center;
   h4 {
     font: normal normal 25px/30px "Montserrat", san-serif;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
   small {
     margin: 1rem 0 2rem;
