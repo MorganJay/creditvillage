@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { isEdge } from 'react-device-detect';
-import { FormGroup } from 'reactstrap';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { isEdge } from "react-device-detect";
+import { FormGroup } from "reactstrap";
 
-import GlassModal from './GlassModal';
-import CreditButton from '../buttons/Button';
-import CustomInput from './../inputs/CustomInput';
-import PasswordInput from '../inputs/PasswordInput';
-import usePasswordToggle from './../../hooks/usePasswordToggle';
+import GlassModal from "./GlassModal";
+import CreditButton from "../buttons/Button";
+import CustomInput from "./../inputs/CustomInput";
+import PasswordInput from "../inputs/PasswordInput";
+import usePasswordToggle from "./../../hooks/usePasswordToggle";
 
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitting');
+    console.log("submitting");
     setTimeout(() => {
-      history.replace('/auth/verifyemail');
+      history.replace("/home");
     }, 2000);
   };
 
-  const handlePasswordChange = event => {
+  const handlePasswordChange = (event) => {
     const {
-      target: { value }
+      target: { value },
     } = event;
     const isEmpty = value.length < 1 ? true : false;
     setShowIcon(isEmpty);
@@ -32,48 +32,50 @@ const LogIn = ({ history }) => {
   return (
     <GlassModal>
       <h1>Login</h1>
-      <LogInForm autoComplete='off' onSubmit={handleSubmit}>
+      <LogInForm autoComplete="off" onSubmit={handleSubmit}>
         <CustomInput
-          type='email'
-          name='email'
-          placeholder='Email'
-          autoComplete='off'
+          type="email"
+          name="email"
+          placeholder="Email"
+          autoComplete="off"
           required
         />
         <PasswordInputContainer>
           <PasswordInput
             type={Type}
-            name='password'
-            placeholder='Password'
-            autoComplete='off'
+            name="password"
+            placeholder="Password"
+            autoComplete="off"
             onChange={handlePasswordChange}
             required
           />
           {!isEdge && showIcon && (
-            <PasswordToggle className='password-toggle-icon'>
+            <PasswordToggle className="password-toggle-icon">
               {ToggleIcon}
             </PasswordToggle>
           )}
         </PasswordInputContainer>
         <CreditButton
           styles={{
-            fontSize: '20px',
-            fontWeight: '600',
-            marginBottom: '-1rem'
+            fontSize: "20px",
+            fontWeight: "600",
+            marginBottom: "-1rem",
           }}
-          type='submit'
-          inverted>
+          type="submit"
+          inverted
+        >
           Login
         </CreditButton>
       </LogInForm>
       <p>
         Don't have an account?
-        <Link to='/auth/signup'>
-          {' '}
+        <Link to="/auth/signup">
+          {" "}
           <CreditButton
             styles={{
-              marginLeft: '10px'
-            }}>
+              marginLeft: "10px",
+            }}
+          >
             Signup
           </CreditButton>
         </Link>

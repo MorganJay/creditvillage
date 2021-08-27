@@ -1,35 +1,36 @@
-import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link, NavLink } from "react-router-dom";
+import styled from "styled-components";
 
-import CreditButton from '../buttons/Button';
-import Logo from '../../assets/images/Vlogo.svg';
+import CreditButton from "../buttons/Button";
+
+import Logo from "../../assets/images/Vlogo.svg";
 
 const DashboardHeader = () => {
   return (
-    <header className='header'>
-      <Link to='/'>
-        <StyledLogo src={Logo} alt='Credit Village Logo' />
+    <header className="header">
+      <Link to="/">
+        <StyledLogo src={Logo} alt="Credit Village Logo" />
       </Link>
       <StyledNav>
         <ul>
           <li>
-            <NavLink to='/home' activeStyle={{ fontWeight: 'bold' }}>
+            <NavLink to="/home" activeStyle={{ fontWeight: "bold" }}>
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to='/profile' activeStyle={{ fontWeight: 'bold' }}>
+            <NavLink to="/profile" activeStyle={{ fontWeight: "bold" }}>
               Profile
             </NavLink>
           </li>
           <li>
-            <NavLink to='/result' activeStyle={{ fontWeight: 'bold' }}>
+            <NavLink to="/result" activeStyle={{ fontWeight: "bold" }}>
               Result
             </NavLink>
           </li>
           <li>
-            <Link to='/'>
+            <Link to="/auth/login">
               <CreditButton>Log out</CreditButton>
             </Link>
           </li>
