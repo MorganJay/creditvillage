@@ -8,6 +8,7 @@ import UpdatedProfile from './views/dashboard/UpdatedProfile';
 import Result from './views/dashboard/Result';
 
 import './App.css';
+import LinkAccount from './views/dashboard/LinkAccount';
 
 function App() {
   return (
@@ -29,6 +30,10 @@ function App() {
           exact
           path='/result'
           render={props => <Result {...props} activity />}
+        />
+        <Route
+          path='/linkaccount'
+          render={props => <LinkAccount {...props} activity />}
         />
       </Switch>
     </div>

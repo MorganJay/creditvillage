@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import DashboardHeader from '../components/headers/DashboardHeader';
-import ActivityFeed from './../components/feed/ActivityFeed';
+import DashboardHeader from "../components/headers/DashboardHeader";
+import ActivityFeed from "./../components/feed/ActivityFeed";
 
-const withDashboardView = Component => {
+const withDashboardView = (Component) => {
   return function withDashboardComponent({ ...props }) {
     return (
       <Container>
@@ -26,8 +26,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 1rem;
-`;
+  padding: 0 0 2rem;
+  overflow: hidden;
+  `;
 
 const Wrapper = styled.div`
   width: 100%;
@@ -35,5 +36,5 @@ const Wrapper = styled.div`
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  overflow: hidden;
+  /* overflow-y: visible; */
 `;

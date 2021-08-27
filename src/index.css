@@ -4,25 +4,27 @@
 }
 
 @font-face {
-  font-family: 'MontserratBold';
-  src: local('Montserrat'),
-    url(./assets/fonts/Montserrat-Bold.ttf) format('truetype');
+  font-family: "MontserratBold";
+  src: local("Montserrat"),
+    url(./assets/fonts/Montserrat-Bold.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: 'Montserrat';
-  src: local('Montserrat'),
-    url(./assets/fonts/Montserrat-Regular.ttf) format('truetype');
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url(./assets/fonts/Montserrat-Regular.ttf) format("truetype");
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
 * {
-  font-family: 'MontserratBold', sans-serif;
+  font-family: "MontserratBold", sans-serif;
   box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  font-family: 'Montserrat', san-serif;
+  font-family: "Montserrat", san-serif;
 }
 
 body {
@@ -30,4 +32,14 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
+}
+
+ul {
+  margin: 0;
+  list-style-type: none;
+}
+
+small {
+  color: #bdbdbd;
+  font: normal 600 10px/12px "Montserrat", san-serif;
 }

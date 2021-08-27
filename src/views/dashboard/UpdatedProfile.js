@@ -1,11 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import withDashboardView from './../../hoc/withDashboard';
 import Button from './../../components/buttons/Button';
 
 import { ReactComponent as Verified } from '../../assets/images/accountverification.svg';
-import { Link } from 'react-router-dom';
 
 const UpdatedProfile = () => {
   return (
@@ -37,10 +37,12 @@ export default withDashboardView(UpdatedProfile);
 
 const Container = styled.div`
   width: 65%;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   place-items: center;
   height: 100%;
-  margin-top: -1rem;
+  margin-top: -1em;
+  gap: 2rem;
   div {
     background: #f8fdff;
     border: 1px solid #eff8fc;
@@ -58,10 +60,9 @@ const Container = styled.div`
   section {
     display: grid;
     place-items: center;
-    width: 52%;
+    width: 51%;
     grid-gap: 1em;
-    overflow-wrap: break-word;
-
+    
     h1 {
       font: normal bold 30px/37px 'MontserratBold', san-serif;
     }

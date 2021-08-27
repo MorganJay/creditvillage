@@ -36,11 +36,6 @@ const Box = styled.div`
   p {
     font: normal 600 12px/15px 'Montserrat', san-serif;
   }
-
-  small {
-    color: #bdbdbd;
-    font: normal 600 10px/12px 'Montserrat', san-serif;
-  }
 `;
 
 const Heading = styled.div`
