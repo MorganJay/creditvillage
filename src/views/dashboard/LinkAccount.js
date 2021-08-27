@@ -17,7 +17,7 @@ const LinkAccount = () => {
             <li>
               <h5>
                 <span>
-                  <MDBIcon icon="lock" className="mr-3" />
+                  <MDBIcon icon="lock" />
                 </span>
                 Secured
               </h5>
@@ -25,6 +25,7 @@ const LinkAccount = () => {
             </li>
             <li>
               <h5>
+                {/* <span className="material-icons-outlined">visibility_off</span> */}
                 <span>
                   <MDBIcon far icon="eye-slash" />
                 </span>
@@ -34,8 +35,9 @@ const LinkAccount = () => {
             </li>
             <li>
               <h5>
+                {/* <span className="material-icons-outlined">shield</span> */}
                 <span>
-                  <MDBIcon icon="shield-alt" />
+                  <MDBIcon icon="shield-alt" flip="horizontal" />
                 </span>
                 Protected
               </h5>
@@ -82,7 +84,7 @@ const Container = styled.div`
 const AccountContainer = styled.div`
   background: #1a1a1a;
   border-radius: 50px;
-  padding: 3rem 1rem 2rem;
+  padding: 4.5rem 1rem 2rem;
   position: relative;
   color: white;
   text-align: center;
@@ -92,7 +94,7 @@ const AccountContainer = styled.div`
     font: normal normal 25px/30px "Montserrat", san-serif;
     margin-bottom: 1rem;
   }
-  small{
+  small {
     margin: 1rem 0 2rem;
     font-size: 12px;
   }
@@ -100,7 +102,7 @@ const AccountContainer = styled.div`
 
 const CloseIcon = styled.span`
   position: absolute;
-  top: 40px;
+  top: 30px;
   right: 50px;
   font-size: 35px;
   line-height: 41px;
@@ -111,14 +113,15 @@ const CloseIcon = styled.span`
 const ListContainer = styled.div`
   width: 80%;
   ul {
+    width: 88%;
     li {
       text-align: left;
-
       h5 {
         margin-left: -2rem;
         font-family: "Montserrat", sans-serif;
         margin-bottom: 0;
         font-size: 0.8rem;
+        font-weight: 700;
       }
 
       span {
@@ -129,6 +132,7 @@ const ListContainer = styled.div`
         font-size: 0.8rem;
         margin-left: 0.9rem;
         font-weight: normal;
+        line-height: 1.3rem;
         font-family: "Montserrat", sans-serif;
       }
     }
