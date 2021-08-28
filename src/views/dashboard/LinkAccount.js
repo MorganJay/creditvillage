@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import LinkAccountModal from "components/modals/LinkAccount";
 import withDashboardView from "hoc/withDashboard";
-import ChooseBank from "../../components/modals/ChooseBank";
-import ChooseBankLogin from "./../../components/modals/ChooseBankLogin";
-import LoginBankDetails from "./../../components/modals/LoginBankDetails";
-import BankLoginSuccessful from "./../../components/modals/BankLoginSuccessful";
+import ChooseBank from "components/modals/ChooseBank";
+import LinkAccountModal from "components/modals/LinkAccount";
+import ChooseBankLogin from "components/modals/ChooseBankLogin";
+import LoginBankDetails from "components/modals/LoginBankDetails";
+import BankLoginSuccessful from "components/modals/BankLoginSuccessful";
 
 const LinkAccount = () => {
   const [step, setStep] = useState(0);
@@ -15,56 +15,35 @@ const LinkAccount = () => {
     logo: "",
   });
 
-  
-  const getPage = step => pages[step];
-  
-  const nextStep = () => {
-    setStep(step + 1);
-  };
-  
-  const prevStep = () => {
-    setStep(step - 1);
-  };
-  
-  const handleChange = e => {
-    setBank({ ...bank, name: e.target.value });
+  const nextStep = () => setStep(step + 1);
+
+  const prevStep = () => setStep(step - 1);
+
+  const handleChange = (name, logo) => {
+    setBank({ name, logo });
   };
 
   const pages = [
     <LinkAccountModal handleNextStep={nextStep} />,
-    <ChooseBank handleNextStep={nextStep} handleChange={handleChange} />,
-    <ChooseBankLogin handleNextStep={nextStep} />,
-    <LoginBankDetails handleNextStep={nextStep} />,
+    <ChooseBank
+      handlePrevStep={prevStep}
+      handleNextStep={nextStep}
+      handleChange={handleChange}
+    />,
+    <ChooseBankLogin
+      handlePrevStep={prevStep}
+      handleNextStep={nextStep}
+      bank={bank}
+    />,
+    <LoginBankDetails
+      bank={bank}
+      handlePrevStep={prevStep}
+      handleNextStep={nextStep}
+    />,
     <BankLoginSuccessful />,
   ];
 
-  return <Container>{getPage(step)}</Container>;
-  // return (
-  //   <Container>
-  //     {/* {(() => {
-  //       switch (step) {
-  //         case 0:
-  //           <LinkAccountModal nextStep={nextStep} />;
-  //           break;
-  //         case 1:
-  //           <ChooseBank nextStep={nextStep}/>;
-  //           break;
-  //         case 2:
-  //           <ChooseBankLogin nextStep={nextStep} />;
-  //           break;
-  //         case 3:
-  //           <LoginBankDetails nextStep={nextStep} />;
-  //           break;
-  //         case 4:
-  //           <BankLoginSuccessful />;
-  //           break;
-  //         default:
-  //           break;
-  //       }
-  //     })} */}
-  //     {() => getPage(step)}
-  //   </Container>
-  // );
+  return <Container>{pages[step]}</Container>;
 };
 
 export default withDashboardView(LinkAccount);
