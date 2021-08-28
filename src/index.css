@@ -42,4 +42,5 @@ ul {
 small {
   color: #bdbdbd;
   font: normal 600 10px/12px "Montserrat", san-serif;
+  display: block;
 }

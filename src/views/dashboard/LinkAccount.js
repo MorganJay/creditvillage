@@ -50,8 +50,5 @@ export default withDashboardView(LinkAccount);
 
 const Container = styled.div`
   width: 65%;
-  display: grid;
-  place-items: center;
   height: 100%;
-  align-content: baseline;
 `;

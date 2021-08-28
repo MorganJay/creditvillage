@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { FiLock, FiShield, FiEyeOff } from "react-icons/fi";
 
-import Button from "./../../components/buttons/Button";
+import Button from "components/buttons/Button";
 
 const LinkAccountModal = ({ handleNextStep }) => {
   return (
@@ -69,19 +69,24 @@ export default LinkAccountModal;
 const AccountContainer = styled.div`
   background: #1a1a1a;
   border-radius: 50px;
-  padding: 4.5rem 1rem 2rem;
+  padding: 3.5rem 1rem 2rem;
   position: relative;
   color: white;
   text-align: center;
-  display: grid;
-  place-items: center;
+  margin: 0 auto;
+  width: 55%;
+  height: 100%;
   h4 {
     font: normal normal 25px/30px "Montserrat", san-serif;
     margin-bottom: 2rem;
   }
   small {
-    margin: 1rem 0 2rem;
+    margin: 1.5rem auto;
     font-size: 12px;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
   }
 `;
 
@@ -96,7 +101,8 @@ const CloseIcon = styled.span`
 `;
 
 const ListContainer = styled.div`
-  width: 80%;
+  width: 85%;
+  margin: 0 auto;
   ul {
     width: 88%;
     li {

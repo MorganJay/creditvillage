@@ -32,9 +32,10 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   width: 100%;
-  height: 90%;
+  height: 86%;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   padding-left: 1rem;
+  padding-bottom: 1rem;
 `;

@@ -11,16 +11,17 @@ import Zenith from "assets/images/banks/Zenith@2x.png";
 import Sterling from "assets/images/banks/Sterling@2x.png";
 import Union from "assets/images/banks/Union@2x.png";
 
+const banks = [
+  { name: "GTBank", url: GT },
+  { name: "Access Bank", url: Access },
+  { name: "Kuda Bank", url: Kuda },
+  { name: "Zenith Bank", url: Zenith },
+  { name: "Sterling Bank", url: Sterling },
+  { name: "Union Bank of Nigeria", url: Union },
+];
+
 const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
-  const [banks, setBanks] = useState([
-    { name: "GTBank", url: GT },
-    { name: "Access Bank", url: Access },
-    { name: "Kuda Bank", url: Kuda },
-    { name: "Zenith Bank", url: Zenith },
-    { name: "Sterling Bank", url: Sterling },
-    { name: "Union Bank of Nigeria", url: Union },
-  ]);
-  const [filteredBanks, setFilteredBanks] = useState(banks)
+  const [filteredBanks, setFilteredBanks] = useState(banks);
 
   const handleBankSelect = (name, logo) => {
     handleChange(name, logo);
@@ -28,9 +29,10 @@ const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
   };
 
   const handleSearch = ({ target }) => {
-    const searchBanks = banks.filter(bank => bank.name.toLowerCase().includes(target.value));
-    if (searchBanks) setBanks(searchBanks);
-    else setBanks(prevBanks => prevBanks);
+    const searchBanks = banks.filter(({ name }) =>
+      name.toLowerCase().includes(target.value.toLowerCase())
+    );
+    setFilteredBanks(searchBanks);
   };
 
   return (
@@ -55,7 +57,7 @@ const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
         />
       </SearchCon>
       <List>
-        {banks.map(({ name, url }, index) => (
+        {filteredBanks.map(({ name, url }, index) => (
           <li key={index} onClick={() => handleBankSelect(name, url)}>
             <img src={url} alt={name} height="50" width="50" />
             <span>{name}</span>
@@ -68,15 +70,22 @@ const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
 
 export default ChooseBank;
 
-const BankContainer = styled.div`
+export const BankContainer = styled.div`
   border-radius: 50px;
   align-self: baseline;
   padding: 1.5rem;
-  height: 82%;
-  width: 50vw;
+  height: inherit;
+  width: 60%;
   background-image: url(${BgImage});
   background-size: cover;
   color: white;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0 auto;
+  @media (max-width: 992px) {
+    width: 70%;
+  }
 `;
 
 const Nav = styled.div`
