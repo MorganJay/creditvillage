@@ -9,7 +9,9 @@ const LinkAccountModal = ({ handleNextStep }) => {
   return (
     <AccountContainer>
       <h4>Link your account</h4>
-      <CloseIcon>X</CloseIcon>
+      <CloseIcon>
+        <Link to="/profile/updated">X</Link>
+      </CloseIcon>
       <ListContainer>
         <ul>
           <li>
@@ -48,6 +50,7 @@ const LinkAccountModal = ({ handleNextStep }) => {
         </Link>
       </small>
       <Button
+        className="mt-3"
         style={{
           background: "white",
           boxShadow: "0px 10px 20px rgba(82, 117, 136, 0.12)",
@@ -81,7 +84,7 @@ const AccountContainer = styled.div`
     margin-bottom: 2rem;
   }
   small {
-    margin: 1.5rem auto;
+    margin: 2rem auto;
     font-size: 12px;
   }
 
@@ -98,6 +101,13 @@ const CloseIcon = styled.span`
   line-height: 41px;
   font-weight: normal;
   font-family: "Roboto", sans-serif;
+  a {
+    color: white;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const ListContainer = styled.div`

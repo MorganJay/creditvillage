@@ -1,26 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { isEdge } from "react-device-detect";
 
 import GlassModal from "./GlassModal";
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
-import usePasswordToggle from "./../../hooks/usePasswordToggle";
-import { FormGroup } from "reactstrap";
+import usePasswordToggle from "hooks/usePasswordToggle";
 
 const SignUp = ({ history }) => {
-  const [Type, ToggleIcon] = usePasswordToggle();
+  const [Type, Toggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     console.log("submitting");
     history.replace("/auth/verifyemail");
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = event => {
     const {
       target: { value },
     } = event;
@@ -39,22 +37,16 @@ const SignUp = ({ history }) => {
           autoComplete="off"
           required
         />
-        {/* TODO: Extract password input */}
-        <PasswordInputContainer>
-          <PasswordInput
-            type={Type}
-            name="password"
-            placeholder="Password"
-            autoComplete="off"
-            onChange={handlePasswordChange}
-            required
-          />
-          {!isEdge && showIcon && (
-            <PasswordToggle className="password-toggle-icon">
-              {ToggleIcon}
-            </PasswordToggle>
-          )}
-        </PasswordInputContainer>
+        <Password
+          type={Type}
+          name="password"
+          placeholder="Password"
+          autoComplete="off"
+          onChange={handlePasswordChange}
+          showIcon={showIcon}
+          icon={Toggle}
+          required
+        />
         <CreditButton
           styles={{
             fontSize: "20px",
@@ -85,14 +77,32 @@ const SignUpForm = styled.form`
   margin: 1.5rem;
 `;
 
-const PasswordInputContainer = styled(FormGroup)`
-  position: relative;
-  margin-bottom: 4rem;
-`;
+const Password = styled(PasswordInput)`
+  color: var(--darkblue);
+  padding: 15px 20px;
+  background: linear-gradient(
+    275.85deg,
+    #d9e8ef -22.37%,
+    rgba(217, 232, 239, 0) 124.27%
+  ) !important;
+  box-shadow: inset 0px 4px 10px rgba(221, 221, 221, 0.12);
+  border-radius: 4px;
+  border: none;
+  outline: none;
+  text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
+  font-family: "Montserrat", san-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 24px;
+  width: 100%;
 
-const PasswordToggle = styled.span`
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
+  &::placeholder {
+    color: var(--darkblue);
+    opacity: 1;
+  }
+
+  &::-ms-input-placeholder {
+    color: var(--darkblue);
+  }
 `;

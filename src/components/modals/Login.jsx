@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { isEdge } from "react-device-detect";
-import { FormGroup } from "reactstrap";
 
 import GlassModal from "./GlassModal";
 import CreditButton from "../buttons/Button";
@@ -13,13 +11,13 @@ import usePasswordToggle from "./../../hooks/usePasswordToggle";
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     console.log("submitting");
     history.replace("/home");
   };
 
-  const handlePasswordChange = (event) => {
+  const handlePasswordChange = event => {
     const {
       target: { value },
     } = event;
@@ -38,21 +36,15 @@ const LogIn = ({ history }) => {
           autoComplete="off"
           required
         />
-        <PasswordInputContainer>
-          <PasswordInput
-            type={Type}
-            name="password"
-            placeholder="Password"
-            autoComplete="off"
-            onChange={handlePasswordChange}
-            required
-          />
-          {!isEdge && showIcon && (
-            <PasswordToggle className="password-toggle-icon">
-              {ToggleIcon}
-            </PasswordToggle>
-          )}
-        </PasswordInputContainer>
+        <PasswordInput
+          type={Type}
+          name="password"
+          placeholder="Password"
+          onChange={handlePasswordChange}
+          icon={ToggleIcon}
+          showIcon={showIcon}
+          required
+        />
         <CreditButton
           styles={{
             fontSize: "20px",
@@ -90,16 +82,4 @@ const LogInForm = styled.form`
   flex-direction: column;
   align-items: center;
   margin: 1.5rem;
-`;
-
-const PasswordInputContainer = styled(FormGroup)`
-  position: relative;
-  margin-bottom: 3rem;
-`;
-
-const PasswordToggle = styled.span`
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
 `;

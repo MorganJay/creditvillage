@@ -8,7 +8,7 @@ import ChooseBankLogin from "components/modals/ChooseBankLogin";
 import LoginBankDetails from "components/modals/LoginBankDetails";
 import BankLoginSuccessful from "components/modals/BankLoginSuccessful";
 
-const LinkAccount = () => {
+const LinkAccount = ({ history }) => {
   const [step, setStep] = useState(0);
   const [bank, setBank] = useState({
     name: "",
@@ -23,22 +23,27 @@ const LinkAccount = () => {
     setBank({ name, logo });
   };
 
+  const handleClose = () => history.push("/profile/updated");
+
   const pages = [
-    <LinkAccountModal handleNextStep={nextStep} />,
+    <LinkAccountModal handleNextStep={nextStep} handleClose={handleClose} />,
     <ChooseBank
       handlePrevStep={prevStep}
       handleNextStep={nextStep}
       handleChange={handleChange}
+      handleClose={handleClose}
     />,
     <ChooseBankLogin
       handlePrevStep={prevStep}
       handleNextStep={nextStep}
+      handleClose={handleClose}
       bank={bank}
     />,
     <LoginBankDetails
       bank={bank}
       handlePrevStep={prevStep}
       handleNextStep={nextStep}
+      handleClose={handleClose}
     />,
     <BankLoginSuccessful />,
   ];

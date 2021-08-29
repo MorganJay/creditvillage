@@ -8,12 +8,17 @@ import { BankContainer } from "./ChooseBank";
 
 import Image from "assets/images/banklogin.png";
 
-const ChooseBankLogin = ({ bank, handleNextStep, handlePrevStep }) => {
+const ChooseBankLogin = ({
+  bank,
+  handleNextStep,
+  handlePrevStep,
+  handleClose,
+}) => {
   return (
     <BankContainer>
       <div style={{ height: "70%", width: "100%" }} />
-      <img
-        onClick={handlePrevStep}
+      {/* <img
+        onClick={handleClose}
         src={Image}
         alt="Bank Header"
         style={{
@@ -25,9 +30,9 @@ const ChooseBankLogin = ({ bank, handleNextStep, handlePrevStep }) => {
           backgroundSize: "cover",
           cursor: "pointer",
         }}
-      />
+      /> */}
       <OptionsContainer>
-        <LoginOption onClick={handleNextStep} className="mb-2">
+        <LoginOption onClick={handleNextStep}>
           <span className="mr-4">
             <HiOutlineDesktopComputer size="1.5rem" />
           </span>

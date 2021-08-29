@@ -20,7 +20,12 @@ const banks = [
   { name: "Union Bank of Nigeria", url: Union },
 ];
 
-const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
+const ChooseBank = ({
+  handleNextStep,
+  handlePrevStep,
+  handleChange,
+  handleClose,
+}) => {
   const [filteredBanks, setFilteredBanks] = useState(banks);
 
   const handleBankSelect = (name, logo) => {
@@ -42,7 +47,7 @@ const ChooseBank = ({ handleNextStep, handlePrevStep, handleChange }) => {
           <BiArrowBack size="2rem" />
         </span>
         <h4>Choose your Bank</h4>
-        <span>X</span>
+        <span onClick={handleClose}>X</span>
       </Nav>
       <SearchCon>
         <MDBInputGroup
@@ -84,7 +89,7 @@ export const BankContainer = styled.div`
   position: relative;
   margin: 0 auto;
   @media (max-width: 992px) {
-    width: 70%;
+    width: 90%;
   }
 `;
 
@@ -105,6 +110,10 @@ const Nav = styled.div`
 
   span {
     cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   span:last-child {
