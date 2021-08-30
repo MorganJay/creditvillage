@@ -46,7 +46,7 @@ const LinkAccount = ({ history, step, nextStep, prevStep }) => {
 
 export default withDashboardView(LinkAccount);
 
-const Container = styled.div`
+export const Container = styled.div`
   width: 65%;
   height: 100%;
 `;

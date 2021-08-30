@@ -34,17 +34,6 @@ function App() {
             />
           )}
         />
-        {/* <Route
-          exact
-          path="/home/new"
-          render={props => (
-            <NewDash
-              {...props}
-              setStep={step => setLinkAccountStep(step)}
-              activity
-            />
-          )}
-        /> */}
         <Route exact path="/profile" component={Profile} />
         <Route
           exact
