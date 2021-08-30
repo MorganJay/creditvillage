@@ -1,16 +1,16 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 import GlassModal from "./GlassModal";
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
-import PasswordInput from "../inputs/PasswordInput";
 import usePasswordToggle from "./../../hooks/usePasswordToggle";
+import { Form, Password } from "./SignUp";
 
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
+
   const handleSubmit = e => {
     e.preventDefault();
     console.log("submitting");
@@ -21,22 +21,16 @@ const LogIn = ({ history }) => {
     const {
       target: { value },
     } = event;
-    const isEmpty = value.length < 1 ? true : false;
-    setShowIcon(isEmpty);
+    const hideIcon = value.length < 1 ? false : true;
+    setShowIcon(hideIcon);
   };
 
   return (
     <GlassModal>
       <h1>Login</h1>
-      <LogInForm autoComplete="off" onSubmit={handleSubmit}>
-        <CustomInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          autoComplete="off"
-          required
-        />
-        <PasswordInput
+      <Form onSubmit={handleSubmit}>
+        <CustomInput type="email" name="email" placeholder="Email" required />
+        <Password
           type={Type}
           name="password"
           placeholder="Password"
@@ -46,6 +40,7 @@ const LogIn = ({ history }) => {
           required
         />
         <CreditButton
+          className="mt-2"
           styles={{
             fontSize: "20px",
             fontWeight: "600",
@@ -55,7 +50,7 @@ const LogIn = ({ history }) => {
         >
           Login
         </CreditButton>
-      </LogInForm>
+      </Form>
       <p>
         Don't have an account?
         <Link to="/auth/signup">
@@ -74,12 +69,3 @@ const LogIn = ({ history }) => {
 };
 
 export default LogIn;
-
-const LogInForm = styled.form`
-  width: 80%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: 1.5rem;
-`;

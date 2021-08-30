@@ -29,7 +29,7 @@ const SignUp = ({ history }) => {
   return (
     <GlassModal>
       <h1 style={{ margin: "24px 16px" }}>Register an Account</h1>
-      <SignUpForm autoComplete="off" onSubmit={handleSubmit}>
+      <Form autoComplete="off" onSubmit={handleSubmit}>
         <CustomInput
           type="email"
           name="email"
@@ -57,7 +57,7 @@ const SignUp = ({ history }) => {
         >
           Register
         </CreditButton>
-      </SignUpForm>
+      </Form>
       <p>
         Already have an account?
         <Link to="/auth/login"> Log In</Link>
@@ -68,7 +68,7 @@ const SignUp = ({ history }) => {
 
 export default SignUp;
 
-const SignUpForm = styled.form`
+export const Form = styled.form`
   width: 80%;
   display: flex;
   justify-content: center;
@@ -77,7 +77,7 @@ const SignUpForm = styled.form`
   margin: 1.5rem;
 `;
 
-const Password = styled(PasswordInput)`
+export const Password = styled(PasswordInput)`
   color: var(--darkblue);
   padding: 15px 20px;
   background: linear-gradient(
@@ -96,7 +96,7 @@ const Password = styled(PasswordInput)`
   font-size: 20px;
   line-height: 24px;
   width: 100%;
-
+  color: var(--darkblue) !important;
   &::placeholder {
     color: var(--darkblue);
     opacity: 1;

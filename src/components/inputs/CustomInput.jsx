@@ -1,18 +1,18 @@
-import React from 'react';
-import { FormGroup } from 'reactstrap';
-import styled from 'styled-components';
+import React from "react";
+import { FormGroup, Input } from "reactstrap";
+import styled from "styled-components";
 
 const CustomInput = ({ ...props }) => {
   return (
     <FormGroup>
-      <Input {...props} />
+      <FormInput {...props} />
     </FormGroup>
   );
 };
 
 export default CustomInput;
 
-const Input = styled.input`
+const FormInput = styled(Input)`
   color: var(--darkblue);
   padding: 13px 20px;
   background: linear-gradient(
@@ -20,12 +20,12 @@ const Input = styled.input`
     #d9e8ef -22.37%,
     rgba(217, 232, 239, 0) 124.27%
   ) !important;
-  box-shadow: inset 0px 4px 10px rgba(221, 221, 221, 0.12);  
+  box-shadow: inset 0px 4px 10px rgba(221, 221, 221, 0.12);
   border-radius: 4px;
   border: none;
   outline: none;
   text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
-  font-family: 'Montserrat', san-serif;
+  font-family: "Montserrat", san-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
