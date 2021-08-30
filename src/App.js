@@ -8,7 +8,6 @@ import Profile from "./views/dashboard/Profile";
 import UpdatedProfile from "./views/dashboard/UpdatedProfile";
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
-import NewDash from "views/dashboard/NewDash";
 
 import "./App.css";
 
@@ -25,11 +24,17 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <Route
-          exact
+          
           path="/home"
-          render={props => <DashboardHome {...props} activity />}
+          render={props => (
+            <DashboardHome
+              setLinkAccountStep={step => setLinkAccountStep(step)}
+              {...props}
+              activity
+            />
+          )}
         />
-        <Route
+        {/* <Route
           exact
           path="/home/new"
           render={props => (
@@ -39,7 +44,7 @@ function App() {
               activity
             />
           )}
-        />
+        /> */}
         <Route exact path="/profile" component={Profile} />
         <Route
           exact
