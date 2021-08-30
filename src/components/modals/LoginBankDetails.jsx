@@ -44,7 +44,7 @@ const LoginBankDetails = ({ bank, handleNextStep, handlePrevStep }) => {
         <h6 className="text-center d-block">
           Log In
           <span
-            className="ml-2 px-2 rounded"
+            className="ml-2 px-2 py-1 rounded"
             style={{ backgroundColor: "#F4F5F7" }}
           >
             PERSONAL
@@ -52,19 +52,20 @@ const LoginBankDetails = ({ bank, handleNextStep, handlePrevStep }) => {
         </h6>
       </LoginHeader>
       <LoginBody>
-        <Button
-          color="#FFB53E"
-          className="mt-3 mb-0"
-          style={{
-            backgroundColor: "#ffb53e",
-            borderRadius: "13px",
-            textTransform: "none",
-            color: "white",
-          }}
-        >
-          Click here to fill in sandbox credentials
-        </Button>
         <Form onSubmit={handleSubmit}>
+          <Button
+            color="#FFB53E"
+            className="my-3"
+            style={{
+              backgroundColor: "#ffb53e",
+              borderRadius: "13px",
+              textTransform: "none",
+              color: "white",
+            }}
+            type="button"
+          >
+            Click here to fill in sandbox credentials
+          </Button>
           <FormGroup>
             <CustomInput
               inputmode="numeric"
@@ -121,9 +122,16 @@ const LoginHeader = styled.div`
   div {
     span {
       cursor: pointer;
+      
     }
   }
-  font-family: "Montserrat", san-serif;
+  h6 {
+    font-family: "EquitanSansBold", san-serif;
+    font-size: 1.2rem;
+    span{
+      font-family: "EquitanSansBold", san-serif;
+    }
+  }
 `;
 
 const LoginBody = styled.div`
@@ -136,9 +144,10 @@ const LoginBody = styled.div`
   align-items: center;
 
   button {
-    font-family: "MontserratBold";
+    font-family: "EquitanSansBold", san-serif;
+    font-size: 1.1rem;
     &:first-child {
-      padding: 0.8rem 15%;
+      width: 100%;
       &:active {
         background-color: #e0a038 !important;
       }
@@ -167,7 +176,7 @@ const CustomInput = styled(Input)`
   border-radius: 13px;
   background-color: #fef8f6;
   border-color: #fef8f6;
-
+  font-family: "EquitanSansRegular", san-serif;
   &::placeholder {
     color: #ababba;
   }
@@ -178,7 +187,7 @@ const CustomPasswordInput = styled(PasswordInput)`
   border-radius: 13px;
   border-color: #fef8f6;
   background-color: #fef8f6;
-
+  font-family: "EquitanSansRegular", san-serif;
   &::placeholder {
     color: #ababba;
   }

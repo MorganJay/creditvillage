@@ -6,13 +6,41 @@
 @font-face {
   font-family: "MontserratBold";
   src: local("Montserrat"),
-    url(./assets/fonts/Montserrat-Bold.ttf) format("truetype");
+    url(./assets/fonts/montserrat/Montserrat-Bold.ttf) format("truetype");
 }
 
 @font-face {
   font-family: "Montserrat";
   src: local("Montserrat"),
-    url(./assets/fonts/Montserrat-Regular.ttf) format("truetype");
+    url(./assets/fonts/montserrat/Montserrat-Regular.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "EquitanSansBlack";
+  src: local("EquitanSans"),
+    url(./assets/fonts/equitansans/EquitanSans-Black.otf) format("opentype");
+}
+@font-face {
+  font-family: "EquitanSansBold";
+  src: local("EquitanSans"),
+    url(./assets/fonts/equitansans/EquitanSans-Bold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "EquitanSansRegular";
+  src: local("EquitanSans"),
+    url(./assets/fonts/equitansans/zEquitanSans-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "EquitanSansLight";
+  src: local("EquitanSans"),
+    url(./assets/fonts/equitansans/EquitanSans-Light.otf) format("opentype");
+}
+@font-face {
+  font-family: "EquitanSansSemiBold";
+  src: local("EquitanSans"),
+    url(./assets/fonts/equitansans/EquitanSans-SemiBold.otf) format("opentype");
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");

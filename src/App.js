@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 
 import Home from "./views/Home";
@@ -12,6 +13,12 @@ import NewDash from "views/dashboard/NewDash";
 import "./App.css";
 
 function App() {
+  const [linkAccountStep, setLinkAccountStep] = useState(0);
+
+  const nextStep = () => setLinkAccountStep(linkAccountStep + 1);
+
+  const prevStep = () => setLinkAccountStep(linkAccountStep - 1);
+
   return (
     <div className="App">
       <Switch>
@@ -25,7 +32,13 @@ function App() {
         <Route
           exact
           path="/home/new"
-          render={props => <NewDash {...props} activity />}
+          render={props => (
+            <NewDash
+              {...props}
+              setStep={step => setLinkAccountStep(step)}
+              activity
+            />
+          )}
         />
         <Route exact path="/profile" component={Profile} />
         <Route
@@ -39,8 +52,16 @@ function App() {
           render={props => <Result {...props} activity />}
         />
         <Route
-          path="/linkaccount/:step"
-          render={props => <LinkAccount {...props} activity />}
+          path="/linkaccount"
+          render={props => (
+            <LinkAccount
+              step={linkAccountStep}
+              nextStep={nextStep}
+              prevStep={prevStep}
+              {...props}
+              activity
+            />
+          )}
         />
       </Switch>
     </div>

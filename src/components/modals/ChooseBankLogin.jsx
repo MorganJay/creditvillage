@@ -1,19 +1,14 @@
 import React from "react";
-import { MDBIcon } from "mdbreact";
 import styled from "styled-components";
+import { MDBIcon } from "mdbreact";
 import { HiOutlineDesktopComputer } from "react-icons/hi";
 import { AiOutlineMobile } from "react-icons/ai";
 
 import { BankContainer } from "./ChooseBank";
 
-import Image from "assets/images/banklogin.png";
+// import Image from "assets/images/banklogin.png";
 
-const ChooseBankLogin = ({
-  bank,
-  handleNextStep,
-  handlePrevStep,
-  handleClose,
-}) => {
+const ChooseBankLogin = ({ bank, handleNextStep }) => {
   return (
     <BankContainer>
       <div style={{ height: "70%", width: "100%" }} />
@@ -38,7 +33,8 @@ const ChooseBankLogin = ({
           </span>
           <div>
             <h6>
-              Log in with Internet Banking <MDBIcon icon="arrow-right" />
+              Log in with Internet Banking{" "}
+              <MDBIcon icon="arrow-right" className="ml-1" />
             </h6>
             Click here to use the credentials you use with your {bank.name}{" "}
             internet banking
@@ -79,12 +75,19 @@ const LoginOption = styled.div`
   cursor: pointer;
   div {
     font-size: 0.8rem;
+    font-family: "EquitanSansRegular", san-serif;
+    font-weight: 300;
     width: 80%;
   }
 
   h6 {
+    font-family: "EquitanSansBold", san-serif;
     font-size: 0.9rem;
     margin-bottom: 0.2rem;
+
+    i {
+      vertical-align: middle;
+    }
   }
 
   span {
