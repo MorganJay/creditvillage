@@ -15,7 +15,7 @@ const NewDash = ({ setStep }) => {
           Image={Image}
           text="Account linked Successfully"
           buttonText="Check account info"
-          linkTo="/home/accountdetails"
+          linkTo="/home/accountinformation"
         />
         <NewDashBox
           setStep={setStep}
