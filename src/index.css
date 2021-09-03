@@ -3,6 +3,8 @@
   --whiteblue: #f2fbff;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
+
 @font-face {
   font-family: "MontserratBold";
   src: local("Montserrat"),
@@ -37,13 +39,22 @@
   src: local("EquitanSans"),
     url(./assets/fonts/equitansans/EquitanSans-Light.otf) format("opentype");
 }
+
 @font-face {
   font-family: "EquitanSansSemiBold";
   src: local("EquitanSans"),
     url(./assets/fonts/equitansans/EquitanSans-SemiBold.otf) format("opentype");
 }
 
+@font-face {
+  font-family: "GraviticaMono";
+  src: local("GraviticaMono"),
+    url(./assets/fonts/gravitica-mono/GraviticaMono.otf) format("opentype");
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
 
 * {
   font-family: "MontserratBold", sans-serif;

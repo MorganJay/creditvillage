@@ -74,17 +74,17 @@ const LoginOption = styled.div`
   color: black;
   cursor: pointer;
   div {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     font-family: "EquitanSansRegular", san-serif;
     font-weight: 300;
     width: 80%;
+    color: #000000b5;
   }
 
   h6 {
     font-family: "EquitanSansBold", san-serif;
-    font-size: 0.9rem;
     margin-bottom: 0.2rem;
-
+    color: black;
     i {
       vertical-align: middle;
     }

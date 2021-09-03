@@ -68,7 +68,7 @@ const LoginBankDetails = ({ bank, handleNextStep, handlePrevStep }) => {
           </Button>
           <FormGroup>
             <CustomInput
-              inputmode="numeric"
+              inputMode="numeric"
               name="userId"
               placeholder="UserID or Account Number"
               required
@@ -122,13 +122,12 @@ const LoginHeader = styled.div`
   div {
     span {
       cursor: pointer;
-      
     }
   }
   h6 {
     font-family: "EquitanSansBold", san-serif;
     font-size: 1.2rem;
-    span{
+    span {
       font-family: "EquitanSansBold", san-serif;
     }
   }
