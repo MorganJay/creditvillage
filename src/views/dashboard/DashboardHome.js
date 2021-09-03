@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { Route, Switch } from "react-router-dom";
 
 import withDashboardView from "hoc/withDashboard";
-import NewDash from "views/dashboard/NewDash";
+import NewDash from "./NewDash";
 import CreditScore from "./CreditScore";
+import AccountInfo from "./AccountInfo";
 
 const DashboardHome = ({ setLinkAccountStep, match }) => {
   let { path } = match;
@@ -13,8 +14,8 @@ const DashboardHome = ({ setLinkAccountStep, match }) => {
     <Switch>
       <Route
         exact
-        path={`${path}/accountdetails`}
-        render={props => <CreditScore {...props} />}
+        path={`${path}/accountinformation`}
+        render={props => <AccountInfo {...props} />}
       />
       <Route
         exact

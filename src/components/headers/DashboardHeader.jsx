@@ -58,6 +58,7 @@ const StyledNav = styled.nav`
     margin: 0;
     a {
       color: black;
+      font-weight: 500;
     }
   }
 `;
