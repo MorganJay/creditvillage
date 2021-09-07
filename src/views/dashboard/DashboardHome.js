@@ -6,6 +6,7 @@ import withDashboardView from "hoc/withDashboard";
 import NewDash from "./NewDash";
 import CreditScore from "./CreditScore";
 import AccountInfo from "./AccountInfo";
+import UserDash from "components/modals/UserDash";
 
 const DashboardHome = ({ setLinkAccountStep, match }) => {
   let { path } = match;
@@ -29,14 +30,7 @@ const DashboardHome = ({ setLinkAccountStep, match }) => {
           <NewDash {...props} setStep={step => setLinkAccountStep(step)} />
         )}
       />
-      <Route
-        path={path}
-        render={props => (
-          <Container>
-            <h1>Coming soon...</h1>
-          </Container>
-        )}
-      />
+      <Route exact path={path} render={props => <UserDash {...props} />} />
     </Switch>
   );
 };
