@@ -13,10 +13,10 @@ const chartData = {
   datasets: [
     {
       backgroundColor: "rgba(178, 202, 214, 1)",
-      borderColor: "transparent",
+      borderColor: "rgba(178, 202, 214, 1)",
       borderWidth: 2,
       data: [200, 500, 500, 490, 750],
-      borderRadius: "10px",
+      borderRadius: 15,
     },
   ],
 };
@@ -53,7 +53,7 @@ const UserDash = () => {
           </span>
         </Controls>
         <Chart className="px-5" data={chartData} />
-        <p className="my-2">Summary</p>
+        <p className="mb-3">Summary</p>
       </ChartDisplay>
     </Container>
   );
@@ -109,7 +109,7 @@ const ChartDisplay = styled.div`
   /* padding: 2rem 4rem; */
   border: 1px solid #f2f2f2;
   border-radius: 40px;
-  margin-top: 3rem;
+  margin-top: 4rem;
   max-height: 332px;
   height: 200px;
 
@@ -131,7 +131,7 @@ const Controls = styled.div`
   font-size: 16px;
   line-height: 20px;
   color: #828282;
-
+  left: 20px;
   span {
     cursor: pointer;
   }
