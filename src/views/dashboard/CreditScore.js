@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 import { Container } from "./LinkAccount";
 import ButtonLink from "components/buttons/ButtonLink";
+import Button from './../../components/buttons/Button';
 
 import Score from "assets/images/creditscore.png";
-import Button from './../../components/buttons/Button';
 
 const CreditScore = () => {
   return (

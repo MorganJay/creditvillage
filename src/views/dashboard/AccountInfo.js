@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 
 import { Container } from "./LinkAccount";
+import AccountDetails from "components/accountinfo/AccountDetails";
+import Transactions from "./../../components/accountinfo/Transactions";
 
 const tabs = ["Rendered", "Json"];
 const buttons = [
@@ -16,9 +18,11 @@ const AccountInfo = () => {
   const [activeTab, setActiveTab] = useState(0);
   const [activeButton, setActiveButton] = useState(0);
 
+  const pages = [<AccountDetails />, <Transactions />];
+
   return (
-    <Wrapper>
-      <CardTab>
+    <Container>
+      <CardTab className="justify-content-xl-center ">
         <Header>
           {tabs.map((text, index) => (
             <Tab
@@ -31,7 +35,7 @@ const AccountInfo = () => {
           ))}
         </Header>
         <Body>
-          <ButtonContainer className="mb-3 px-1">
+          <ButtonContainer className="mb-1">
             {buttons.map((text, index) => (
               <Button
                 key={index}
@@ -42,38 +46,21 @@ const AccountInfo = () => {
               </Button>
             ))}
           </ButtonContainer>
-          <div className="px-4 h-100 justify-content-space-between">
-            <ul>
-              <li>
-                Account Currency<span>Naira</span>
-              </li>
-              <li>
-                Bank<span>GTBank</span>
-              </li>
-              <li>
-                Account No.<span>0018709596</span>
-              </li>
-              <li>
-                Account Name<span>OGUNGBEFUN OLADUNNI KHADIJAH</span>
-              </li>
-              <li>
-                Balance<span style={{ color: "#2B3ED5" }}>NGN 35,365.53</span>
-              </li>
-            </ul>
-          </div>
+          {pages[activeButton]}
         </Body>
       </CardTab>
-    </Wrapper>
+    </Container>
   );
 };
 
 export default AccountInfo;
 
-const Wrapper = styled(Container)``;
-
 const CardTab = styled.div`
   width: 80%;
   height: 90%;
+  max-width: 746px;
+  max-height: 500px;
+  overflow: hidden;
   margin: 0 auto;
   border-radius: 50px;
   display: flex;
@@ -81,7 +68,7 @@ const CardTab = styled.div`
 `;
 
 const Header = styled.div`
-  height: 13%;
+  max-height: 13%;
   border-radius: 50px 50px 0 0;
   display: flex;
   width: 100%;
@@ -97,81 +84,16 @@ const Header = styled.div`
 const Body = styled.div`
   background-color: #f7fbff;
   border-radius: 0 0 50px 50px;
-  height: fit-content;
   font-family: "GraviticaMono", sans-serif;
-  padding: 1rem 0 2.5rem;
-
+  padding: 0.5rem 1rem 4rem;
+  height: 93%;
+  overflow: hidden;
   div {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     font-family: "GraviticaMono", sans-serif;
-
-    ul {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      li {
-        display: flex;
-        width: 100%;
-        justify-content: space-between;
-        padding: 1rem 0;
-        background-image: repeating-linear-gradient(
-            0deg,
-            #dbdbeb,
-            #dbdbeb 10px,
-            transparent 10px,
-            transparent 20px,
-            #dbdbeb 20px
-          ),
-          repeating-linear-gradient(
-            90deg,
-            #dbdbeb,
-            #dbdbeb 10px,
-            transparent 10px,
-            transparent 20px,
-            #dbdbeb 20px
-          ),
-          repeating-linear-gradient(
-            180deg,
-            #dbdbeb,
-            #dbdbeb 10px,
-            transparent 10px,
-            transparent 20px,
-            #dbdbeb 20px
-          ),
-          repeating-linear-gradient(
-            270deg,
-            #dbdbeb,
-            #dbdbeb 10px,
-            transparent 10px,
-            transparent 20px,
-            #dbdbeb 20px
-          );
-        background-size: 0px 0%, 100% 0px, 0px 100%, 100% 2px;
-        background-position: 0 0, 0 0, 100% 0, 0 100%;
-        background-repeat: no-repeat;
-        align-items: center;
-        color: #28306fb3;
-        font-weight: 600;
-        letter-spacing: 0.01em;
-        font-family: "GraviticaMono", sans-serif;
-        &:last-child {
-          border: none;
-          background: none;
-        }
-
-        span {
-          width: 40%;
-          text-align: right;
-          font-family: "GraviticaMono", sans-serif;
-          font-weight: 900;
-          color: #28306fb3;
-        }
-      }
-    }
   }
 `;
 
@@ -199,7 +121,9 @@ const activeButtonStyles = css`
   background-color: #182cd1;
   color: #fafafe;
   box-shadow: 0px 5px 5px #182bd129;
-  transform: scale(1);
+  &:hover {
+    transform: none;
+  }
 `;
 
 const Button = styled.button`
