@@ -27,7 +27,7 @@ export default AccountDetails;
 
 export const ListWrapper = styled.ul`
   margin: 0;
-  padding: 0;
+  padding: 0 1rem;
   height: 100%;
   width: 100%;
   overflow-y: auto;
@@ -82,7 +82,7 @@ export const ListWrapper = styled.ul`
     }
 
     span {
-      width: 40%;
+      width: 35%;
       text-align: right;
       font-family: "GraviticaMono", sans-serif;
       font-weight: 900;

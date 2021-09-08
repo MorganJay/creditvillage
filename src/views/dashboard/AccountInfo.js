@@ -21,7 +21,7 @@ const AccountInfo = () => {
   const pages = [<AccountDetails />, <Transactions />];
 
   return (
-    <Wrapper>
+    <Container>
       <CardTab className="justify-content-xl-center ">
         <Header>
           {tabs.map((text, index) => (
@@ -35,7 +35,7 @@ const AccountInfo = () => {
           ))}
         </Header>
         <Body>
-          <ButtonContainer className="mb-3">
+          <ButtonContainer className="mb-1">
             {buttons.map((text, index) => (
               <Button
                 key={index}
@@ -49,22 +49,18 @@ const AccountInfo = () => {
           {pages[activeButton]}
         </Body>
       </CardTab>
-    </Wrapper>
+    </Container>
   );
 };
 
 export default AccountInfo;
-
-const Wrapper = styled(Container)`
-  /* display: grid;
-  place-items: center; */
-`;
 
 const CardTab = styled.div`
   width: 80%;
   height: 90%;
   max-width: 746px;
   max-height: 500px;
+  overflow: hidden;
   margin: 0 auto;
   border-radius: 50px;
   display: flex;
@@ -88,11 +84,10 @@ const Header = styled.div`
 const Body = styled.div`
   background-color: #f7fbff;
   border-radius: 0 0 50px 50px;
-  height: 80%;
   font-family: "GraviticaMono", sans-serif;
-  padding: 1rem 1rem 2.5rem;
-  max-height: 93%;
-
+  padding: 0.5rem 1rem 4rem;
+  height: 93%;
+  overflow: hidden;
   div {
     display: flex;
     justify-content: space-between;
