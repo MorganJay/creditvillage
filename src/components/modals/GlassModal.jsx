@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-const GlassModal = ({ children }) => {
-  return <GlassContainer>{children}</GlassContainer>;
+const GlassModal = ({ children, ...props }) => {
+  return <GlassContainer {...props}>{children}</GlassContainer>;
 };
 
 export default GlassModal;
@@ -37,7 +37,7 @@ const GlassContainer = styled.div`
     color: white;
     font-size: 16px;
     font-weight: normal;
-    font-family: 'Montserrat', san-serif;
+    font-family: "Montserrat", san-serif;
     a {
       color: white;
     }
