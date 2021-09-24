@@ -9,14 +9,23 @@ import UpdatedProfile from "./views/dashboard/UpdatedProfile";
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
 
+//import { data } from "./components/accountinfo/AccountDetails";
+
 import "./App.css";
 
-function App() {
+function App(props) {
+  console.log(props);
   const [linkAccountStep, setLinkAccountStep] = useState(0);
 
   const nextStep = () => setLinkAccountStep(linkAccountStep + 1);
 
   const prevStep = () => setLinkAccountStep(linkAccountStep - 1);
+
+  // const getInputProviders = group => {
+  //   return data.filter(farm => {
+  //     return farm.input_types[0].id === group;
+  //   });
+  // };
 
   return (
     <div className="App">
@@ -24,7 +33,6 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <Route
-          
           path="/home"
           render={props => (
             <DashboardHome
