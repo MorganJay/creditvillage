@@ -1,7 +1,7 @@
 .bg-image {
   width: 100%;
   padding: 1rem;
-  background-image: url('../images/portrait-cool-man-with-sunglasses.png');
+  background-image: url("../images/portrait-cool-man-with-sunglasses.png");
   background-size: cover;
   height: auto;
   background-position: center;
@@ -14,24 +14,9 @@
 
 .home {
   width: 100%;
-  padding: 1rem;
-  background-image: url('../images/portrait-cool-man-with-sunglasses.png');
-  background-size: cover;
   height: auto;
-  background-position: center;
   display: flex;
   flex-direction: column;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.header {
-  display: flex;
-  justify-content: space-between;
-  padding: 2rem;
-  padding-left: 3rem;
-  text-align: center;
-  align-items: center;
 }
 
 .main {

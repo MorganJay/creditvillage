@@ -9,8 +9,6 @@ import UpdatedProfile from "./views/dashboard/UpdatedProfile";
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
 
-//import { data } from "./components/accountinfo/AccountDetails";
-
 import "./App.css";
 
 function App(props) {

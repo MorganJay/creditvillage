@@ -1,21 +1,10 @@
 :root {
   --darkblue: #022d45;
   --whiteblue: #f2fbff;
+  --lightblue: #537689;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
-
-@font-face {
-  font-family: "MontserratBold";
-  src: local("Montserrat"),
-    url(./assets/fonts/montserrat/Montserrat-Bold.ttf) format("truetype");
-}
-
-@font-face {
-  font-family: "Montserrat";
-  src: local("Montserrat"),
-    url(./assets/fonts/montserrat/Montserrat-Regular.ttf) format("truetype");
-}
 
 @font-face {
   font-family: "EquitanSansBlack";
@@ -52,9 +41,21 @@
     url(./assets/fonts/gravitica-mono/GraviticaMono.otf) format("opentype");
 }
 
+@font-face {
+  font-family: "Campton";
+  src: local("Campton"),
+    url(./assets/fonts/campton/Campton-Light.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "CamptonBold";
+  src: local("CamptonBold"),
+    url(./assets/fonts/campton/Campton-Bold.otf) format("opentype");
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
 
 * {
   font-family: "MontserratBold", sans-serif;
