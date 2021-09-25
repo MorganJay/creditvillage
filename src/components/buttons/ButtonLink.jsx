@@ -13,12 +13,22 @@ const ButtonLink = ({ path, children, className }) => {
 
 export default ButtonLink;
 
-export const ListItemLink = ({ path, children, className, ...props }) => {
+export const ListItemLink = ({
+  active,
+  path,
+  children,
+  className,
+  ...props
+}) => {
   return (
     <Link to={path}>
-      <li className={className} {...props}>
+      <li className={className} active {...props}>
         {children}
       </li>
     </Link>
   );
 };
+
+// ListItemLink.PropTypes = {
+  
+// };

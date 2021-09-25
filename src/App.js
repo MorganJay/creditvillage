@@ -11,8 +11,7 @@ import LinkAccount from "./views/dashboard/LinkAccount";
 
 import "./App.css";
 
-function App(props) {
-  console.log(props);
+function App() {
   const [linkAccountStep, setLinkAccountStep] = useState(0);
 
   const nextStep = () => setLinkAccountStep(linkAccountStep + 1);

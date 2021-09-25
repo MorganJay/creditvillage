@@ -1,25 +1,33 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import styled from "styled-components";
 
-import Button from '../components/buttons/Button';
-import AuthHeader from './../components/headers/AuthHeader';
-
-import '../assets/css/home.styles.css';
+import AuthHeader from "components/headers/AuthHeader";
+import HeroSection from "components/homepage/Hero";
+import InfoSection from "components/homepage/InfoSection";
+import FeaturesSection from "components/homepage/Features";
+import WorksSection from "components/homepage/Works";
 
 const Home = () => {
   return (
-    <div className='home'>
+    <Container>
       <AuthHeader />
-      <div className='main'>
-        <h1 className='text-white'>
-          Know your <br /> Credit score!
-        </h1>
-        <Link to='/auth'>
-          <Button>Click to Start</Button>
-        </Link>
-      </div>
-    </div>
+      <HeroSection />
+      <InfoSection />
+      <FeaturesSection />
+      <WorksSection />
+    </Container>
   );
 };
 
 export default Home;
+
+const Container = styled.div`
+  width: 100%;
+
+  p {
+    color: var(--lightblue);
+    font-size: 1.125rem;
+    font-weight: normal;
+    line-height: 21px;
+  }
+`;

@@ -6,12 +6,12 @@ import ButtonLink, { ListItemLink } from "components/buttons/ButtonLink";
 
 const AuthHeader = () => {
   return (
-    <Header>
+    <Header id="nav">
       <Link to="/">
         <StyledV>V</StyledV>
       </Link>
       <LinkList>
-        <LinkItem path="/" active>
+        <LinkItem path="#home" active>
           Home
         </LinkItem>
         <LinkItem path="#features">Features</LinkItem>
@@ -19,7 +19,7 @@ const AuthHeader = () => {
       </LinkList>
       <AuthLinks>
         <Link to="/auth/login">Login</Link>
-        <ButtonLink path="/auth/signup">Sign Up</ButtonLink>
+        <ButtonLink path="/auth/signup">Signup</ButtonLink>
       </AuthLinks>
     </Header>
   );
@@ -27,12 +27,16 @@ const AuthHeader = () => {
 
 export default AuthHeader;
 
-const Header = styled.header`
+const Header = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 2rem 3rem;
+  padding: 2rem 4rem;
   text-align: center;
   align-items: center;
+  /* position: sticky; */
+  top: 0;
+  background-color: white;
+  box-shadow: 0 0 10px rgb(0 0 0 / 15%);
 `;
 
 const LinkList = styled.ul`
@@ -48,19 +52,40 @@ const LinkItem = styled(ListItemLink)`
   line-height: 21px;
   color: var(--lightblue);
   ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
+  &:hover,
+  &:focus {
+    color: var(--darkblue);
+  }
 `;
 
 const AuthLinks = styled.div`
   display: flex;
   gap: 4rem;
   align-items: center;
-
   a {
+    font-family: "Campton", san-serif;
     color: var(--lightblue);
+    font-size: 18px;
+    &:hover,
+    &:focus {
+      color: var(--darkblue);
+    }
   }
 
   button {
-    border-radius: 20px;
+    font-size: 1.125rem;
+    font-weight: normal;
+    font-family: "Campton", san-serif;
+    padding: 1.05rem 1.9rem;
+    color: #fafcfc;
+    &:hover {
+      color: #fafcfc;
+    }
+    &:focus,
+    &:active {
+      outline: none;
+      opacity: 0.8;
+    }
   }
 `;
 
@@ -71,6 +96,7 @@ const StyledV = styled.h1`
   line-height: 56px;
   font-style: normal;
   color: var(--darkblue);
+  user-select: none;
   font-family: "CamptonBold", sans-serif;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

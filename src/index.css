@@ -1,7 +1,8 @@
 :root {
   --darkblue: #022d45;
   --whiteblue: #f2fbff;
-  --lightblue: #537689;
+  --lightblue: #53768966;
+  --bg-primary: #caebfd;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
@@ -53,25 +54,24 @@
     url(./assets/fonts/campton/Campton-Bold.otf) format("opentype");
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
-
 * {
-  font-family: "MontserratBold", sans-serif;
+  font-family: "Campton", sans-serif;
   box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  font-family: "Montserrat", san-serif;
 }
 
+html,
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
+  width: 100%;
+  height: 100vh;
+  scroll-behavior: smooth;
 }
 
 ul {
