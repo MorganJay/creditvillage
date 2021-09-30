@@ -14,7 +14,9 @@ const HeroSection = () => {
           vestibulum, mauris rutrum pellentesque ipsum sed. Vel augue non
           faucibus adipiscing euismod laoreet.
         </p>
-        <ButtonLink path="/auth/signup">Get Started</ButtonLink>
+        <ButtonLink path="/auth/signup">
+          Get Started
+        </ButtonLink>
       </div>
       <img src={Woman} alt="A woman holding her phone" />
     </Hero>
@@ -27,15 +29,14 @@ const Hero = styled.header`
   display: flex;
   width: 100%;
   flex-direction: column;
-  height: 85vh;
-  min-height: 85vh;
-
+  max-height: 655px;
   h1 {
     font-style: normal;
     font-weight: 600;
-    font-size: 2.83rem;
+    font-size: clamp(2rem, 5vw, 45px);
     line-height: 52px;
     color: var(--darkblue);
+    font-family: "CamptonMedium";
   }
 
   div {
@@ -43,22 +44,23 @@ const Hero = styled.header`
     display: flex;
     background-color: #caebfd;
     flex-direction: column;
-    padding: 3rem 5rem;
+    padding: 10rem 5rem;
     justify-content: center;
+    align-items: flex-start;
     height: 100%;
     gap: 1rem;
-    min-height: 500px;
     user-select: none;
 
     p {
       max-width: 447px;
     }
+
+    button {
+      padding: 1.065rem 3rem;
+    }
   }
 
   img {
-    max-width: 100%;
-    height: auto;
-    object-fit: cover;
     display: none;
   }
 

@@ -28,7 +28,3 @@ export const ListItemLink = ({
     </Link>
   );
 };
-
-// ListItemLink.PropTypes = {
-  
-// };

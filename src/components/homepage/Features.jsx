@@ -38,7 +38,7 @@ const Features = () => {
           >
             <img src={img} alt={heading} className="mb-4" width="48" />
             <h4 className="mb-3">{heading}</h4>
-            <p>{content}</p>
+            <p className="pl-2">{content}</p>
           </Card>
         ))}
       </CardContainer>
@@ -50,8 +50,8 @@ export default Features;
 
 const Section = styled.section`
   padding: 1rem 2rem 3rem;
-  height: 50%;
-
+  height: 35%;
+  margin-bottom: 5rem;
   h2 {
     color: var(--lightblue);
     font-size: 2.25rem;
@@ -61,7 +61,7 @@ const Section = styled.section`
 
 const CardContainer = styled.div`
   display: flex;
-  height: 90%;
+  height: 80%;
   max-height: fit-content;
   justify-content: space-evenly;
   align-items: flex-end;
@@ -81,16 +81,17 @@ const Card = styled.div`
 
   h4 {
     color: var(--darkblue);
+    font-weight: 600;
   }
-
+  
   h4,
   p {
-    font-weight: 600;
     max-width: 310px;
     line-height: 28px;
   }
-
+  
   p {
+    font-weight: 500;
     font-size: 1.5rem;
   }
 

@@ -64,7 +64,7 @@ const AuthLinks = styled.div`
   align-items: center;
   a {
     font-family: "Campton", san-serif;
-    color: var(--lightblue);
+    color: var(--lighterblue);
     font-size: 18px;
     &:hover,
     &:focus {
@@ -75,21 +75,13 @@ const AuthLinks = styled.div`
   button {
     font-size: 1.125rem;
     font-weight: normal;
-    font-family: "Campton", san-serif;
-    padding: 1.05rem 1.9rem;
+    font-family: "CamptonLight", san-serif;
+    padding: 0.98rem 2.2rem;
     color: #fafcfc;
-    &:hover {
-      color: #fafcfc;
-    }
-    &:focus,
-    &:active {
-      outline: none;
-      opacity: 0.8;
-    }
   }
 `;
 
-const StyledV = styled.h1`
+export const StyledV = styled.h1`
   margin: 0;
   font-size: 3rem;
   font-weight: 600;

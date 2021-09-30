@@ -10,10 +10,7 @@ const InfoContainer = styled.section`
   justify-content: space-around;
   img {
     max-width: 600px;
-    width: 100%;
-    height: auto;
     max-height: 831px;
-    /* min-width: 60%; */
   }
 `;
 
@@ -28,7 +25,7 @@ const TextContainer = styled.div`
     color: var(--darkblue);
     font-style: normal;
     font-weight: 600;
-    font-size: 24px;
+    font-size: clamp(1.5rem, 4vw, 24px);
     line-height: 28px;
     font-family: "CamptonBold";
   }
@@ -43,11 +40,12 @@ const InfoSection = () => {
     <InfoContainer>
       <img src={IPad} alt="iPad Pro 11" />
       <TextContainer>
-        <h2>
+        <h2 className="text-center text-lg-left">
           One Account for <br /> Everything Credit
         </h2>
         <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem vestibulum, mauris rutrum pellentesque ipsum sed. Vel augue no
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem
+          vestibulum, mauris rutrum pellentesque ipsum sed. Vel augue no
         </p>
       </TextContainer>
     </InfoContainer>

@@ -1,57 +1,58 @@
 :root {
   --darkblue: #022d45;
   --whiteblue: #f2fbff;
-  --lightblue: #53768966;
+  --lighterblue: #53768966;
+  --lightblue: #537689;
   --bg-primary: #caebfd;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 @font-face {
-  font-family: "EquitanSansBlack";
-  src: local("EquitanSans"),
-    url(./assets/fonts/equitansans/EquitanSans-Black.otf) format("opentype");
+  font-family: "CamptonExtraLight";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonExtraLight.otf) format("opentype");
 }
 @font-face {
-  font-family: "EquitanSansBold";
-  src: local("EquitanSans"),
-    url(./assets/fonts/equitansans/EquitanSans-Bold.otf) format("opentype");
+  font-family: "CamptonLight";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonLight.otf) format("opentype");
 }
-
 @font-face {
-  font-family: "EquitanSansRegular";
-  src: local("EquitanSans"),
-    url(./assets/fonts/equitansans/zEquitanSans-Regular.otf) format("opentype");
+  font-family: "CamptonThin";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonThin.otf) format("opentype");
 }
-
-@font-face {
-  font-family: "EquitanSansLight";
-  src: local("EquitanSans"),
-    url(./assets/fonts/equitansans/EquitanSans-Light.otf) format("opentype");
-}
-
-@font-face {
-  font-family: "EquitanSansSemiBold";
-  src: local("EquitanSans"),
-    url(./assets/fonts/equitansans/EquitanSans-SemiBold.otf) format("opentype");
-}
-
-@font-face {
-  font-family: "GraviticaMono";
-  src: local("GraviticaMono"),
-    url(./assets/fonts/gravitica-mono/GraviticaMono.otf) format("opentype");
-}
-
 @font-face {
   font-family: "Campton";
   src: local("Campton"),
-    url(./assets/fonts/campton/Campton-Light.otf) format("opentype");
+    url(./assets/fonts/campton/CamptonBook.otf) format("opentype");
+}
+@font-face {
+  font-family: "CamptonBlack";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonBlack.otf) format("opentype");
+}
+@font-face {
+  font-family: "CamptonMedium";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonMedium.otf) format("opentype");
+}
+@font-face {
+  font-family: "CamptonSemiBold";
+  src: local("Campton"),
+    url(./assets/fonts/campton/CamptonSemiBold.otf) format("opentype");
 }
 
 @font-face {
   font-family: "CamptonBold";
   src: local("CamptonBold"),
-    url(./assets/fonts/campton/Campton-Bold.otf) format("opentype");
+    url(./assets/fonts/campton/CamptonBold.otf) format("opentype");
+}
+@font-face {
+  font-family: "CamptonExtraBold";
+  src: local("CamptonBold"),
+    url(./assets/fonts/campton/CamptonExtraBold.otf) format("opentype");
 }
 
 * {
@@ -83,4 +84,10 @@ small {
   color: #bdbdbd;
   font: normal 600 10px/12px "Montserrat", san-serif;
   display: block;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
 }
