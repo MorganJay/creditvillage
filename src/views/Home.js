@@ -8,10 +8,11 @@ import FeaturesSection from "components/homepage/Features";
 import WorksSection from "components/homepage/Works";
 import ManageSection from "components/homepage/Manage";
 import CtaSection from "components/homepage/Cta";
+import FooterSection from "components/homepage/Footer";
 
 const Home = () => {
   return (
-    <Container>
+    <Container id="home">
       <AuthHeader />
       <HeroSection />
       <InfoSection />
@@ -19,6 +20,7 @@ const Home = () => {
       <WorksSection />
       <ManageSection />
       <CtaSection />
+      <FooterSection />
     </Container>
   );
 };

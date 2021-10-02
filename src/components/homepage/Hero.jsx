@@ -14,9 +14,7 @@ const HeroSection = () => {
           vestibulum, mauris rutrum pellentesque ipsum sed. Vel augue non
           faucibus adipiscing euismod laoreet.
         </p>
-        <ButtonLink path="/auth/signup">
-          Get Started
-        </ButtonLink>
+        <ButtonLink path="/auth/signup">Get Started</ButtonLink>
       </div>
       <img src={Woman} alt="A woman holding her phone" />
     </Hero>
@@ -44,7 +42,7 @@ const Hero = styled.header`
     display: flex;
     background-color: #caebfd;
     flex-direction: column;
-    padding: 10rem 5rem;
+    padding: 9rem 5rem;
     justify-content: center;
     align-items: flex-start;
     height: 100%;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 import Button from "./Button";
 
@@ -21,10 +22,14 @@ export const ListItemLink = ({
   ...props
 }) => {
   return (
-    <Link to={path}>
-      <li className={className} active {...props}>
+    <a href={path}>
+      <li className={className} active={active ? "true" : "false"} {...props}>
         {children}
       </li>
-    </Link>
+    </a>
   );
+};
+
+ListItemLink.propTypes = {
+  active: PropTypes.bool,
 };

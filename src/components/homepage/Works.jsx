@@ -52,7 +52,7 @@ export default Works;
 
 const WorksContainer = styled.section`
   background-color: var(--bg-primary);
-  height: 30%;
+  padding: 5rem 0;
 
   img {
     width: 80%;
@@ -70,7 +70,6 @@ const WorksContainer = styled.section`
   }
 
   @media (min-width: 992px) {
-    padding: 5rem 0;
     img {
       width: 55%;
     }

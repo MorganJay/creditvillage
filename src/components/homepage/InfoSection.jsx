@@ -9,6 +9,7 @@ const InfoContainer = styled.section`
   flex-wrap: wrap;
   justify-content: space-around;
   img {
+    width: 100%;
     max-width: 600px;
     max-height: 831px;
   }
