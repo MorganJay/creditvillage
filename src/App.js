@@ -18,13 +18,18 @@ function App() {
 
   const prevStep = () => setLinkAccountStep(linkAccountStep - 1);
 
+  // const getInputProviders = group => {
+  //   return data.filter(farm => {
+  //     return farm.input_types[0].id === group;
+  //   });
+  // };
+
   return (
     <div className="App">
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <Route
-          
           path="/home"
           render={props => (
             <DashboardHome
