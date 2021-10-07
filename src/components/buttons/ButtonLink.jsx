@@ -22,11 +22,9 @@ export const ListItemLink = ({
   ...props
 }) => {
   return (
-    <a href={path}>
-      <li className={className} active={active ? "true" : "false"} {...props}>
-        {children}
-      </li>
-    </a>
+    <li className={className} active={active ? "true" : "false"} {...props}>
+      <a href={path}>{children}</a>
+    </li>
   );
 };
 

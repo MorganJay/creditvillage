@@ -3,15 +3,14 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import ButtonLink, { ListItemLink } from "components/buttons/ButtonLink";
+import LogoLink from "components/buttons/LogoLink";
 
 const AuthHeader = ({ location }) => {
   const getActiveHash = hash => location.hash === hash;
 
   return (
-    <Navbar id="nav" className="navbar navbar-expand-md">
-      <Link to="/">
-        <StyledV>V</StyledV>
-      </Link>
+    <Navbar id="nav" className="navbar navbar-light navbar-expand-md px-5">
+      <LogoLink />
       <button
         className="navbar-toggler"
         type="button"
@@ -24,17 +23,26 @@ const AuthHeader = ({ location }) => {
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
-        <LinkList className="navbar-nav m-auto mb-4 align-items-center">
+        <LinkList className="navbar-nav m-md-auto mb-4 align-items-center">
           <LinkItem
             path="#home"
+            className="nav-item"
             active={getActiveHash("#home") || getActiveHash("")}
           >
             Home
           </LinkItem>
-          <LinkItem path="#features" active={getActiveHash("#features")}>
+          <LinkItem
+            path="#features"
+            className="nav-item"
+            active={getActiveHash("#features")}
+          >
             Features
           </LinkItem>
-          <LinkItem path="#how" active={getActiveHash("#how")}>
+          <LinkItem
+            path="#works"
+            className="nav-item"
+            active={getActiveHash("#works")}
+          >
             How it works
           </LinkItem>
         </LinkList>
@@ -56,6 +64,7 @@ const Navbar = styled.nav`
   text-align: center;
   align-items: center;
   /* position: sticky; */
+  z-index: 200;
   top: 0;
   background-color: white;
   box-shadow: 0 0 10px rgb(0 0 0 / 15%);
@@ -72,7 +81,9 @@ export const LinkItem = styled(ListItemLink)`
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
-  color: var(--lighterblue);
+  a {
+    color: var(--lighterblue);
+  }
   transition: all ease-out 0.2s;
   ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
   &:hover,
@@ -83,7 +94,7 @@ export const LinkItem = styled(ListItemLink)`
 
 const AuthLinks = styled.div`
   display: flex;
-  gap: 4rem;
+  gap: 1.5rem;
   align-items: center;
   justify-content: center;
   a {
@@ -94,6 +105,9 @@ const AuthLinks = styled.div`
     &:focus {
       color: var(--darkblue);
     }
+  }
+  @media screen and (min-width: 768px) {
+    gap: 4rem;
   }
 
   button {

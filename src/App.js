@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import styled from "styled-components";
 
 import Home from "./views/Home";
 import Auth from "./views/auth/Auth";
@@ -8,6 +9,7 @@ import Profile from "./views/dashboard/Profile";
 import UpdatedProfile from "./views/dashboard/UpdatedProfile";
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
+import LogoLink from "components/buttons/LogoLink";
 
 import "./App.css";
 
@@ -18,14 +20,9 @@ function App() {
 
   const prevStep = () => setLinkAccountStep(linkAccountStep - 1);
 
-  // const getInputProviders = group => {
-  //   return data.filter(farm => {
-  //     return farm.input_types[0].id === group;
-  //   });
-  // };
-
   return (
     <div className="App">
+      <Logo className="position-absolute" />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
@@ -68,3 +65,9 @@ function App() {
 }
 
 export default App;
+
+const Logo = styled(LogoLink)`
+  left: 24px;
+  top: 17px;
+  z-index: 100;
+`;

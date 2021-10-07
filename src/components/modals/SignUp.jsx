@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import GlassModal from "./GlassModal";
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
 import usePasswordToggle from "hooks/usePasswordToggle";
+
+import Image from "assets/images/create-account-abstract.svg";
 
 const SignUp = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
@@ -18,55 +19,89 @@ const SignUp = ({ history }) => {
     history.replace("/auth/verifyemail");
   };
 
-  const handlePasswordChange = event => {
-    const {
-      target: { value },
-    } = event;
+  const handlePasswordChange = ({ target }) => {
+    const { value } = target;
     const hideIcon = value.length < 1 ? false : true;
     setShowIcon(hideIcon);
   };
 
   return (
-    <GlassModal>
-      <h1 style={{ margin: "24px 16px" }}>Register an Account</h1>
-      <Form autoComplete="off" onSubmit={handleSubmit}>
-        <CustomInput
-          type="email"
-          name="email"
-          placeholder="Email"
-          autoComplete="off"
-          required
-        />
-        <Password
-          type={Type}
-          name="password"
-          placeholder="Password"
-          autoComplete="off"
-          onChange={handlePasswordChange}
-          showIcon={showIcon}
-          icon={Toggle}
-          required
-        />
-        <CreditButton
-          styles={{
-            fontSize: "20px",
-            fontWeight: "600",
-          }}
-          type="submit"
-          inverted
-        >
-          Register
-        </CreditButton>
-      </Form>
-      <p>
-        Already have an account?
-        <Link to="/auth/login"> Log In</Link>
-      </p>
-    </GlassModal>
+    <Wrapper className="d-flex h-100">
+      <Sidebar>
+        <h1>Be in charge of your finance, know your credit score</h1>
+      </Sidebar>
+      <Content className="d-flex justify-content-center align-items-center flex-column">
+        <h1>Create an Account!</h1>
+        <p>Manage your credit!</p>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
+          <CustomInput
+            type="email"
+            name="email"
+            placeholder="Email"
+            autoComplete="off"
+            required
+          />
+          <Password
+            type={Type}
+            name="password"
+            placeholder="Password"
+            autoComplete="off"
+            onChange={handlePasswordChange}
+            showIcon={showIcon}
+            icon={Toggle}
+            required
+          />
+          <CreditButton
+            styles={{
+              fontSize: "20px",
+              fontWeight: "600",
+            }}
+            type="submit"
+            inverted
+          >
+            Register
+          </CreditButton>
+        </Form>
+        <p>
+          Already have an account?
+          <Link to="/auth/login"> Log In</Link>
+        </p>
+      </Content>
+    </Wrapper>
   );
 };
 
 export default SignUp;
+
+const Wrapper = styled.div`
+  height: 900px;
+`;
+
+const Sidebar = styled.aside`
+  background: var(--bg-primary) url(${Image}) no-repeat fixed 0% 380%;
+  border-radius: 0px 50px 50px 0px;
+  background-size: contain;
+  max-width: 520px;
+  max-height: 900px;
+  background-attachment: fixed;
+  width: 40%;
+  height: 100%;
+  padding: 6rem;
+  padding-top: 9rem;
+  h1 {
+    font-style: normal;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    line-height: 28px;
+    max-width: 283px;
+    color: var(--darkblue);
+  }
+`;
+
+const Content = styled.main`
+  width: 60%;
+  text-align: center;
+`;
 
 export const Form = styled.form`
   width: 80%;
