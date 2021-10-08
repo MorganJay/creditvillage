@@ -26,7 +26,7 @@ const data = [
 
 const Features = () => {
   return (
-    <Section id="#features">
+    <Section id="features">
       <h2 className="text-center mb-4">
         CreditVillage tailored just to meet your credit needs
       </h2>
@@ -83,13 +83,13 @@ const Card = styled.div`
     color: var(--darkblue);
     font-weight: 600;
   }
-  
+
   h4,
   p {
     max-width: 310px;
     line-height: 28px;
   }
-  
+
   p {
     font-weight: 500;
     font-size: 1.5rem;

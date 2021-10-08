@@ -27,7 +27,7 @@ const data = [
 const Works = () => {
   return (
     <WorksContainer
-      id="#works"
+      id="works"
       className="d-flex justify-content-center flex-column flex-lg-row align-items-center my-5"
     >
       <img src={iPad12} alt="Ipad 12" />

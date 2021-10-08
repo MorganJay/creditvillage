@@ -14,7 +14,7 @@ const FooterSection = () => {
     >
       <FooterDiv className="flex-column">
         <h1 className="mb-1">V</h1>
-        <p className="text-white">
+        <p className="text-white w-100">
           CreditVillage &copy; 2021. All rights reserved
         </p>
       </FooterDiv>
