@@ -63,7 +63,7 @@ const Navbar = styled.nav`
   padding: 2rem 4rem;
   text-align: center;
   align-items: center;
-  /* position: sticky; */
+  position: sticky;
   z-index: 200;
   top: 0;
   background-color: white;
@@ -83,13 +83,13 @@ export const LinkItem = styled(ListItemLink)`
   line-height: 21px;
   a {
     color: var(--lighterblue);
+    &:hover,
+    &:focus {
+      color: var(--darkblue);
+    }
   }
   transition: all ease-out 0.2s;
   ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
-  &:hover,
-  &:focus {
-    color: var(--darkblue);
-  }
 `;
 
 const AuthLinks = styled.div`

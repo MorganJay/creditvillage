@@ -8,16 +8,15 @@ const Button = ({ children, ...props }) => {
 export default Button;
 
 const invertedStyles = css`
-  background-color: grey;
   color: var(--darkblue);
   padding: 13px 50px;
-  border-radius: 4px;
   background: linear-gradient(
     275.85deg,
     #d9e8ef -22.37%,
     rgba(217, 232, 239, 0) 124.27%
   );
   filter: drop-shadow(6px 6px 16px rgba(149, 149, 149, 0.08));
+  border: 1px solid #d9e8ef;
   &:hover {
     opacity: 0.8;
     color: var(--darkblue);

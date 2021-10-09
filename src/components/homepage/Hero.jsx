@@ -26,6 +26,7 @@ export default HeroSection;
 const Hero = styled.header`
   display: flex;
   width: 100%;
+  height: 100vh;
   flex-direction: column;
   max-height: 655px;
   h1 {

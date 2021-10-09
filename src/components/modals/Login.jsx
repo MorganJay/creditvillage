@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import GlassModal from "./GlassModal";
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
+import PasswordInput from "./../inputs/PasswordInput";
 import usePasswordToggle from "./../../hooks/usePasswordToggle";
-import { Form, Password } from "./SignUp";
+import { Form } from "./SignUp";
 
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();
@@ -30,7 +31,7 @@ const LogIn = ({ history }) => {
       <h1>Login</h1>
       <Form onSubmit={handleSubmit}>
         <CustomInput type="email" name="email" placeholder="Email" required />
-        <Password
+        <PasswordInput
           type={Type}
           name="password"
           placeholder="Password"

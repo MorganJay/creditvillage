@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { Input } from "reactstrap";
 import styled from "styled-components";
 
 import CreditButton from "../buttons/Button";
@@ -11,11 +12,12 @@ import Image from "assets/images/create-account-abstract.svg";
 
 const SignUp = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
+  const [ConfirmType, ConfirmToggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting");
+    console.log("submitting", e);
     history.replace("/auth/verifyemail");
   };
 
@@ -26,7 +28,7 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <Wrapper className="d-flex h-100">
+    <Wrapper className="d-flex">
       <Sidebar>
         <h1>Be in charge of your finance, know your credit score</h1>
       </Sidebar>
@@ -39,9 +41,10 @@ const SignUp = ({ history }) => {
             name="email"
             placeholder="Email"
             autoComplete="off"
+            className="mb-3"
             required
           />
-          <Password
+          <PasswordInput
             type={Type}
             name="password"
             placeholder="Password"
@@ -49,13 +52,40 @@ const SignUp = ({ history }) => {
             onChange={handlePasswordChange}
             showIcon={showIcon}
             icon={Toggle}
+            className="mb-3"
             required
           />
+          <PasswordInput
+            type={ConfirmType}
+            name="confirm-password"
+            placeholder="Confirm password"
+            autoComplete="off"
+            onChange={handlePasswordChange}
+            showIcon={showIcon}
+            icon={ConfirmToggle}
+            className="mb-3"
+            required
+          />
+          <PrivacyTerms className=" mb-4 d-flex">
+            <Input
+              type="checkbox"
+              name="terms"
+              className="rounded-0 mr-2"
+              required
+            />
+            <p className="m-0">
+              I have read and agree to the <a href="#">Terms of Use</a> and{" "}
+              <a href="#">Privacy Policy</a>
+            </p>
+          </PrivacyTerms>
           <CreditButton
             styles={{
               fontSize: "20px",
               fontWeight: "600",
+              borderRadius: "50px",
+              maxWidth: "480px",
             }}
+            className="w-100 my-1"
             type="submit"
             inverted
           >
@@ -64,7 +94,7 @@ const SignUp = ({ history }) => {
         </Form>
         <p>
           Already have an account?
-          <Link to="/auth/login"> Log In</Link>
+          <Link to="/auth/login"> Login</Link>
         </p>
       </Content>
     </Wrapper>
@@ -74,33 +104,50 @@ const SignUp = ({ history }) => {
 export default SignUp;
 
 const Wrapper = styled.div`
-  height: 900px;
+  height: 800px;
 `;
 
 const Sidebar = styled.aside`
-  background: var(--bg-primary) url(${Image}) no-repeat fixed 0% 380%;
+  background: var(--bg-primary) url(${Image}) no-repeat scroll 5% 100%;
   border-radius: 0px 50px 50px 0px;
   background-size: contain;
   max-width: 520px;
   max-height: 900px;
-  background-attachment: fixed;
-  width: 40%;
-  height: 100%;
-  padding: 6rem;
-  padding-top: 9rem;
+  width: 35%;
+  padding: 9rem 3rem 0;
   h1 {
     font-style: normal;
     font-weight: 600;
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(1.4rem, 2vw, 1.5rem);
     line-height: 28px;
     max-width: 283px;
+    margin: 0 auto;
     color: var(--darkblue);
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
 const Content = styled.main`
   width: 60%;
   text-align: center;
+  color: var(--lightblue);
+
+  h1 {
+    line-height: 42px;
+    font-weight: 600;
+  }
+  a {
+    font-family: "CamptonLight";
+    color: var(--darkblue);
+    font-weight: 600;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 export const Form = styled.form`
@@ -110,34 +157,35 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   margin: 1.5rem;
+  div {
+    max-width: 480px;
+    margin: 0 auto;
+  }
 `;
 
-export const Password = styled(PasswordInput)`
-  color: var(--darkblue);
-  padding: 15px 20px;
-  background: linear-gradient(
-    275.85deg,
-    #d9e8ef -22.37%,
-    rgba(217, 232, 239, 0) 124.27%
-  ) !important;
-  box-shadow: inset 0px 4px 10px rgba(221, 221, 221, 0.12);
-  border-radius: 4px;
-  border: none;
-  outline: none;
-  text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
-  font-family: "Montserrat", san-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 20px;
-  line-height: 24px;
-  width: 100%;
-  color: var(--darkblue) !important;
-  &::placeholder {
-    color: var(--darkblue);
-    opacity: 1;
+const PrivacyTerms = styled.div`
+  p {
+    font-size: clamp(1rem, 2vw, 1.13rem);
   }
+  max-width: 90% !important;
+  margin-right: 0 !important;
 
-  &::-ms-input-placeholder {
-    color: var(--darkblue);
+  input {
+    position: relative;
+    border: 2px solid var(--lightblue);
+    border-radius: 0px;
+    background: #fafcfc;
+    vertical-align: middle;
+    cursor: pointer;
+    margin-top: 0.35rem;
+    &:focus {
+      border-color: var(--lightblue);
+      box-shadow: 0 0 0 0.25rem var(--lightblue) / 25%;
+    }
+
+    &:checked {
+      border-color: var(--lightblue);
+      background-color: var(--lightblue);
+    }
   }
 `;
