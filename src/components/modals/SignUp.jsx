@@ -74,8 +74,9 @@ const SignUp = ({ history }) => {
               required
             />
             <p className="m-0">
-              I have read and agree to the <a href="#">Terms of Use</a> and{" "}
-              <a href="#">Privacy Policy</a>
+              I have read and agree to the{" "}
+              <a href="/auth/signup">Terms of Use</a> and{" "}
+              <a href="/auth/signup">Privacy Policy</a>
             </p>
           </PrivacyTerms>
           <CreditButton
