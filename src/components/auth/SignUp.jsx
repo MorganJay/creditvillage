@@ -4,7 +4,7 @@ import { Input } from "reactstrap";
 import styled from "styled-components";
 
 import CreditButton from "../buttons/Button";
-import CustomInput from "./../inputs/CustomInput";
+import CustomInput from "../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
 import usePasswordToggle from "hooks/usePasswordToggle";
 
@@ -14,6 +14,7 @@ const SignUp = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
   const [ConfirmType, ConfirmToggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
+  const [showConfirmIcon, setShowConfirmIcon] = useState(false);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -22,9 +23,10 @@ const SignUp = ({ history }) => {
   };
 
   const handlePasswordChange = ({ target }) => {
-    const { value } = target;
+    const { value, name } = target;
     const hideIcon = value.length < 1 ? false : true;
-    setShowIcon(hideIcon);
+
+    name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
   };
 
   return (
@@ -61,7 +63,7 @@ const SignUp = ({ history }) => {
             placeholder="Confirm password"
             autoComplete="off"
             onChange={handlePasswordChange}
-            showIcon={showIcon}
+            showIcon={showConfirmIcon}
             icon={ConfirmToggle}
             className="mb-3"
             required
@@ -158,6 +160,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   margin: 1.5rem;
+  gap: 1rem;
   div {
     max-width: 480px;
     margin: 0 auto;
@@ -167,9 +170,10 @@ export const Form = styled.form`
 const PrivacyTerms = styled.div`
   p {
     font-size: clamp(1rem, 2vw, 1.13rem);
+    white-space: nowrap;
   }
   max-width: 90% !important;
-  margin-right: 0 !important;
+  margin-right: 1% !important;
 
   input {
     position: relative;
@@ -178,7 +182,9 @@ const PrivacyTerms = styled.div`
     background: #fafcfc;
     vertical-align: middle;
     cursor: pointer;
-    margin-top: 0.35rem;
+    margin-top: 3px;
+    min-width: 24px;
+    height: 24px;
     &:focus {
       border-color: var(--lightblue);
       box-shadow: 0 0 0 0.25rem var(--lightblue) / 25%;

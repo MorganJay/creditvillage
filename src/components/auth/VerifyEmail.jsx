@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import GlassModal from "./GlassModal";
+import GlassModal from "../modals/GlassModal";
 import CreditButton from "../buttons/Button";
-import PinInput from "./../inputs/PinInput";
+import PinInput from "../inputs/PinInput";
 
 const VerifyEmail = ({ history }) => {
   const [otp, setOtp] = useState("");

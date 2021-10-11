@@ -6,7 +6,7 @@ import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 import PasswordInput from "./../inputs/PasswordInput";
 import usePasswordToggle from "./../../hooks/usePasswordToggle";
-import { Form } from "./SignUp";
+import { Form } from "../auth/SignUp";
 
 const LogIn = ({ history }) => {
   const [Type, ToggleIcon] = usePasswordToggle();

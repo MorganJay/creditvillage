@@ -25,7 +25,7 @@ const FooterSection = () => {
         >
           <Link path="#home">Home</Link>
           <Link path="#features">Features</Link>
-          <Link path="#how"> How it works</Link>
+          <Link path="#works"> How it works</Link>
         </LinkList>
       </FooterDiv>
       <FooterDiv
@@ -79,9 +79,12 @@ const FooterDiv = styled.div`
   }
 
   a {
+    color: inherit;
+    font-family: inherit;
     &:hover {
-      svg {
+      * {
         opacity: 0.7;
+        color: inherit;
       }
     }
   }

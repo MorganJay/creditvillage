@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import { Switch, Redirect, Route } from "react-router-dom";
 
-import SignUp from "components/modals/SignUp";
+import SignUp from "components/auth/SignUp";
 import Login from "components/modals/Login";
-import VerifyEmail from "components/modals/VerifyEmail";
+import VerifyEmail from "components/auth/VerifyEmail";
 import AccountVerified from "components/modals/AccountVerified";
 
 const Container = styled.div`

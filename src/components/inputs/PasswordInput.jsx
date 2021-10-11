@@ -49,7 +49,7 @@ const PasswordInputContainer = styled(FormGroup)`
 const PasswordToggle = styled.span`
   position: absolute;
   right: 20px;
-  top: 50%;
+  top: 42%;
   transform: translateY(-50%);
   cursor: pointer;
 `;

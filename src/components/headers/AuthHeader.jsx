@@ -9,7 +9,7 @@ const AuthHeader = ({ location }) => {
   const getActiveHash = hash => location.hash === hash;
 
   return (
-    <Navbar id="nav" className="navbar navbar-light navbar-expand-md px-5">
+    <Navbar id="nav" className="navbar navbar-light navbar-expand-md">
       <LogoLink />
       <button
         className="navbar-toggler"
@@ -60,7 +60,7 @@ export default withRouter(AuthHeader);
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem 2rem 4.5rem;
   text-align: center;
   align-items: center;
   position: sticky;
