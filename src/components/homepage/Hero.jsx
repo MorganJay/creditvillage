@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 import ButtonLink from 'components/buttons/ButtonLink';
 import Woman from 'assets/images/landingwoman.png';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { LinkItem, LinkList } from 'components/headers/AuthHeader';
+import { LinkList } from 'components/headers/AuthHeader';
 
 import { ReactComponent as Facebook } from 'assets/images/facebook.svg';
 import { ReactComponent as Twitter } from 'assets/images/icons_twitter.svg';
