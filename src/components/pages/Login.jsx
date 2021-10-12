@@ -1,13 +1,11 @@
 import React from 'react';
 import {
-  CheckBox,
   FormBox,
   HeadingOne,
   HeadingTwo,
   Image,
   InputField,
   LabelText,
-  OutLink,
   Paragraph,
   SideWrapper,
   StyledLink,
@@ -16,11 +14,22 @@ import {
 } from 'styled';
 import LoginImage from '../../assets/images/createimage.png';
 
-const VerifyEmail = () => {
+const Login = () => {
   return (
     <Wrapper style={{ display: 'flex' }}>
-      <SideWrapper className='white'></SideWrapper>
+      <SideWrapper>
+        <Wrapper style={{ width: '70%', marginBottom: '60px' }}>
+          <HeadingTwo style={{ fontSize: '24px', fontWeight: 'bold' }}>
+            Welcome back, Pick up where you left off with your finances{' '}
+          </HeadingTwo>
+        </Wrapper>
+
+        <Wrapper>
+          <Image src={LoginImage} style={{ width: '100%', height: '460px' }} />
+        </Wrapper>
+      </SideWrapper>
       <Wrapper
+        className='main'
         style={{
           width: 'calc(100% - 520px)',
           display: 'flex',
@@ -51,4 +60,4 @@ const VerifyEmail = () => {
   );
 };
 
-export default VerifyEmail;
+export default Login;

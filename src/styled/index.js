@@ -2,6 +2,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
+  &.main {
+    @media (max-width: 800px) {
+      width: 100% !important;
+      height: 100vh;
+    }
+  }
+  &.process {
+  }
+  &.process-content {
+    @media (max-width: 800px) {
+      padding: 0;
+    }
+  }
   &.hero-left {
     display: flex;
     flex-direction: column;
@@ -74,16 +87,29 @@ export const HeadingOne = styled.h1`
   line-height: 52px;
   color: var(--darkblue);
   font-family: 'CamptonMedium';
+  color: #537689;
+
+  &.alternative {
+    font-size: 2rem;
+  }
 `;
 
-export const HeadingTwo = styled.h2``;
+export const HeadingTwo = styled.h2`
+  color: #537689;
+`;
 
 export const Paragraph = styled.p`
+  color: #53768966;
+
   &.footer-paragraph {
     color: white;
     @media (max-width: 800px) {
       font-size: 0.875rem;
     }
+  }
+  &.bold {
+    font-weight: bold;
+    color: #022d45;
   }
 `;
 
@@ -141,15 +167,35 @@ export const SideWrapper = styled.div`
   align-items: center;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
+  @media (max-width: 800px) {
+    display: none;
+  }
 
   &.white {
     background: transparent;
+  }
+  &.start {
+    justify-content: flex-start;
+    background: transparent;
+    align-items: flex-start;
+    padding-left: 4rem;
+    @media (max-width: 800px) {
+      width: 100%;
+    }
   }
 `;
 
 export const FormBox = styled.form`
   width: 50%;
   margin-top: 20px;
+  @media (max-width: 800px) {
+    width: 80% !important;
+    padding: 0 2rem;
+  }
+  @media (max-width: 500px) {
+    width: 100% !important;
+    padding: 0 1.4rem;
+  }
 `;
 export const InputField = styled.input`
   width: 100%;
@@ -157,6 +203,12 @@ export const InputField = styled.input`
   border: 2px solid #537689;
   border-radius: 10px;
   margin-bottom: 2rem;
+  &::placeholder {
+    color: #53768966;
+  }
+  @media (max-width: 800px) {
+    padding: 1rem;
+  }
 `;
 
 export const CheckBox = styled.input``;
@@ -176,3 +228,7 @@ export const SubmitButton = styled.button`
   border-radius: 10px;
   margin: 20px 0;
 `;
+
+// Modal
+
+export const ModalWrapper = styled.div``;

@@ -31,6 +31,7 @@ const CreateAccount = ({ history }) => {
         </Wrapper>
       </SideWrapper>
       <Wrapper
+        className='main'
         style={{
           width: 'calc(100% - 520px)',
           display: 'flex',

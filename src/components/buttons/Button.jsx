@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { css } from "styled-components";
+import React from 'react';
+import styled, { css } from 'styled-components';
 
 const Button = ({ children, ...props }) => {
   return <CreditButton {...props}>{children}</CreditButton>;
@@ -28,7 +28,7 @@ const getButtonStyles = props => {
   return props.inverted ? invertedStyles : null;
 };
 
-const CreditButton = styled.button`
+export const CreditButton = styled.button`
   background: var(--darkblue);
   box-shadow: 0px 10px 20px rgba(82, 117, 136, 0.12);
   border-radius: 20px;
