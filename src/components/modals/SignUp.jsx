@@ -1,13 +1,13 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 
-import CreditButton from "../buttons/Button";
-import CustomInput from "./../inputs/CustomInput";
-import PasswordInput from "../inputs/PasswordInput";
-import usePasswordToggle from "hooks/usePasswordToggle";
+import CreditButton from '../buttons/Button';
+import CustomInput from './../inputs/CustomInput';
+import PasswordInput from '../inputs/PasswordInput';
+import usePasswordToggle from 'hooks/usePasswordToggle';
 
-import Image from "assets/images/create-account-abstract.svg";
+import Image from 'assets/images/create-account-abstract.svg';
 
 const SignUp = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
@@ -15,8 +15,8 @@ const SignUp = ({ history }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting");
-    history.replace("/auth/verifyemail");
+    console.log('submitting');
+    history.replace('/auth/verifyemail');
   };
 
   const handlePasswordChange = ({ target }) => {
@@ -26,26 +26,26 @@ const SignUp = ({ history }) => {
   };
 
   return (
-    <Wrapper className="d-flex h-100">
+    <Wrapper className='d-flex h-100'>
       <Sidebar>
         <h1>Be in charge of your finance, know your credit score</h1>
       </Sidebar>
-      <Content className="d-flex justify-content-center align-items-center flex-column">
+      <Content className='d-flex justify-content-center align-items-center flex-column'>
         <h1>Create an Account!</h1>
         <p>Manage your credit!</p>
-        <Form autoComplete="off" onSubmit={handleSubmit}>
+        <Form autoComplete='off' onSubmit={handleSubmit}>
           <CustomInput
-            type="email"
-            name="email"
-            placeholder="Email"
-            autoComplete="off"
+            type='email'
+            name='email'
+            placeholder='Email'
+            autoComplete='off'
             required
           />
           <Password
             type={Type}
-            name="password"
-            placeholder="Password"
-            autoComplete="off"
+            name='password'
+            placeholder='Password'
+            autoComplete='off'
             onChange={handlePasswordChange}
             showIcon={showIcon}
             icon={Toggle}
@@ -53,10 +53,10 @@ const SignUp = ({ history }) => {
           />
           <CreditButton
             styles={{
-              fontSize: "20px",
-              fontWeight: "600",
+              fontSize: '20px',
+              fontWeight: '600',
             }}
-            type="submit"
+            type='submit'
             inverted
           >
             Register
@@ -64,7 +64,7 @@ const SignUp = ({ history }) => {
         </Form>
         <p>
           Already have an account?
-          <Link to="/auth/login"> Log In</Link>
+          <Link to='/auth/login'> Log In</Link>
         </p>
       </Content>
     </Wrapper>
@@ -73,7 +73,7 @@ const SignUp = ({ history }) => {
 
 export default SignUp;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   height: 900px;
 `;
 
@@ -98,7 +98,7 @@ const Sidebar = styled.aside`
   }
 `;
 
-const Content = styled.main`
+export const Content = styled.main`
   width: 60%;
   text-align: center;
 `;
@@ -125,7 +125,7 @@ export const Password = styled(PasswordInput)`
   border: none;
   outline: none;
   text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
-  font-family: "Montserrat", san-serif;
+  font-family: 'Montserrat', san-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 20px;
