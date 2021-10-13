@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from 'styled-components';
-import OtpInput from 'react-otp-input';
+import React from "react";
+import styled from "styled-components";
+import OtpInput from "react-otp-input";
 
 const PinInput = ({ ...props }) => {
   return (
     <>
       <StyledOtpInput
         shouldAutoFocus
-        className='otp-input'
-        otpType='password'
-        autoComplete='off'
+        className="otp-input"
+        otpType="password"
+        autoComplete="off"
         disabled={false}
         secure={true}
         separator={<span> </span>}
@@ -44,7 +44,7 @@ const StyledOtpInput = styled(OtpInput)`
     font-size: 20px;
     line-height: 24px;
     text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
-    
+
     &::placeholder {
       color: var(--darkblue);
       opacity: 1;

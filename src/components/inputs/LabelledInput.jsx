@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const LabelledInput = ({ label, type, id, children, ...props }) => {
   return (
     <FormGroup>
       <label htmlFor={id}>{label}</label>
-      {type === 'textarea' ? (
+      {type === "textarea" ? (
         <textarea
           name={id}
           id={id}
-          cols='30'
-          rows='10'
+          cols="30"
+          rows="10"
           defaultValue={children}
         />
       ) : (
@@ -23,7 +23,7 @@ const LabelledInput = ({ label, type, id, children, ...props }) => {
 export default LabelledInput;
 
 LabelledInput.defaultProps = {
-  type: 'text'
+  type: "text",
 };
 
 export const FormGroup = styled.div`

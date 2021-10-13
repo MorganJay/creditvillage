@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import Arrow from '../../assets/images/arrow.png';
+import Arrow from "../../assets/images/arrow.png";
 
 const Activity = ({ bluelogo, name, title, caption }) => {
   return (
@@ -16,7 +16,7 @@ const Activity = ({ bluelogo, name, title, caption }) => {
           <small>{caption}</small>
         </div>
         <span>
-          <img src={Arrow} alt='Arrow' />
+          <img src={Arrow} alt="Arrow" />
         </span>
       </Content>
     </Box>
@@ -34,7 +34,7 @@ const Box = styled.div`
 
   div,
   p {
-    font: normal 600 12px/15px 'Montserrat', san-serif;
+    font: normal 600 12px/15px "Montserrat", san-serif;
   }
 `;
 
@@ -44,8 +44,8 @@ const Heading = styled.div`
   align-items: center;
   padding-right: 20px;
   div {
-    background: ${props =>
-      props.bluelogo ? 'rgba(48, 59, 160, 0.3)' : 'rgba(187, 107, 217, 0.3)'};
+    background: ${(props) =>
+      props.bluelogo ? "rgba(48, 59, 160, 0.3)" : "rgba(187, 107, 217, 0.3)"};
     border-radius: 10.7692px;
     color: white;
     padding: 10px 30px 20px 20px;

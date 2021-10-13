@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   &.main {
@@ -86,7 +86,7 @@ export const HeadingOne = styled.h1`
   font-size: clamp(2rem, 5vw, 45px);
   line-height: 52px;
   color: var(--darkblue);
-  font-family: 'CamptonMedium';
+  font-family: "CamptonMedium";
   color: #537689;
 
   &.alternative {
@@ -121,7 +121,7 @@ export const Image = styled.img`
 // Footer
 export const Footer = styled.footer`
   background-color: var(--lightblue);
-  font-family: 'CamptonLight';
+  font-family: "CamptonLight";
   padding: 6rem 3rem;
   @media (max-width: 800px) {
     padding: 4rem 1.2rem;

@@ -8,9 +8,7 @@ const PasswordInput = ({ icon, showIcon, ...props }) => {
     <PasswordInputContainer>
       <Input {...props} />
       {!isEdge && showIcon && (
-        <PasswordToggle className="password-toggle-icon">
-          {icon}
-        </PasswordToggle>
+        <PasswordToggle className="password-toggle-icon">{icon}</PasswordToggle>
       )}
     </PasswordInputContainer>
   );

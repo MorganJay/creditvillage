@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
 
 const Button = ({ children, ...props }) => {
   return <CreditButton {...props}>{children}</CreditButton>;
@@ -24,7 +24,7 @@ const invertedStyles = css`
   }
 `;
 
-const getButtonStyles = props => {
+const getButtonStyles = (props) => {
   return props.inverted ? invertedStyles : null;
 };
 
@@ -49,6 +49,6 @@ export const CreditButton = styled.button`
     outline: none;
     opacity: 0.8;
   }
-  ${props => props.styles}
+  ${(props) => props.styles}
   ${getButtonStyles}
 `;
