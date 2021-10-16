@@ -6,7 +6,7 @@ import Home from "./views/Home";
 import Auth from "./views/auth/Auth";
 import DashboardHome from "./views/dashboard/DashboardHome";
 import Profile from "./views/dashboard/Profile";
-import UpdatedProfile from "./views/dashboard/UpdatedProfile";
+
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
@@ -36,12 +36,7 @@ function App() {
             />
           )}
         />
-        <Route exact path="/profile" component={Profile} />
-        <Route
-          exact
-          path="/profile/updated"
-          render={props => <UpdatedProfile {...props} activity />}
-        />
+        <Route path="/profile" component={Profile} />
         <Route
           exact
           path="/result"

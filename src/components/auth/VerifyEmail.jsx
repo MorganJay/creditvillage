@@ -1,21 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 
 import GlassModal from "../modals/GlassModal";
 import CreditButton from "../buttons/Button";
 import PinInput from "../inputs/PinInput";
 
-const VerifyEmail = ({ history, email }) => {
+const VerifyEmail = ({ history, email, verifyEmail }) => {
   const [otp, setOtp] = useState("");
 
   const handleOtpChange = e => {
     setOtp(e);
     console.log(e);
-  };
-
-  const verifyEmail = () => {
-    if (otp.length !== 6) alert("OTP Incomplete");
-    else history.replace("/auth/verified");
   };
 
   return (
@@ -55,13 +50,15 @@ const Container = styled.div`
   padding: 5rem 3rem 3rem;
 `;
 
-const Title = styled.div`
-  padding: 4rem 0;
-  margin-left: 5%;
+export const Title = styled.div`
+  padding: 5rem 0;
+  margin-left: 3%;
+  min-width: 370px;
   h1 {
     color: var(--lightblue);
     font-size: 2.25rem;
     font-family: "CamptonMedium";
+    line-height: 42px;
   }
   p {
     color: var(--lighterblue);

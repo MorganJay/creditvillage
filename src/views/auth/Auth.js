@@ -1,29 +1,36 @@
-import React from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 
 import SignUp from "components/auth/SignUp";
 import Login from "components/modals/Login";
 import VerifyEmail from "components/auth/VerifyEmail";
-import AccountVerified from "components/modals/AccountVerified";
 
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
+const Auth = ({ history }) => {
+  const [userEmail, setUserEmail] = useState("");
 
-const Auth = () => {
+  const setEmail = email => setUserEmail(email);
+
+  const verifyEmail = path => history.replace(path);
+
   return (
-    <Container>
-      <Switch>
-        <Redirect exact from="/auth" to="/auth/login" />
-        <Route path="/auth/login" component={Login} />
-        <Route path="/auth/signup" component={SignUp} />
-        <Route path="/auth/verifyemail" component={VerifyEmail} />
-        <Route path="/auth/verified" component={AccountVerified} />
-      </Switch>
-    </Container>
+    <Switch>
+      <Redirect exact from="/auth" to="/auth/login" />
+      <Route path="/auth/login" component={Login} />
+      <Route
+        path="/auth/signup"
+        render={props => <SignUp {...props} setEmail={setEmail} />}
+      />
+      <Route
+        path="/auth/verifyemail"
+        render={props => (
+          <VerifyEmail
+            {...props}
+            email={userEmail}
+            verifyEmail={() => verifyEmail("/profile/new")}
+          />
+        )}
+      />
+    </Switch>
   );
 };
 
