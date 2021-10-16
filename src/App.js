@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <Logo className="position-absolute" />
+      <Logo />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
@@ -65,4 +65,5 @@ const Logo = styled(LogoLink)`
   left: 36px;
   top: 17px;
   z-index: 100;
+  position: fixed;
 `;
