@@ -67,7 +67,7 @@ function App() {
 export default App;
 
 const Logo = styled(LogoLink)`
-  left: 24px;
+  left: 36px;
   top: 17px;
   z-index: 100;
 `;

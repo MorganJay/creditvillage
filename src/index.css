@@ -91,3 +91,7 @@ img {
   height: auto;
   object-fit: cover;
 }
+
+.font-weight-semi-bold {
+  font-weight: 600;
+}

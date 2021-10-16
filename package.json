@@ -49,5 +49,6 @@
   },
   "prettier": {
     "singleQuote": false
-  }
+  },
+  "proxy": "https://creditvillagebackend20211011094340.azurewebsites.net"
 }

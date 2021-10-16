@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
+import PasswordInput from "./../inputs/PasswordInput";
 import usePasswordToggle from "./../../hooks/usePasswordToggle";
 import { Form, Password } from "./SignUp";
 import Image from "../../assets/images/signinimage.png";

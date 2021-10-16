@@ -9,7 +9,7 @@ const AuthHeader = ({ location }) => {
   const getActiveHash = (hash) => location.hash === hash;
 
   return (
-    <Navbar id="nav" className="navbar navbar-light navbar-expand-md px-5">
+    <Navbar id="nav" className="navbar navbar-light navbar-expand-md">
       <LogoLink />
       <button
         className="navbar-toggler"
@@ -60,10 +60,10 @@ export default withRouter(AuthHeader);
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem 2rem 4.5rem;
   text-align: center;
   align-items: center;
-  /* position: sticky; */
+  position: sticky;
   z-index: 200;
   top: 0;
   background-color: white;
@@ -83,13 +83,13 @@ export const LinkItem = styled(ListItemLink)`
   line-height: 21px;
   a {
     color: var(--lighterblue);
+    &:hover,
+    &:focus {
+      color: var(--darkblue);
+    }
   }
   transition: all ease-out 0.2s;
-  ${(props) => props.active && `border-bottom: 2px solid var(--darkblue);`};
-  &:hover,
-  &:focus {
-    color: var(--darkblue);
-  }
+  ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
 `;
 
 const AuthLinks = styled.div`

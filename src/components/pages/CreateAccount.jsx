@@ -24,8 +24,7 @@ const CreateAccount = ({ history }) => {
   const [error, setError] = useState(false);
   const [checked, setChecked] = useState(false);
   const backend_url = process.env.REACT_APP_BASE_URL;
-  const token = process.env.REACT_APP_BEARER_TOKEN * 1;
-  console.log(token);
+  const token = process.env.REACT_APP_BEARER_TOKEN;
 
   console.log(backend_url);
 
