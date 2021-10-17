@@ -1,27 +1,27 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-import GlassModal from './GlassModal';
-import CreditButton from '../buttons/Button';
-import CustomInput from './../inputs/CustomInput';
-import usePasswordToggle from './../../hooks/usePasswordToggle';
-import { Form, Password } from './SignUp';
-import Image from '../../assets/images/signinimage.png';
-import { Wrapper } from './SignUp';
-import styled from 'styled-components';
-import { Content } from './SignUp';
+import CreditButton from "../buttons/Button";
+import CustomInput from "./../inputs/CustomInput";
+import PasswordInput from "./../inputs/PasswordInput";
+import usePasswordToggle from "./../../hooks/usePasswordToggle";
+import { Form, Password } from "./SignUp";
+import Image from "../../assets/images/signinimage.png";
+import { Wrapper } from "./SignUp";
+import styled from "styled-components";
+import { Content } from "./SignUp";
 
 const LogIn = ({ history }) => {
   const [Type, Toggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('submitting');
-    history.replace('/home');
+    console.log("submitting");
+    history.replace("/home");
   };
 
-  const handlePasswordChange = event => {
+  const handlePasswordChange = (event) => {
     const {
       target: { value },
     } = event;
@@ -30,26 +30,26 @@ const LogIn = ({ history }) => {
   };
 
   return (
-    <Wrapper className='d-flex h-100'>
+    <Wrapper className="d-flex h-100">
       <Sidebar>
         <h1>Welcome back, Pick up where you left off with your finances</h1>
       </Sidebar>
-      <Content className='d-flex justify-content-center align-items-center flex-column'>
+      <Content className="d-flex justify-content-center align-items-center flex-column">
         <h1>Create an Account!</h1>
         <p>Manage your credit!</p>
-        <Form autoComplete='off' onSubmit={handleSubmit}>
+        <Form autoComplete="off" onSubmit={handleSubmit}>
           <CustomInput
-            type='email'
-            name='email'
-            placeholder='Email'
-            autoComplete='off'
+            type="email"
+            name="email"
+            placeholder="Email"
+            autoComplete="off"
             required
           />
           <Password
             type={Type}
-            name='password'
-            placeholder='Password'
-            autoComplete='off'
+            name="password"
+            placeholder="Password"
+            autoComplete="off"
             onChange={handlePasswordChange}
             showIcon={showIcon}
             icon={Toggle}
@@ -57,10 +57,10 @@ const LogIn = ({ history }) => {
           />
           <CreditButton
             styles={{
-              fontSize: '20px',
-              fontWeight: '600',
+              fontSize: "20px",
+              fontWeight: "600",
             }}
-            type='submit'
+            type="submit"
             inverted
           >
             Register
@@ -68,7 +68,7 @@ const LogIn = ({ history }) => {
         </Form>
         <p>
           Already have an account?
-          <Link to='/auth/login'> Log In</Link>
+          <Link to="/auth/login"> Log In</Link>
         </p>
       </Content>
     </Wrapper>

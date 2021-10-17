@@ -53,7 +53,7 @@ export default Works;
 const WorksContainer = styled.section`
   background-color: var(--bg-primary);
   padding: 5rem 0;
-
+  scroll-margin-top: 7rem;
   img {
     width: 80%;
   }

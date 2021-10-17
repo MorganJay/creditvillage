@@ -1,20 +1,32 @@
-import { CreditButton } from 'components/buttons/Button';
-import React from 'react';
-import { HeadingTwo, ModalWrapper, Paragraph } from 'styled';
+import React from "react";
+import { HeadingOne, Image, ModalWrapper, Paragraph, StyledLink } from "styled";
 
-const Modal = ({ Icon, heading, paragaraph, path, showButton }) => {
+const Modal = ({
+  icon,
+  heading,
+  subheading,
+  text,
+  path,
+  showButton,
+  buttonText,
+  onClose,
+}) => {
   return (
-    <ModalWrapper>
-      <ModalWrapper className='content'>
-        <Icon />
-      </ModalWrapper>
-      <ModalWrapper className='body'>
-        <HeadingTwo>{heading}</HeadingTwo>
-        <Paragraph>{paragaraph}</Paragraph>
-
-      </ModalWrapper>
-      <ModalWrapper>
-          {showButton && <CreditButton/>}
+    <ModalWrapper className="wrapper">
+      <ModalWrapper className="content">
+        <Image src={icon} alt="" className="modal-img" />
+        <ModalWrapper className="body">
+          <HeadingOne className="modal-heading">{heading}</HeadingOne>
+          <HeadingOne className="modal-heading">{subheading}</HeadingOne>
+          <Paragraph>{text}</Paragraph>
+        </ModalWrapper>
+        <ModalWrapper>
+          {showButton && (
+            <StyledLink className="modal-btn" to={path} onClick={onClose}>
+              {buttonText}
+            </StyledLink>
+          )}
+        </ModalWrapper>
       </ModalWrapper>
     </ModalWrapper>
   );

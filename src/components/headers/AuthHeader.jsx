@@ -1,54 +1,54 @@
-import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link, withRouter } from "react-router-dom";
+import styled from "styled-components";
 
-import ButtonLink, { ListItemLink } from 'components/buttons/ButtonLink';
-import LogoLink from 'components/buttons/LogoLink';
+import ButtonLink, { ListItemLink } from "components/buttons/ButtonLink";
+import LogoLink from "components/buttons/LogoLink";
 
 const AuthHeader = ({ location }) => {
-  const getActiveHash = hash => location.hash === hash;
+  const getActiveHash = (hash) => location.hash === hash;
 
   return (
-    <Navbar id='nav' className='navbar navbar-light navbar-expand-md px-5'>
+    <Navbar id="nav" className="navbar navbar-light navbar-expand-md">
       <LogoLink />
       <button
-        className='navbar-toggler'
-        type='button'
-        data-bs-toggle='collapse'
-        data-bs-target='#navbarNavDropdown'
-        aria-controls='navbarNavDropdown'
-        aria-expanded='false'
-        aria-label='Toggle navigation'
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
       >
-        <span className='navbar-toggler-icon'></span>
+        <span className="navbar-toggler-icon"></span>
       </button>
-      <div className='collapse navbar-collapse' id='navbarNavDropdown'>
-        <LinkList className='navbar-nav m-md-auto mb-4 align-items-center'>
+      <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <LinkList className="navbar-nav m-md-auto mb-4 align-items-center">
           <LinkItem
-            path='#home'
-            className='nav-item'
-            active={getActiveHash('#home') || getActiveHash('')}
+            path="#home"
+            className="nav-item"
+            active={getActiveHash("#home") || getActiveHash("")}
           >
             Home
           </LinkItem>
           <LinkItem
-            path='#features'
-            className='nav-item'
-            active={getActiveHash('#features')}
+            path="#features"
+            className="nav-item"
+            active={getActiveHash("#features")}
           >
             Features
           </LinkItem>
           <LinkItem
-            path='#works'
-            className='nav-item'
-            active={getActiveHash('#works')}
+            path="#works"
+            className="nav-item"
+            active={getActiveHash("#works")}
           >
             How it works
           </LinkItem>
         </LinkList>
-        <AuthLinks className='flex-column flex-md-row'>
-          <Link to='/auth/login'>Login</Link>
-          <ButtonLink path='/auth/signup'>Signup</ButtonLink>
+        <AuthLinks className="flex-column flex-md-row">
+          <Link to="/auth/login">Login</Link>
+          <ButtonLink path="/auth/signup">Signup</ButtonLink>
         </AuthLinks>
       </div>
     </Navbar>
@@ -60,10 +60,10 @@ export default withRouter(AuthHeader);
 const Navbar = styled.nav`
   display: flex;
   justify-content: space-between;
-  padding: 2rem 4rem;
+  padding: 2rem 3rem 2rem 4.5rem;
   text-align: center;
   align-items: center;
-  /* position: sticky; */
+  position: sticky;
   z-index: 200;
   top: 0;
   background-color: white;
@@ -76,20 +76,20 @@ export const LinkList = styled.ul`
 `;
 
 export const LinkItem = styled(ListItemLink)`
-  font-family: 'Campton', san-serif;
+  font-family: "Campton", san-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
   line-height: 21px;
   a {
     color: var(--lighterblue);
+    &:hover,
+    &:focus {
+      color: var(--darkblue);
+    }
   }
   transition: all ease-out 0.2s;
   ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
-  &:hover,
-  &:focus {
-    color: var(--darkblue);
-  }
 `;
 
 const AuthLinks = styled.div`
@@ -98,7 +98,7 @@ const AuthLinks = styled.div`
   align-items: center;
   justify-content: center;
   a {
-    font-family: 'Campton', san-serif;
+    font-family: "Campton", san-serif;
     color: var(--lighterblue);
     font-size: 18px;
     &:hover,
@@ -113,7 +113,7 @@ const AuthLinks = styled.div`
   button {
     font-size: 1.125rem;
     font-weight: normal;
-    font-family: 'CamptonLight', san-serif;
+    font-family: "CamptonLight", san-serif;
     padding: 0.98rem 2.2rem;
     color: #fafcfc;
   }
@@ -127,6 +127,6 @@ export const StyledV = styled.h1`
   font-style: normal;
   color: var(--darkblue);
   user-select: none;
-  font-family: 'CamptonBold', sans-serif;
+  font-family: "CamptonBold", sans-serif;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;

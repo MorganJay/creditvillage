@@ -1,65 +1,44 @@
-import React from 'react';
-import {
-  HeadingOne,
-  InputField,
-  Paragraph,
-  SideWrapper,
-  Wrapper,
-} from 'styled';
+import React, { useState } from "react";
+import { FormBox, InputField, SubmitButton, Wrapper } from "styled";
 
-import { CreditButton } from 'components/buttons/Button';
+import SideWrap from "components/side/SideWrap";
+import MainWrap from "components/side/MainWrap";
+import Modal from "components/modal";
+import ArrowIcon from "../../assets/images/Vector.png";
 
 const ForgotPassword = ({ history, email }) => {
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log('submitting', e);
-    history.replace('/auth/resetpassword');
-  };
-  const forgotPassword = () => {
-    history.replace('/auth/resetpassword');
-  };
-  return (
-    <Wrapper
-      className='process'
-      style={{ display: 'flex', alignItems: 'flex-start', paddingTop: '8rem' }}
-    >
-      <SideWrapper className='start'>
-        <HeadingOne className='alternative'>Forgot Password?</HeadingOne>
-        <Paragraph>
-          Don’t worry, it happens. Please enter the email address associated
-          with your account
-        </Paragraph>
+  const [show, setShow] = useState(false);
 
-        <Paragraph></Paragraph>
-      </SideWrapper>
-      <Wrapper
-        style={{
-          width: 'calc(100% - 520px)',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Wrapper
-          style={{
-            textAlign: 'center',
-            padding: '5rem 2rem',
-            boxShadow: '6px 6px 15px 0px #53768933',
-            borderRadius: '10px',
-          }}
-          className='process-content'
-        >
-          <form
-            autoComplete='off'
-            onSubmit={handleSubmit}
-            style={{ width: '440px' }}
-          >
-            <InputField type='text' placeholder='Email' name='email' required />
-            <CreditButton onClick={forgotPassword}>Submit</CreditButton>
-          </form>
-        </Wrapper>
-      </Wrapper>
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submitting", e);
+    setShow(true);
+    setTimeout(() => {
+      history.replace("/auth/resetpassword");
+    }, 2000);
+  };
+
+  const sideContent = {
+    heading: "Forgot Password",
+    text: "Don’t worry, it happens. Please enter the email address associated with your account",
+  };
+
+  const modalContent = {
+    icon: ArrowIcon,
+    heading: "Recovery  has been initiated",
+    text: "Your password recovery instructions is on its way to you. Check your mail ",
+  };
+
+  return (
+    <Wrapper className="process">
+      {show && <Modal {...modalContent} />}
+      <SideWrap {...sideContent} />
+      <MainWrap>
+        <FormBox autoComplete="off" onSubmit={handleSubmit} className="sub">
+          <InputField type="email" placeholder="Email" name="email" required />
+          <SubmitButton onClick={handleSubmit}>Submit</SubmitButton>
+        </FormBox>
+      </MainWrap>
     </Wrapper>
   );
 };

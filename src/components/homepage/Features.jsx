@@ -49,9 +49,10 @@ const Features = () => {
 export default Features;
 
 const Section = styled.section`
-  padding: 1rem 2rem 3rem;
-  height: 35%;
+  padding: 1rem 2rem 0;
+  min-height: 100vh;
   margin-bottom: 5rem;
+  scroll-margin-top: 8rem;
   h2 {
     color: var(--lightblue);
     font-size: 2.25rem;
@@ -61,11 +62,12 @@ const Section = styled.section`
 
 const CardContainer = styled.div`
   display: flex;
-  height: 80%;
+  min-height: 100vh;
   max-height: fit-content;
   justify-content: space-evenly;
   align-items: flex-end;
   flex-wrap: wrap;
+  /* padding-top: 3rem; */
   gap: 2rem;
   width: 100%;
   margin: 0 auto;
@@ -76,8 +78,7 @@ const Card = styled.div`
   box-shadow: 6px 6px 15px rgba(54, 2, 89, 0.2);
   border-radius: 20px;
   max-width: 400px;
-  max-height: 440px;
-  height: 70%;
+  height: 440px;
 
   h4 {
     color: var(--darkblue);
