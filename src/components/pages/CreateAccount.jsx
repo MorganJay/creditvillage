@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import {
   CheckBox,
   FormBox,
@@ -15,8 +15,8 @@ import {
 import CreateImage from "../../assets/images/signinimage.png";
 import SideWrap from "components/side/SideWrap";
 import MainWrap from "components/side/MainWrap";
-import Modal from "components/modal";
-import { Button } from "@material-ui/core";
+// import Modal from "components/modal";
+// import { Button } from "@material-ui/core";
 
 const CreateAccount = ({ history }) => {
   const [username, setUsername] = useState("");
@@ -28,13 +28,13 @@ const CreateAccount = ({ history }) => {
   const backend_url = process.env.REACT_APP_BASE_URL;
   const token = process.env.REACT_APP_BEARER_TOKEN;
 
-  console.log(backend_url);
+  console.log(backend_url, show, username, password, confirm_password, token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setShow(true);
     setError(false);
-    history.replace("/auth/login")
+    history.replace("/auth/login");
 
     // try {
     //   const res = await axios.post(
