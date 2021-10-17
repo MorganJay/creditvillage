@@ -12,7 +12,6 @@ import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
 
 import "./App.css";
-import Modal from "components/modal";
 
 function App() {
   const [linkAccountStep, setLinkAccountStep] = useState(0);

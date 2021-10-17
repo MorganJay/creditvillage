@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { HeadingOne, Image, ModalWrapper, Paragraph, StyledLink } from "styled";
 
 const Modal = ({
