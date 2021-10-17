@@ -4,18 +4,19 @@ import {
   CheckBox,
   FormBox,
   HeadingOne,
-  HeadingTwo,
-  Image,
   InputField,
   LabelText,
   OutLink,
   Paragraph,
-  SideWrapper,
   StyledLink,
   SubmitButton,
   Wrapper,
 } from "styled";
 import CreateImage from "../../assets/images/signinimage.png";
+import SideWrap from "components/side/SideWrap";
+import MainWrap from "components/side/MainWrap";
+import Modal from "components/modal";
+import { Button } from "@material-ui/core";
 
 const CreateAccount = ({ history }) => {
   const [username, setUsername] = useState("");
@@ -23,6 +24,7 @@ const CreateAccount = ({ history }) => {
   const [confirm_password, setConfirmPassword] = useState("");
   const [error, setError] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [show, setShow] = useState(false);
   const backend_url = process.env.REACT_APP_BASE_URL;
   const token = process.env.REACT_APP_BEARER_TOKEN;
 
@@ -30,6 +32,7 @@ const CreateAccount = ({ history }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setShow(true);
     setError(false);
 
     try {
@@ -56,31 +59,17 @@ const CreateAccount = ({ history }) => {
       setError(true);
     }
   };
+  const sideContent = {
+    heading: " Be in charge of your finance, know your credit score",
+    hasImage: true,
+    createImage: CreateImage,
+  };
 
-  console.log(checked);
   return (
-    <Wrapper style={{ display: "flex" }}>
-      <SideWrapper>
-        <Wrapper style={{ width: "70%", marginBottom: "60px" }}>
-          <HeadingTwo style={{ fontSize: "24px", fontWeight: "bold" }}>
-            Be in charge of your finance, know your credit score
-          </HeadingTwo>
-        </Wrapper>
+    <Wrapper className="process">
+      <SideWrap {...sideContent} />
 
-        <Wrapper>
-          <Image src={CreateImage} style={{ width: "100%", height: "460px" }} />
-        </Wrapper>
-      </SideWrapper>
-      <Wrapper
-        className="main"
-        style={{
-          width: "calc(100% - 520px)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+      <MainWrap {...sideContent}>
         <HeadingOne>Create an Account!</HeadingOne>
         <Paragraph>Manage your credit!</Paragraph>
         <FormBox onSubmit={handleSubmit}>
@@ -113,13 +102,7 @@ const CreateAccount = ({ history }) => {
               Privacy Policy
             </OutLink>
           </LabelText>
-          <SubmitButton
-          //   onClick={() => {
-          //     setValue(!value);
-          //   }}
-          >
-            Register
-          </SubmitButton>
+          <SubmitButton>Register</SubmitButton>
           <LabelText>
             Already have an account?
             <StyledLink to="/auth/login" className="blue">
@@ -131,8 +114,8 @@ const CreateAccount = ({ history }) => {
           <span style={{ color: "red", marginTop: "10px" }}>
             Something went wrong!
           </span>
-        )}{" "}
-      </Wrapper>
+        )}
+      </MainWrap>
     </Wrapper>
   );
 };

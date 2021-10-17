@@ -3,12 +3,33 @@ import { Link } from "react-router-dom";
 
 export const Wrapper = styled.div`
   &.main {
+    width: calc(100% - 520px);
+    display: flex;
+    justify-content: center;
+    padding-top: 8rem;
     @media (max-width: 800px) {
       width: 100% !important;
-      height: 100vh;
+      padding-top: 0;
+    }
+  }
+  &.main-alt {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 800px) {
+      width: 100%;
+      padding: 6rem 1.4rem;
+      text-align: left;
     }
   }
   &.process {
+    display: flex;
+    @media (max-width: 800px) {
+      flex-direction: column;
+      height: 100vh;
+    }
   }
   &.process-content {
     @media (max-width: 800px) {
@@ -68,6 +89,15 @@ export const Wrapper = styled.div`
       }
     }
   }
+  &.pinWrapper {
+    width: fit-content;
+    text-align: center;
+    padding: 5rem 2rem;
+    box-shadow: 6px 6px 15px 0px #53768933;
+    border-radius: 0.8rem;
+    height: 500px;
+    background: white;
+  }
 `;
 
 export const HeroWrapper = styled.div`
@@ -91,6 +121,9 @@ export const HeadingOne = styled.h1`
 
   &.alternative {
     font-size: 2rem;
+  }
+  &.modal-heading {
+    font-size: 36px;
   }
 `;
 
@@ -116,6 +149,10 @@ export const Paragraph = styled.p`
 export const Image = styled.img`
   width: 100%;
   height: 100%;
+  &.modal-img {
+    width: 44px !important;
+    height: 44px !important;
+  }
 `;
 
 // Footer
@@ -136,6 +173,11 @@ export const StyledLink = styled(Link)`
     color: blue;
     background: transparent !important;
     padding: 0 6px;
+  }
+  &.modal-btn {
+    background: #022d45;
+    padding: 1rem 2.2rem;
+    border-radius: 2.2rem;
   }
 `;
 
@@ -159,7 +201,7 @@ export const AnchorLink = styled.a``;
 
 export const SideWrapper = styled.div`
   width: 520px;
-  min-height: 100vh;
+  height: 100vh;
   background: #caebfd;
   display: flex;
   flex-direction: column;
@@ -167,6 +209,8 @@ export const SideWrapper = styled.div`
   align-items: center;
   border-top-right-radius: 16px;
   border-bottom-right-radius: 16px;
+  padding-left: 2rem;
+
   @media (max-width: 800px) {
     display: none;
   }
@@ -179,8 +223,14 @@ export const SideWrapper = styled.div`
     background: transparent;
     align-items: flex-start;
     padding-left: 4rem;
+    padding-top: 8rem;
     @media (max-width: 800px) {
+      display: flex;
+      justify-content: center;
       width: 100%;
+      padding: 8rem 2rem 2rem;
+      height: auto;
+      text-align: center;
     }
   }
 `;
@@ -188,13 +238,26 @@ export const SideWrapper = styled.div`
 export const FormBox = styled.form`
   width: 50%;
   margin-top: 20px;
+  text-align: left;
   @media (max-width: 800px) {
-    width: 80% !important;
-    padding: 0 2rem;
+    width: 100% !important;
+    margin: 0 1rem;
+    padding: 0 1rem;
   }
   @media (max-width: 500px) {
     width: 100% !important;
-    padding: 0 1.4rem;
+    padding: 0 0.6rem;
+  }
+
+  &.sub {
+    margin-top: 0;
+    padding: 4rem;
+    height: fit-content;
+    border-radius: 0.8rem;
+    box-shadow: 10px 10px 20px #f2f1f1;
+    @media (max-width: 500px) {
+      padding: 2rem 1rem;
+    }
   }
 `;
 export const InputField = styled.input`
@@ -231,4 +294,32 @@ export const SubmitButton = styled.button`
 
 // Modal
 
-export const ModalWrapper = styled.div``;
+export const ModalWrapper = styled.div`
+  &.wrapper {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+  }
+
+  &.content {
+    width: 685px;
+    height: 454px;
+    background: #caebfd;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  &.body {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+`;

@@ -12,6 +12,7 @@ import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
 
 import "./App.css";
+import Modal from "components/modal";
 
 function App() {
   const [linkAccountStep, setLinkAccountStep] = useState(0);
@@ -22,15 +23,16 @@ function App() {
 
   return (
     <div className="App">
+      {/* <Modal /> */}
       <Logo className="position-absolute" />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
         <Route
           path="/home"
-          render={props => (
+          render={(props) => (
             <DashboardHome
-              setLinkAccountStep={step => setLinkAccountStep(step)}
+              setLinkAccountStep={(step) => setLinkAccountStep(step)}
               {...props}
               activity
             />
@@ -40,16 +42,16 @@ function App() {
         <Route
           exact
           path="/profile/updated"
-          render={props => <UpdatedProfile {...props} activity />}
+          render={(props) => <UpdatedProfile {...props} activity />}
         />
         <Route
           exact
           path="/result"
-          render={props => <Result {...props} activity />}
+          render={(props) => <Result {...props} activity />}
         />
         <Route
           path="/linkaccount"
-          render={props => (
+          render={(props) => (
             <LinkAccount
               step={linkAccountStep}
               nextStep={nextStep}
