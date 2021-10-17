@@ -34,30 +34,31 @@ const CreateAccount = ({ history }) => {
     e.preventDefault();
     setShow(true);
     setError(false);
+    history.replace("/auth/login")
 
-    try {
-      const res = await axios.post(
-        `${backend_url}/v1/register`,
+    // try {
+    //   const res = await axios.post(
+    //     `${backend_url}/v1/register`,
 
-        {
-          username,
-          password,
-          confirm_password,
-          checked,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      res.data && history.replace("/auth/verifyemail");
-      console.log(res.data);
-    } catch (err) {
-      setError(true);
-    }
+    //     {
+    //       username,
+    //       password,
+    //       confirm_password,
+    //       checked,
+    //     },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   );
+    //   res.data && history.replace("/auth/verifyemail");
+    //   console.log(res.data);
+    // } catch (err) {
+    //   setError(true);
+    // }
   };
   const sideContent = {
     heading: " Be in charge of your finance, know your credit score",

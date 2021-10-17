@@ -13,11 +13,7 @@ import {
 } from "styled";
 import LoginImage from "../../assets/images/createimage.png";
 
-const Login = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("logged in", e);
-  };
+const Login = ({ handleSigninSubmit }) => {
   const sideContent = {
     heading: " Welcome back, Pick up where you left off with your finances",
     hasImage: true,
@@ -30,10 +26,10 @@ const Login = () => {
         <HeadingOne>Jump right back in!</HeadingOne>
         <Paragraph>Keep track of your credits</Paragraph>
 
-        <FormBox onSubmit={handleSubmit}>
-          <InputField type="text" placeholder="Enter your email" />
+        <FormBox onSubmit={handleSigninSubmit}>
+          <InputField type="email" placeholder="Enter your email" />
           <InputField type="password" placeholder="Enter your password" />
-          <StyledLink to="/auth/forgotpassword" className="blue">
+          <StyledLink to="/home" className="blue">
             Forgot Password?
           </StyledLink>
           <SubmitButton>Sign in</SubmitButton>

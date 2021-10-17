@@ -16,7 +16,7 @@ const ResetPassword = ({ history, email }) => {
   };
 
   const sideContent = {
-    heading: " Forgot Password?",
+    heading: " Reset Password?",
     text: "Don’t worry, it happens. Please enter the email address associated with your account",
   };
   const modalContent = {
@@ -41,11 +41,7 @@ const ResetPassword = ({ history, email }) => {
       <SideWrap {...sideContent} />
 
       <MainWrap {...sideContent}>
-        <FormBox
-          autoComplete="off"
-          onSubmit={handleSubmit}
-          style={{ width: "440px" }}
-        >
+        <FormBox autoComplete="off" onSubmit={handleSubmit} className="sub">
           <InputField
             type="password"
             name="password"
