@@ -29,7 +29,7 @@ const Login = ({ handleSigninSubmit }) => {
         <FormBox onSubmit={handleSigninSubmit}>
           <InputField type="email" placeholder="Enter your email" />
           <InputField type="password" placeholder="Enter your password" />
-          <StyledLink to="/home" className="blue">
+          <StyledLink to="/auth/forgotpassword" className="blue">
             Forgot Password?
           </StyledLink>
           <SubmitButton>Sign in</SubmitButton>
