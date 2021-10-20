@@ -23,11 +23,11 @@ const invertedStyles = css`
   }
 `;
 
-const getButtonStyles = props => {
+const getButtonStyles = (props) => {
   return props.inverted ? invertedStyles : null;
 };
 
-const CreditButton = styled.button`
+export const CreditButton = styled.button`
   background: var(--darkblue);
   box-shadow: 0px 10px 20px rgba(82, 117, 136, 0.12);
   border-radius: 20px;
@@ -48,6 +48,6 @@ const CreditButton = styled.button`
     outline: none;
     opacity: 0.8;
   }
-  ${props => props.styles}
+  ${(props) => props.styles}
   ${getButtonStyles}
 `;

@@ -6,7 +6,6 @@ import Home from "./views/Home";
 import Auth from "./views/auth/Auth";
 import DashboardHome from "./views/dashboard/DashboardHome";
 import Profile from "./views/dashboard/Profile";
-
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
@@ -28,9 +27,9 @@ function App() {
         <Route path="/auth" component={Auth} />
         <Route
           path="/home"
-          render={props => (
+          render={(props) => (
             <DashboardHome
-              setLinkAccountStep={step => setLinkAccountStep(step)}
+              setLinkAccountStep={(step) => setLinkAccountStep(step)}
               {...props}
             />
           )}
@@ -39,11 +38,11 @@ function App() {
         <Route
           exact
           path="/result"
-          render={props => <Result {...props} activity />}
+          render={(props) => <Result {...props} activity />}
         />
         <Route
           path="/linkaccount"
-          render={props => (
+          render={(props) => (
             <LinkAccount
               step={linkAccountStep}
               nextStep={nextStep}

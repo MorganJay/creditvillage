@@ -41,6 +41,11 @@ const StyledOtpInput = styled(OtpInput)`
     line-height: 24px;
     text-shadow: 0px 4px 10px rgba(78, 101, 128, 0.12);
 
+    @media (max-width: 500px) {
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+  }
     &::placeholder {
       color: var(--darkblue);
       opacity: 1;

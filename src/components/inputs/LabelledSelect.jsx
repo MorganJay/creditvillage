@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
-import { FormGroup } from '../inputs/LabelledInput';
+import { FormGroup } from "../inputs/LabelledInput";
 
 const LabelledSelect = ({ label, id, options, ...props }) => {
   return (
