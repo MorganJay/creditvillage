@@ -32,7 +32,6 @@ function App() {
             <DashboardHome
               setLinkAccountStep={step => setLinkAccountStep(step)}
               {...props}
-              activity
             />
           )}
         />
@@ -64,6 +63,7 @@ export default App;
 const Logo = styled(LogoLink)`
   left: 36px;
   top: 17px;
+  width: 51px;
   z-index: 100;
-  position: fixed;
+  position: absolute;
 `;
