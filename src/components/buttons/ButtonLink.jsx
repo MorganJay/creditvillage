@@ -27,7 +27,3 @@ export const ListItemLink = ({
     </li>
   );
 };
-
-ListItemLink.propTypes = {
-  active: PropTypes.bool,
-};
