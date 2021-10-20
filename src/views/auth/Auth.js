@@ -3,9 +3,9 @@ import { Switch, Redirect, Route } from "react-router-dom";
 
 import SignUp from "components/auth/SignUp";
 import VerifyEmail from "components/auth/VerifyEmail";
-import Login from "components/pages/Login";
+import Login from "components/auth/Login";
 import ForgotPassword from "components/auth/ForgotPassword";
-import ResetPassword from "components/pages/ResetPassword";
+import ResetPassword from "components/auth/ResetPassword";
 
 const Auth = ({ history }) => {
   const [userEmail, setUserEmail] = useState("");

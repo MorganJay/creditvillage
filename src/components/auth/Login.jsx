@@ -10,7 +10,7 @@ import {
   StyledLink,
   SubmitButton,
   Wrapper,
-} from "styled";
+} from "components/styled";
 import LoginImage from "../../assets/images/createimage.png";
 
 const Login = ({ handleSigninSubmit }) => {

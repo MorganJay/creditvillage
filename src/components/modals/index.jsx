@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingOne, Image, ModalWrapper, Paragraph, StyledLink } from "styled";
+import { HeadingOne, Image, ModalWrapper, Paragraph, StyledLink } from "components/styled";
 
 const Modal = ({
   icon,

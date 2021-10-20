@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FormBox, InputField, SubmitButton, Wrapper } from "styled";
+import { FormBox, InputField, SubmitButton, Wrapper } from "components/styled";
 
 import SideWrap from "components/side/SideWrap";
 import MainWrap from "components/side/MainWrap";

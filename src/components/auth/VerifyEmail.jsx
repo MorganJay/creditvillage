@@ -4,17 +4,30 @@ import styled from "styled-components";
 import GlassModal from "../modals/GlassModal";
 import CreditButton from "../buttons/Button";
 import PinInput from "../inputs/PinInput";
+import Modal from "components/modals";
+
+import UserIcon from "../../assets/images/user.png";
+
+const modalContent = {
+  icon: UserIcon,
+  heading: "Yaaay!!!",
+  subheading: "Account successfully verified",
+  path: "/home",
+  buttonText: "Proceed",
+  showButton: true,
+};
 
 const VerifyEmail = ({ history, email, verifyEmail }) => {
   const [otp, setOtp] = useState("");
-
-  const handleOtpChange = e => {
+  const [show, setShow] = useState(false);
+  const handleOtpChange = (e) => {
     setOtp(e);
     console.log(e);
   };
 
   return (
     <Container className="w-100 d-flex flex-column flex-lg-row justify-content-between h-100">
+      {show && <Modal {...modalContent} onClick={() => setShow(false)} />}
       <Title>
         <h1 className="font-weight-semi-bold">Enter the Code sent to</h1>
         <p>{email || "maryagatha@gmail.com"}</p>

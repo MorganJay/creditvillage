@@ -155,17 +155,6 @@ export const Image = styled.img`
   }
 `;
 
-// Footer
-export const Footer = styled.footer`
-  background-color: var(--lightblue);
-  font-family: "CamptonLight";
-  padding: 6rem 3rem;
-  @media (max-width: 800px) {
-    padding: 4rem 1.2rem;
-    text-align: left;
-  }
-`;
-
 export const StyledLink = styled(Link)`
   color: white;
 
@@ -197,7 +186,6 @@ export const OutLink = styled.a`
     }
   }
 `;
-export const AnchorLink = styled.a``;
 
 export const SideWrapper = styled.div`
   width: 520px;

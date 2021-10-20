@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Paragraph, Wrapper } from "styled";
+import { Paragraph, Wrapper } from "components/styled";
 
 import PinInput from "components/inputs/PinInput";
 import { CreditButton } from "components/buttons/Button";
