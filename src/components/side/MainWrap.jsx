@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "styled";
+import { Wrapper } from "components/styled";
 
 const MainWrap = ({ children, hasImage }) => {
   return (

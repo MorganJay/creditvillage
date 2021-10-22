@@ -1,30 +1,26 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import { useState } from "react";
 import { Switch, Redirect, Route } from "react-router-dom";
 
-import AccountVerified from "components/modals/AccountVerified";
-import CreateAccount from "components/pages/CreateAccount";
-import VerifyEmail from "components/pages/VerifyEmail";
-// import SignUp from 'components/modals/SignUp';
-import Login from "components/pages/Login";
-import ForgotPassword from "components/pages/ForgotPassword";
-import ResetPassword from "components/pages/ResetPassword";
-import NewUser from "components/pages/NewUser";
+import SignUp from "components/auth/SignUp";
+import VerifyEmail from "components/auth/VerifyEmail";
+import Login from "components/auth/Login";
+import ForgotPassword from "components/auth/ForgotPassword";
+import ResetPassword from "components/auth/ResetPassword";
 
-const Container = styled.div`
-  position: relative;
-  width: 100%;
-  height: 100%;
-`;
-
-const Auth = () => {
+const Auth = ({ history }) => {
+  const [userEmail, setUserEmail] = useState("");
   const [signin, setSignin] = useState(false);
+  const setEmail = (email) => setUserEmail(email);
+
+  const verifyEmail = (path) => history.replace(path);
+
   return (
-    <Container>
-      <Switch>
-        {signin && <Redirect exact from="/auth/login" to="/home" />}
-        <Redirect exact from="/auth" to="/auth/login" />
-        <Route path="/auth/login">
+    <Switch>
+      {signin && <Redirect exact from="/auth/login" to="/home" />}
+      <Redirect exact from="/auth" to="/auth/login" />
+      <Route
+        path="/auth/login"
+        render={(props) => (
           <Login
             handleSigninSubmit={(e) => {
               e.preventDefault();
@@ -32,16 +28,26 @@ const Auth = () => {
               setSignin(true);
             }}
           />
-        </Route>
-        {/* <Route path="/auth/login" component={Login} /> */}
-        <Route path="/auth/signup" component={CreateAccount} />
-        <Route path="/auth/verifyemail" component={VerifyEmail} />
-        <Route path="/auth/verified" component={AccountVerified} />
-        <Route path="/auth/forgotpassword" component={ForgotPassword} />
-        <Route path="/auth/resetpassword" component={ResetPassword} />
-        <Route path="/auth/newuser" component={NewUser} />
-      </Switch>
-    </Container>
+        )}
+      />
+
+      <Route
+        path="/auth/signup"
+        render={(props) => <SignUp {...props} setEmail={setEmail} />}
+      />
+      <Route
+        path="/auth/verifyemail"
+        render={(props) => (
+          <VerifyEmail
+            {...props}
+            email={userEmail}
+            verifyEmail={() => verifyEmail("/profile/new")}
+          />
+        )}
+      />
+      <Route path="/auth/forgotpassword" component={ForgotPassword} />
+      <Route path="/auth/resetpassword" component={ResetPassword} />
+    </Switch>
   );
 };
 

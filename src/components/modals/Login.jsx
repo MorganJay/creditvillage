@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 import CreditButton from "../buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
-import PasswordInput from "./../inputs/PasswordInput";
 import usePasswordToggle from "./../../hooks/usePasswordToggle";
 import { Form, Password } from "./SignUp";
 import Image from "../../assets/images/signinimage.png";
@@ -72,6 +71,7 @@ const LogIn = ({ history }) => {
         </p>
       </Content>
     </Wrapper>
+<<<<<<< HEAD
     // <GlassModal>
     //   <h1>Login</h1>
     //   <Form onSubmit={handleSubmit}>
@@ -111,6 +111,8 @@ const LogIn = ({ history }) => {
     //     </Link>
     //   </p>
     // </GlassModal>
+=======
+>>>>>>> a6b8513f305b3364ab472993eb444c70af4c272e
   );
 };
 

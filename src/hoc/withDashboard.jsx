@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 
-import DashboardHeader from "../components/headers/DashboardHeader";
 import ActivityFeed from "./../components/feed/ActivityFeed";
 
 const withDashboardView = Component => {
   return function withDashboardComponent({ ...props }) {
     return (
       <Container>
-        <DashboardHeader />
+        {/* <DashboardHeader /> */}
         <Wrapper>
           <Component {...props} />
           {props.activity ? <ActivityFeed>Activity Feed</ActivityFeed> : null}
@@ -23,8 +22,6 @@ export default withDashboardView;
 const Container = styled.div`
   background-color: var(--whiteblue);
   width: 100%;
-  display: flex;
-  flex-direction: column;
   height: 100vh;
   padding: 0 0 2rem;
   overflow: hidden;

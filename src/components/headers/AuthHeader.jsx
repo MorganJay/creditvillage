@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import ButtonLink, { ListItemLink } from "components/buttons/ButtonLink";
 import LogoLink from "components/buttons/LogoLink";
+import BurgerButton from './../buttons/BurgerButton';
 
 const AuthHeader = ({ location }) => {
   const getActiveHash = (hash) => location.hash === hash;
@@ -11,17 +12,7 @@ const AuthHeader = ({ location }) => {
   return (
     <Navbar id="nav" className="navbar navbar-light navbar-expand-md">
       <LogoLink />
-      <button
-        className="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span className="navbar-toggler-icon"></span>
-      </button>
+      <BurgerButton />
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <LinkList className="navbar-nav m-md-auto mb-4 align-items-center">
           <LinkItem
@@ -89,7 +80,7 @@ export const LinkItem = styled(ListItemLink)`
     }
   }
   transition: all ease-out 0.2s;
-  ${props => props.active && `border-bottom: 2px solid var(--darkblue);`};
+  ${(props) => props.active && `border-bottom: 2px solid var(--darkblue);`};
 `;
 
 const AuthLinks = styled.div`
