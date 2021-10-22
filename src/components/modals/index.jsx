@@ -12,7 +12,7 @@ const Modal = ({
   onClose,
 }) => {
   return (
-    <ModalWrapper className="wrapper">
+    <ModalWrapper className="wrapper" onClick={onClose}>
       <ModalWrapper className="content">
         <Image src={icon} alt="" className="modal-img" />
         <ModalWrapper className="body">

@@ -1,10 +1,14 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 import GlassModal from "../modals/GlassModal";
 import CreditButton from "../buttons/Button";
 import PinInput from "../inputs/PinInput";
 import Modal from "components/modals";
+
+import auth from "services/authService";
+import http from "services/httpService";
 
 import UserIcon from "../../assets/images/user.png";
 
@@ -12,22 +16,81 @@ const modalContent = {
   icon: UserIcon,
   heading: "Yaaay!!!",
   subheading: "Account successfully verified",
-  path: "/home",
+  path: "/auth",
   buttonText: "Proceed",
   showButton: true,
 };
 
-const VerifyEmail = ({ history, email, verifyEmail }) => {
+const VerifyEmail = ({ history, email }) => {
   const [otp, setOtp] = useState("");
   const [show, setShow] = useState(false);
-  const handleOtpChange = (e) => {
-    setOtp(e);
-    console.log(e);
+  const [loading, setLoading] = useState(false);
+
+  const apiError = (status, message) =>
+    status !== "success" ||
+    message.toLowerCase().includes("invalid") ||
+    message !== "Please Check Your Email For OTP";
+
+  const handleOtpChange = (e) => setOtp(e);
+
+  const handleResendCode = async () => {
+    try {
+      setLoading(true);
+      const {
+        data: { status, message },
+      } = await auth.resendOTP(email);
+      if (!apiError(status, message)) {
+        toast.success(message);
+        setOtp("");
+        setLoading(false);
+      } else {
+        toast.error(message);
+        setOtp("");
+        setLoading(false);
+      }
+    } catch (error) {
+      if (http.expectedError(error, 400)) {
+        const { Email } = error.response.data.errors;
+        toast.error(...Email);
+        setLoading(false);
+      }
+
+      setLoading(false);
+      toast.error(error.response.data);
+    }
+  };
+
+  const handleSubmit = async () => {
+    try {
+      setLoading(true);
+      const {
+        data: { status, message },
+      } = await auth.verifyMail(email, otp);
+
+      if (!apiError(status, message)) {
+        setLoading(false);
+        setShow(true);
+      } else {
+        toast.error(message);
+        setOtp("");
+        setLoading(false);
+      }
+    } catch (error) {
+      if (http.expectedError(error, 400)) {
+        const { Email, Token } = error.response.data.errors;
+        const message = Email ? Email[0] : Token[0];
+        toast.error(message);
+        setLoading(false);
+      }
+
+      setLoading(false);
+      toast.error(error.response.data);
+    }
   };
 
   return (
     <Container className="w-100 d-flex flex-column flex-lg-row justify-content-between h-100">
-      {show && <Modal {...modalContent} onClick={() => setShow(false)} />}
+      {show && <Modal {...modalContent} onClose={() => setShow(false)} />}
       <Title>
         <h1 className="font-weight-semi-bold">Enter the Code sent to</h1>
         <p>{email || "maryagatha@gmail.com"}</p>
@@ -46,9 +109,15 @@ const VerifyEmail = ({ history, email, verifyEmail }) => {
         <p>Enter 6-digit OTP sent to your email</p>
         <EmailActions className="d-flex w-100 justify-content-between align-items-center mt-3">
           <p className="m-0">
-            Didn't get the OTP? <span>Resend</span>
+            Didn't get the OTP? <span onClick={handleResendCode}>Resend</span>
           </p>
-          <Button onClick={verifyEmail} inverted>
+          <Button
+            onClick={handleSubmit}
+            loading={loading}
+            disabled={loading}
+            className={loading && "onload"}
+            inverted
+          >
             Verify
           </Button>
         </EmailActions>
@@ -61,6 +130,7 @@ export default VerifyEmail;
 
 const Container = styled.div`
   padding: 5rem 3rem 3rem;
+  position: relative;
 `;
 
 export const Title = styled.div`

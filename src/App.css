@@ -7,3 +7,21 @@
 .form-group {
   width: 100%;
 }
+
+.onload {
+  cursor: not-allowed !important;
+  pointer-events: none;
+}
+
+.rotate {
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

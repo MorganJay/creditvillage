@@ -9,11 +9,11 @@ import CustomInput from "./../inputs/CustomInput";
 const NewUser = ({ history }) => {
   const [formData, setFormData] = useState({});
 
-  const handleChange = input => value => {
-    setFormData(data => ({ ...data, [input]: value }));
+  const handleChange = (input) => (value) => {
+    setFormData((data) => ({ ...data, [input]: value }));
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
     history.replace("/home");
@@ -29,7 +29,7 @@ const NewUser = ({ history }) => {
       <GlassModal className="p-5 align-self-end h-auto">
         <Form
           onSubmit={handleSubmit}
-          className="d-flex justify-content-between flex-wrap gap-5"
+          className="d-flex justify-content-between flex-wrap gap-4"
         >
           <NameGroup className="d-flex w-100 flex-wrap justify-content-between gap-4 gap-xl-4">
             <CustomInput
@@ -37,13 +37,13 @@ const NewUser = ({ history }) => {
               placeholder="First name"
               required
               autoComplete="off"
-              onChange={e => handleChange("lastName")(e.target.value)}
+              onChange={(e) => handleChange("lastName")(e.target.value)}
             />
             <CustomInput
               name="lastName"
               placeholder="Last name"
               autoComplete="off"
-              onChange={e => handleChange("lastName")(e.target.value)}
+              onChange={(e) => handleChange("lastName")(e.target.value)}
               required
             />
           </NameGroup>
@@ -52,7 +52,7 @@ const NewUser = ({ history }) => {
             placeholder="Phone Number"
             autoComplete="off"
             maxLength="11"
-            onChange={e => handleChange("phoneNumber")(e.target.value)}
+            onChange={(e) => handleChange("phoneNumber")(e.target.value)}
             className="mb-5"
             required
           />
@@ -87,7 +87,7 @@ const Container = styled.div`
 
 const Form = styled.form`
   width: 90%;
-  div,
+  .form-group,
   input {
     height: 82px;
   }

@@ -1,8 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const Button = ({ children, ...props }) => {
-  return <CreditButton {...props}>{children}</CreditButton>;
+const Button = ({ children, loading, ...props }) => {
+  return (
+    <CreditButton {...props}>
+      {loading ? <AiOutlineLoading3Quarters size="2rem" className="rotate" /> : children}
+    </CreditButton>
+  );
 };
 
 export default Button;

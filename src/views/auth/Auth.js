@@ -9,27 +9,13 @@ import ResetPassword from "components/auth/ResetPassword";
 
 const Auth = ({ history }) => {
   const [userEmail, setUserEmail] = useState("");
-  const [signin, setSignin] = useState(false);
   const setEmail = (email) => setUserEmail(email);
-
-  const verifyEmail = (path) => history.replace(path);
 
   return (
     <Switch>
-      {signin && <Redirect exact from="/auth/login" to="/home" />}
+      {/* {signin && <Redirect exact from="/auth/login" to="/home" />} */}
       <Redirect exact from="/auth" to="/auth/login" />
-      <Route
-        path="/auth/login"
-        render={(props) => (
-          <Login
-            handleSigninSubmit={(e) => {
-              e.preventDefault();
-              console.log("submitted", e);
-              setSignin(true);
-            }}
-          />
-        )}
-      />
+      <Route path="/auth/login" render={(props) => <Login {...props} />} />
 
       <Route
         path="/auth/signup"
@@ -37,13 +23,7 @@ const Auth = ({ history }) => {
       />
       <Route
         path="/auth/verifyemail"
-        render={(props) => (
-          <VerifyEmail
-            {...props}
-            email={userEmail}
-            verifyEmail={() => verifyEmail("/profile/new")}
-          />
-        )}
+        render={(props) => <VerifyEmail {...props} email={userEmail} />}
       />
       <Route path="/auth/forgotpassword" component={ForgotPassword} />
       <Route path="/auth/resetpassword" component={ResetPassword} />

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Route, Switch } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import styled from "styled-components";
 
 import Home from "./views/Home";
@@ -11,6 +12,7 @@ import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
 
 import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [linkAccountStep, setLinkAccountStep] = useState(0);
@@ -21,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <ToastContainer />
       <Logo />
       <Switch>
         <Route exact path="/" component={Home} />

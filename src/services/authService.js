@@ -55,6 +55,8 @@ const service = {
   getCurrentUser,
   getJwt,
   register,
+  verifyMail,
+  resendOTP,
 };
 
 export default service;

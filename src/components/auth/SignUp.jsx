@@ -2,11 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "reactstrap";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 import CreditButton from "../buttons/Button";
 import CustomInput from "../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
 import usePasswordToggle from "hooks/usePasswordToggle";
+import auth from "services/authService";
+import http from "services/httpService";
 
 import Image from "assets/images/create-account-abstract.svg";
 
@@ -15,27 +18,59 @@ const SignUp = ({ history, setEmail }) => {
   const [ConfirmType, ConfirmToggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
   const [showConfirmIcon, setShowConfirmIcon] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPassword: "",
   });
 
-  const handleSubmit = e => {
+  const apiError = (status, message) =>
+    status !== "success" || !message.toLowerCase().includes("success");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setEmail(formData.email);
-    history.replace("/auth/verifyemail");
+
+    if (formData.password !== formData.confirmPassword) {
+      setLoading(false);
+      return alert("Passwords must match");
+    }
+
+    try {
+      const {
+        data: { status, message },
+      } = await auth.register(formData);
+      if (apiError(status, message)) {
+        toast.error(message);
+        setFormData({ email: "", password: "", confirmPassword: "" });
+        setLoading(false);
+      } else {
+        history.replace("/auth/verifyemail");
+      }
+    } catch (error) {
+      if (http.expectedError(error, 400)) {
+        const { Password, Confirm_Password } = error.response.data.errors;
+        const message = Password ? Password[0] : Confirm_Password[0];
+        toast.error(message);
+        setLoading(false);
+      }
+
+      setLoading(false);
+      toast.error(error.response.data);
+    }
   };
 
   const handlePasswordChange = ({ target }) => {
     const { value, name } = target;
     const hideIcon = value.length < 1 ? false : true;
     name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
-    setFormData(data => ({ ...data, [name]: value }));
+    setFormData((data) => ({ ...data, [name]: value }));
   };
 
-  const handleChange = input => value => {
-    setFormData(data => ({ ...data, [input]: value }));
+  const handleChange = (input) => (value) => {
+    setFormData((data) => ({ ...data, [input]: value }));
   };
 
   return (
@@ -53,7 +88,7 @@ const SignUp = ({ history, setEmail }) => {
             placeholder="Email"
             autoComplete="off"
             className="mb-3"
-            onChange={e => handleChange("email")(e.target.value)}
+            onChange={(e) => handleChange("email")(e.target.value)}
             required
           />
           <PasswordInput
@@ -63,7 +98,9 @@ const SignUp = ({ history, setEmail }) => {
             autoComplete="off"
             onChange={handlePasswordChange}
             showIcon={showIcon}
+            title="Password must be at least 5 characters with an uppercase, lowercase and a symbol"
             icon={Toggle}
+            pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-`~]).{8,}$"
             className="mb-3"
             required
           />
@@ -75,6 +112,7 @@ const SignUp = ({ history, setEmail }) => {
             onChange={handlePasswordChange}
             showIcon={showConfirmIcon}
             icon={ConfirmToggle}
+            title="This field must match Password field."
             className="mb-3"
             required
           />
@@ -97,8 +135,10 @@ const SignUp = ({ history, setEmail }) => {
               borderRadius: "50px",
               maxWidth: "480px",
             }}
-            className="w-100 my-1"
+            className={`w-100 my-1 ${loading && "onload"}`}
             type="submit"
+            loading={loading}
+            disabled={loading}
             inverted
           >
             Register
@@ -179,11 +219,12 @@ export const Form = styled.form`
 const PrivacyTerms = styled.div`
   p {
     font-size: clamp(1rem, 2vw, 1.13rem);
-    white-space: nowrap;
+    @media (min-width: 600px) {
+      white-space: nowrap;
+    }
   }
   max-width: 90% !important;
   margin-right: 1% !important;
-
   input {
     position: relative;
     border: 2px solid var(--lightblue);
