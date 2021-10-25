@@ -37,8 +37,7 @@ const Login = () => {
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
-  const apiError = (message, data) =>
-    !data.token || !message.toLowerCase().includes("success");
+  const apiError = (status, data) => status === "error" || !data.token;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,17 +46,13 @@ const Login = () => {
         formData.email,
         formData.password
       );
-      const {
-        status,
-        message,
-        data: { token },
-      } = responseData;
-      console.log(status, message, token);
-      if (apiError(status, message)) {
+      const { status, message, data } = responseData;
+      if (apiError(status, data)) {
         toast.error(message);
         setFormData({ email: "", password: "" });
       } else {
-        auth.loginWithJwt(token);
+        auth.loginWithJwt(data.token);
+        toast.success(message);
         window.location = "/home";
       }
     } catch (error) {
@@ -69,8 +64,6 @@ const Login = () => {
       }
 
       // setLoading(false);
-      console.log(error);
-      toast.error(error?.response?.data || "Network Error");
     }
   };
 

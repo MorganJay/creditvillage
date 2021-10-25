@@ -24,10 +24,8 @@ export const resendOTP = (email) =>
     email: email,
   });
 
-export const login = async (email, password) => {
-  const { data: jwt } = await http.post("/login", { email, password });
-  localStorage.setItem(tokenKey, jwt);
-};
+export const login = async (email, password) =>
+  await http.post("/login", { email, password });
 
 export const loginWithJwt = (jwt) => localStorage.setItem(tokenKey, jwt);
 

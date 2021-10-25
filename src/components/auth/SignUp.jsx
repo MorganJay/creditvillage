@@ -14,6 +14,9 @@ import http from "services/httpService";
 import Image from "assets/images/create-account-abstract.svg";
 
 const SignUp = ({ history, setEmail }) => {
+  const {
+    location: { pathname },
+  } = history;
   const [Type, Toggle] = usePasswordToggle();
   const [ConfirmType, ConfirmToggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
@@ -23,10 +26,19 @@ const SignUp = ({ history, setEmail }) => {
     email: "",
     password: "",
     confirmPassword: "",
+    termsChecked: false,
   });
 
-  const apiError = (status, message) =>
-    status !== "success" || !message.toLowerCase().includes("success");
+  const handlePasswordChange = ({ target }) => {
+    const { value, name } = target;
+    const hideIcon = value.length < 1 ? false : true;
+    name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
+    setFormData((data) => ({ ...data, [name]: value }));
+  };
+
+  const handleChange = (input) => (value) => {
+    setFormData((data) => ({ ...data, [input]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,9 +54,15 @@ const SignUp = ({ history, setEmail }) => {
       const {
         data: { status, message },
       } = await auth.register(formData);
-      if (apiError(status, message)) {
+
+      if (http.apiError(status)) {
         toast.error(message);
-        setFormData({ email: "", password: "", confirmPassword: "" });
+        setFormData({
+          email: "",
+          password: "",
+          confirmPassword: "",
+          termsChecked: false,
+        });
         setLoading(false);
       } else {
         history.replace("/auth/verifyemail");
@@ -58,21 +76,8 @@ const SignUp = ({ history, setEmail }) => {
       }
 
       setLoading(false);
-      toast.error(error.response.data);
     }
   };
-
-  const handlePasswordChange = ({ target }) => {
-    const { value, name } = target;
-    const hideIcon = value.length < 1 ? false : true;
-    name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
-    setFormData((data) => ({ ...data, [name]: value }));
-  };
-
-  const handleChange = (input) => (value) => {
-    setFormData((data) => ({ ...data, [input]: value }));
-  };
-
   return (
     <Wrapper className="d-flex">
       <Sidebar>
@@ -87,6 +92,7 @@ const SignUp = ({ history, setEmail }) => {
             name="email"
             placeholder="Email"
             autoComplete="off"
+            value={formData.email}
             className="mb-3"
             onChange={(e) => handleChange("email")(e.target.value)}
             required
@@ -98,6 +104,7 @@ const SignUp = ({ history, setEmail }) => {
             autoComplete="off"
             onChange={handlePasswordChange}
             showIcon={showIcon}
+            value={formData.password}
             title="Password must be at least 5 characters with an uppercase, lowercase and a symbol"
             icon={Toggle}
             pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-`~]).{8,}$"
@@ -111,6 +118,7 @@ const SignUp = ({ history, setEmail }) => {
             autoComplete="off"
             onChange={handlePasswordChange}
             showIcon={showConfirmIcon}
+            value={formData.confirmPassword}
             icon={ConfirmToggle}
             title="This field must match Password field."
             className="mb-3"
@@ -120,13 +128,14 @@ const SignUp = ({ history, setEmail }) => {
             <Input
               type="checkbox"
               name="terms"
+              checked={formData.termsChecked}
               className="rounded-0 mr-2"
+              onChange={(e) => handleChange("termsChecked")(e.target.checked)}
               required
             />
             <p className="m-0">
-              I have read and agree to the{" "}
-              <a href="/auth/signup">Terms of Use</a> and{" "}
-              <a href="/auth/signup">Privacy Policy</a>
+              I have read and agree to the <a href={pathname}>Terms of Use</a>{" "}
+              and <a href={pathname}>Privacy Policy</a>
             </p>
           </PrivacyTerms>
           <CreditButton

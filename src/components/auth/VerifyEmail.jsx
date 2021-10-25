@@ -16,7 +16,7 @@ const modalContent = {
   icon: UserIcon,
   heading: "Yaaay!!!",
   subheading: "Account successfully verified",
-  path: "/auth",
+  path: "/profile/new",
   buttonText: "Proceed",
   showButton: true,
 };
@@ -26,11 +26,6 @@ const VerifyEmail = ({ history, email }) => {
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const apiError = (status, message) =>
-    status !== "success" ||
-    message.toLowerCase().includes("invalid") ||
-    message !== "Please Check Your Email For OTP";
-
   const handleOtpChange = (e) => setOtp(e);
 
   const handleResendCode = async () => {
@@ -39,7 +34,7 @@ const VerifyEmail = ({ history, email }) => {
       const {
         data: { status, message },
       } = await auth.resendOTP(email);
-      if (!apiError(status, message)) {
+      if (!http.apiError(status, message)) {
         toast.success(message);
         setOtp("");
         setLoading(false);
@@ -56,7 +51,7 @@ const VerifyEmail = ({ history, email }) => {
       }
 
       setLoading(false);
-      toast.error(error.response.data);
+     // toast.error(error.response.data);
     }
   };
 
@@ -67,7 +62,7 @@ const VerifyEmail = ({ history, email }) => {
         data: { status, message },
       } = await auth.verifyMail(email, otp);
 
-      if (!apiError(status, message)) {
+      if (!http.apiError(status, message)) {
         setLoading(false);
         setShow(true);
       } else {
@@ -84,7 +79,7 @@ const VerifyEmail = ({ history, email }) => {
       }
 
       setLoading(false);
-      toast.error(error.response.data);
+      //toast.error(error.response.data);
     }
   };
 

@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import auth from "services/authService";
+
 // const chartData = {
 //   labels: ["March", "April", "May", "June", "July"],
 //   datasets: [
@@ -14,7 +16,8 @@ import styled from "styled-components";
 //   ],
 // };
 
-const UserDash = () => {
+const UserDash = (props) => {
+  console.log(auth.currentUser)
   return (
     <Container>
       <h3>Welcome Back Mary</h3>

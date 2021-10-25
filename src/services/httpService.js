@@ -21,6 +21,8 @@ axios.interceptors.response.use(null, (error) => {
 export const expectedError = (error, statusCode) =>
   error.response && error.response.status === statusCode;
 
+export const apiError = (status, message) => status !== "success";
+
 export const setJwt = (jwt) =>
   (axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`);
 
@@ -32,6 +34,7 @@ const service = {
   delete: axios.delete,
   setJwt,
   expectedError,
+  apiError,
 };
 
 export default service;
