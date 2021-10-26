@@ -6,18 +6,21 @@ import GlassModal from "./../modals/GlassModal";
 import CreditButton from "components/buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 
+import { useUserContext } from "hooks";
+
 const NewUser = ({ history }) => {
   const [formData, setFormData] = useState({});
-
-  const handleChange = (input) => (value) => {
+  const { userEmail } = useUserContext();
+  const handleChange = (input) => (value) =>
     setFormData((data) => ({ ...data, [input]: value }));
-  };
 
+  console.log(userEmail);
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
     history.replace("/home");
   };
+
   return (
     <Container className="d-flex gap-4 flex-column flex-lg-row">
       <Title>
@@ -37,7 +40,7 @@ const NewUser = ({ history }) => {
               placeholder="First name"
               required
               autoComplete="off"
-              onChange={(e) => handleChange("lastName")(e.target.value)}
+              onChange={(e) => handleChange("firstName")(e.target.value)}
             />
             <CustomInput
               name="lastName"

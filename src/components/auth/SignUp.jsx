@@ -7,13 +7,16 @@ import { toast } from "react-toastify";
 import CreditButton from "../buttons/Button";
 import CustomInput from "../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
+
+import { useUserContext } from 'hooks';
 import usePasswordToggle from "hooks/usePasswordToggle";
 import auth from "services/authService";
 import http from "services/httpService";
 
 import Image from "assets/images/create-account-abstract.svg";
 
-const SignUp = ({ history, setEmail }) => {
+const SignUp = ({ history }) => {
+  const { handleUserEmailChange } = useUserContext();
   const {
     location: { pathname },
   } = history;
@@ -43,7 +46,7 @@ const SignUp = ({ history, setEmail }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setEmail(formData.email);
+    handleUserEmailChange(formData.email);
 
     if (formData.password !== formData.confirmPassword) {
       setLoading(false);
@@ -235,6 +238,7 @@ const PrivacyTerms = styled.div`
   max-width: 90% !important;
   margin-right: 1% !important;
   input {
+
     position: relative;
     border: 2px solid var(--lightblue);
     border-radius: 0px;

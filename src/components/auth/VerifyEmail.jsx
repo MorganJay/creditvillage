@@ -7,6 +7,7 @@ import CreditButton from "../buttons/Button";
 import PinInput from "../inputs/PinInput";
 import Modal from "components/modals";
 
+import { useUserContext } from "hooks";
 import auth from "services/authService";
 import http from "services/httpService";
 
@@ -21,37 +22,41 @@ const modalContent = {
   showButton: true,
 };
 
-const VerifyEmail = ({ history, email }) => {
+const VerifyEmail = ({ history }) => {
   const [otp, setOtp] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { userEmail } = useUserContext();
 
   const handleOtpChange = (e) => setOtp(e);
+
+  const clearLoading = () => {
+    setOtp("");
+    setLoading(false);
+  };
 
   const handleResendCode = async () => {
     try {
       setLoading(true);
       const {
         data: { status, message },
-      } = await auth.resendOTP(email);
+      } = await auth.resendOTP(userEmail);
       if (!http.apiError(status, message)) {
         toast.success(message);
-        setOtp("");
-        setLoading(false);
+        clearLoading();
       } else {
         toast.error(message);
-        setOtp("");
-        setLoading(false);
+        clearLoading();
       }
     } catch (error) {
       if (http.expectedError(error, 400)) {
         const { Email } = error.response.data.errors;
         toast.error(...Email);
-        setLoading(false);
+        clearLoading();
       }
 
-      setLoading(false);
-     // toast.error(error.response.data);
+      clearLoading();
+      // toast.error(error.response.data);
     }
   };
 
@@ -60,25 +65,24 @@ const VerifyEmail = ({ history, email }) => {
       setLoading(true);
       const {
         data: { status, message },
-      } = await auth.verifyMail(email, otp);
+      } = await auth.verifyMail(userEmail, otp);
 
       if (!http.apiError(status, message)) {
-        setLoading(false);
+        clearLoading();
         setShow(true);
       } else {
         toast.error(message);
-        setOtp("");
-        setLoading(false);
+        clearLoading();
       }
     } catch (error) {
       if (http.expectedError(error, 400)) {
         const { Email, Token } = error.response.data.errors;
         const message = Email ? Email[0] : Token[0];
         toast.error(message);
-        setLoading(false);
+        clearLoading();
       }
 
-      setLoading(false);
+      clearLoading();
       //toast.error(error.response.data);
     }
   };
@@ -88,7 +92,7 @@ const VerifyEmail = ({ history, email }) => {
       {show && <Modal {...modalContent} onClose={() => setShow(false)} />}
       <Title>
         <h1 className="font-weight-semi-bold">Enter the Code sent to</h1>
-        <p>{email || "maryagatha@gmail.com"}</p>
+        <p>{userEmail || "maryagatha@gmail.com"}</p>
         <p className="font-weight-semi-bold" onClick={() => history.goBack()}>
           Wrong email?
         </p>
