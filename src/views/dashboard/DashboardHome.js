@@ -1,23 +1,23 @@
 import { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Loading from "components/dash/Loading";
-import UserDash from "components/dash/UserDash";
-import CreditScore from "./CreditScore";
-import AccountInfo from "./AccountInfo";
+// import UserDash from "components/dash/UserDash";
+// import CreditScore from "./CreditScore";
+// import AccountInfo from "./AccountInfo";
 import Sidebar from "./../../components/dash/Sidebar";
-import DashboardHeader from "./../../components/headers/DashboardHeader";
+// import DashboardHeader from "./../../components/headers/DashboardHeader";
 
 import auth from "services/authService";
 import userService from "services/userService";
 import { useUserContext } from "hooks";
 
 const DashboardHome = ({ match, history }) => {
-  let { path } = match;
+  // let { path } = match;
   const userLoggedIn = auth.currentUser;
-  const { isFirstTimeUser, user, updateUserInfo, enableFirstTimeUser } =
+  const { user, updateUserInfo, enableFirstTimeUser } =
     useUserContext();
   const [loading, setLoading] = useState(true);
 
@@ -55,8 +55,9 @@ const DashboardHome = ({ match, history }) => {
 
   return (
     <DashContainer className="d-flex">
+      <Loading />
       <Sidebar name={user.firstName} />
-      <MainContent>
+      {/* <MainContent>
         <DashboardHeader user={user} />
         <Switch>
           <Route
@@ -77,7 +78,7 @@ const DashboardHome = ({ match, history }) => {
             )}
           />
         </Switch>
-      </MainContent>
+      </MainContent> */}
     </DashContainer>
   );
 };
@@ -100,4 +101,4 @@ const DashContainer = styled.div`
   }
 `;
 
-const MainContent = styled.main``;
+// const MainContent = styled.main``;
