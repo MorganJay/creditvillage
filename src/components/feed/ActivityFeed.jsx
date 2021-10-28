@@ -1,31 +1,31 @@
-import React from 'react';
-import styled from 'styled-components';
-import Activity from './Activity';
+import React from "react";
+import styled from "styled-components";
+import Activity from "./Activity";
 
 const ActivityFeed = () => {
   return (
     <Container>
       <h1>Activity Feed</h1>
       <Activity
-        name='C'
-        title='Checked Credit score'
-        caption='You just checked your...'
+        name="C"
+        title="Checked Credit score"
+        caption="You just checked your..."
       />
       <Activity
-        name='C'
-        title='Checked Credit score'
-        caption='You just checked your...'
+        name="C"
+        title="Checked Credit score"
+        caption="You just checked your..."
         bluelogo
       />
       <Activity
-        name='D'
-        title='Downloaded Credit report'
-        caption='You just downloaded your...'
+        name="D"
+        title="Downloaded Credit report"
+        caption="You just downloaded your..."
       />
       <Activity
-        name='D'
-        title='Downloaded Credit report'
-        caption='You just downloaded your...'
+        name="D"
+        title="Downloaded Credit report"
+        caption="You just downloaded your..."
       />
     </Container>
   );
@@ -49,7 +49,7 @@ const Container = styled.aside`
     display: none;
   }
   h1 {
-    font: normal 400 27px/33px 'Montserrat', san-serif;
+    font: normal 400 27px/33px "Montserrat", san-serif;
     margin-left: -20px;
     margin-top: 0;
     margin: 0 0 0 -20px;

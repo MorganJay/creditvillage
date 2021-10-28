@@ -1,49 +1,63 @@
-import React from 'react';
-import styled, { css } from 'styled-components';
+import React from "react";
+import styled, { css } from "styled-components";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-const Button = ({ children, ...props }) => {
-  return <CreditButton {...props}>{children}</CreditButton>;
+const Button = ({ children, loading, ...props }) => {
+  return (
+    <CreditButton {...props}>
+      {loading ? (
+        <AiOutlineLoading3Quarters size="2rem" className="rotate" />
+      ) : (
+        children
+      )}
+    </CreditButton>
+  );
 };
 
 export default Button;
 
 const invertedStyles = css`
-  background-color: grey;
   color: var(--darkblue);
-  font-family: 'MontserratBold', san-serif;
   padding: 13px 50px;
-  border-radius: 4px;
   background: linear-gradient(
     275.85deg,
     #d9e8ef -22.37%,
     rgba(217, 232, 239, 0) 124.27%
   );
   filter: drop-shadow(6px 6px 16px rgba(149, 149, 149, 0.08));
+  border: 1px solid #d9e8ef;
   &:hover {
     opacity: 0.8;
     color: var(--darkblue);
   }
 `;
 
-const getButtonStyles = props => {
+const getButtonStyles = (props) => {
   return props.inverted ? invertedStyles : null;
 };
 
-const CreditButton = styled.button`
+export const CreditButton = styled.button`
   background: var(--darkblue);
   box-shadow: 0px 10px 20px rgba(82, 117, 136, 0.12);
-  border-radius: 4px;
+  border-radius: 20px;
   color: white;
   padding: 12px 24px;
-  border: none;
+  border: 1px solid var(--darkblue);
   font-weight: 500;
   cursor: pointer;
-  font-size: 16px;
-  font-family: 'Montserrat', san-serif;
   user-select: none;
-  ${props => props.styles}
+  transition: all ease 0.2s;
   &:hover {
-    color: #ffffff7d;
+    background-color: transparent;
+    color: var(--darkblue);
+    font-weight: 700;
   }
+  &:focus,
+  &:active {
+    outline: none;
+    opacity: 0.8;
+  }
+  ${(props) => props.styles}
   ${getButtonStyles}
+  ${(props) => props.loading && `cursor: not-allowed !important;`}
 `;

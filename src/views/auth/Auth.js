@@ -1,28 +1,30 @@
-import React from 'react';
-import { Switch, Redirect, Route } from 'react-router-dom';
+import { Switch, Redirect, Route } from "react-router-dom";
 
-import AuthHeader from './../../components/headers/AuthHeader';
-import SignUp from './../../components/modals/SignUp';
-import Login from './../../components/modals/Login';
-import VerifyEmail from './../../components/modals/VerifyEmail';
+import auth from "services/authService";
 
-import '../../assets/css/auth.styles.css';
-import AccountVerified from '../../components/modals/AccountVerified';
+import SignUp from "components/auth/SignUp";
+import VerifyEmail from "components/auth/VerifyEmail";
+import Login from "components/auth/Login";
+import ForgotPassword from "components/auth/ForgotPassword";
+import ResetPassword from "components/auth/ResetPassword";
 
 const Auth = () => {
+  if(auth.currentUser) return <Redirect to="/home" />
+
   return (
-    <div className='home'>
-      <AuthHeader />
-      <div className='auth-container'>
-        <Switch>
-          <Redirect exact from='/auth' to='/auth/login' />
-          <Route path='/auth/login' component={Login} />
-          <Route path='/auth/signup' component={SignUp} />
-          <Route path='/auth/verifyemail' component={VerifyEmail} />
-          <Route path='/auth/verified' component={AccountVerified} />
-        </Switch>
-      </div>
-    </div>
+    <Switch>
+      {/* {signin && <Redirect exact from="/auth/login" to="/home" />} */}
+      <Redirect exact from="/auth" to="/auth/login" />
+      <Route path="/auth/login" render={(props) => <Login {...props} />} />
+
+      <Route path="/auth/signup" render={(props) => <SignUp {...props} />} />
+      <Route
+        path="/auth/verifyemail"
+        render={(props) => <VerifyEmail {...props} />}
+      />
+      <Route path="/auth/forgotpassword" component={ForgotPassword} />
+      <Route path="/auth/resetpassword" component={ResetPassword} />
+    </Switch>
   );
 };
 

@@ -1,9 +1,22 @@
 .App {
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
+  height: 100vh;
+  position: relative;
 }
 
 .form-group {
-  width: 100% !important;
+  width: 100%;
+}
+
+.rotate {
+  animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
 }
