@@ -1,9 +1,17 @@
 import React from "react";
 // import styled from "styled-components";
+import Button from "components/buttons/Button";
 
 import { ReactComponent as Avi } from "assets/images/smallprofilepic.svg";
 
-const DashboardHeader = () => {
+import auth from "services/authService";
+
+const DashboardHeader = ({ user }) => {
+  const handleLogOut = () => {
+    auth.logout();
+    window.location = "/auth/login";
+  };
+
   return (
     <header className="header px-2 d-flex justify-content-between">
       <input
@@ -15,8 +23,9 @@ const DashboardHeader = () => {
       <div className="d-flex justify-content-between gap-1 align-items-center">
         {/* <img src="" alt="" /> */}
         <Avi />
-        Mary Agatha
+        {user.fullName}
       </div>
+      <Button onClick={handleLogOut}>Sign Out</Button>
     </header>
   );
 };

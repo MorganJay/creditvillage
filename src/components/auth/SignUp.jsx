@@ -8,7 +8,7 @@ import CreditButton from "../buttons/Button";
 import CustomInput from "../inputs/CustomInput";
 import PasswordInput from "../inputs/PasswordInput";
 
-import { useUserContext } from 'hooks';
+import { useUserContext } from "hooks";
 import usePasswordToggle from "hooks/usePasswordToggle";
 import auth from "services/authService";
 import http from "services/httpService";
@@ -147,7 +147,7 @@ const SignUp = ({ history }) => {
               borderRadius: "50px",
               maxWidth: "480px",
             }}
-            className={`w-100 my-1 ${loading && "onload"}`}
+            className="w-100 my-1"
             type="submit"
             loading={loading}
             disabled={loading}
@@ -198,7 +198,7 @@ const Content = styled.main`
   width: 60%;
   text-align: center;
   color: var(--lightblue);
-
+  margin: 0 auto;
   h1 {
     line-height: 42px;
     font-weight: 600;
@@ -238,7 +238,6 @@ const PrivacyTerms = styled.div`
   max-width: 90% !important;
   margin-right: 1% !important;
   input {
-
     position: relative;
     border: 2px solid var(--lightblue);
     border-radius: 0px;

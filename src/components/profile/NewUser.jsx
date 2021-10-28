@@ -1,24 +1,54 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 
 import { Title } from "../auth/VerifyEmail";
 import GlassModal from "./../modals/GlassModal";
 import CreditButton from "components/buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 
-import { useUserContext } from "hooks";
+import http from "services/httpService";
+import user from "services/userService";
 
-const NewUser = ({ history }) => {
+const NewUser = () => {
   const [formData, setFormData] = useState({});
-  const { userEmail } = useUserContext();
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (input) => (value) =>
     setFormData((data) => ({ ...data, [input]: value }));
 
-  console.log(userEmail);
-  const handleSubmit = (e) => {
+  const clearLoading = () => {
+    setFormData({});
+    setLoading(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
-    history.replace("/home");
+    setLoading(true);
+
+    try {
+      const {
+        data: { status, message },
+      } = await user.createNewProfile(formData);
+
+      if (!http.apiError(status)) {
+        clearLoading();
+        toast.success(message);
+        window.location = "/home";
+      } else {
+        clearLoading();
+        toast.error(message);
+      }
+    } catch (error) {
+      if (http.expectedError(error, 400)) {
+        const { FirstName, LastName, PhoneNumber } = error.response.data.errors;
+        const message = FirstName[0] || LastName[0] || PhoneNumber[0];
+        toast.error(message);
+        clearLoading();
+      }
+
+      clearLoading();
+    }
   };
 
   return (
@@ -67,6 +97,8 @@ const NewUser = ({ history }) => {
             }}
             type="submit"
             inverted
+            loading={loading}
+            disabled={loading}
           >
             Continue
           </CreditButton>

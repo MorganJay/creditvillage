@@ -14,14 +14,15 @@ axios.interceptors.response.use(null, (error) => {
     logger.log(error);
     toast.error("An unexpected error occurred.");
   }
-
+  logger.log(error.response.data);
+  toast.error(error.response.data);
   return Promise.reject(error);
 });
 
 export const expectedError = (error, statusCode) =>
   error.response && error.response.status === statusCode;
 
-export const apiError = (status, message) => status !== "success";
+export const apiError = (status) => status !== "success";
 
 export const setJwt = (jwt) =>
   (axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`);

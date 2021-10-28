@@ -5,7 +5,11 @@ import { AiOutlineLoading3Quarters } from "react-icons/ai";
 const Button = ({ children, loading, ...props }) => {
   return (
     <CreditButton {...props}>
-      {loading ? <AiOutlineLoading3Quarters size="2rem" className="rotate" /> : children}
+      {loading ? (
+        <AiOutlineLoading3Quarters size="2rem" className="rotate" />
+      ) : (
+        children
+      )}
     </CreditButton>
   );
 };
@@ -55,4 +59,5 @@ export const CreditButton = styled.button`
   }
   ${(props) => props.styles}
   ${getButtonStyles}
+  ${(props) => props.loading && `cursor: not-allowed !important;`}
 `;

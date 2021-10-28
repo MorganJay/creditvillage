@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-import auth from "services/authService";
-
 // const chartData = {
 //   labels: ["March", "April", "May", "June", "July"],
 //   datasets: [
@@ -16,11 +14,12 @@ import auth from "services/authService";
 //   ],
 // };
 
-const UserDash = (props) => {
-  console.log(auth.currentUser)
+const UserDash = ({ firstTimer, user }) => {
+  
+
   return (
     <Container>
-      <h3>Welcome Back Mary</h3>
+     {!firstTimer && <h3>Welcome Back {user.firstName}</h3>}
     </Container>
   );
 };

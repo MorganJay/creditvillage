@@ -17,7 +17,7 @@ const modalContent = {
   icon: UserIcon,
   heading: "Yaaay!!!",
   subheading: "Account successfully verified",
-  path: "/profile/new",
+  path: "/auth/login",
   buttonText: "Proceed",
   showButton: true,
 };
@@ -56,7 +56,6 @@ const VerifyEmail = ({ history }) => {
       }
 
       clearLoading();
-      // toast.error(error.response.data);
     }
   };
 
@@ -67,8 +66,9 @@ const VerifyEmail = ({ history }) => {
         data: { status, message },
       } = await auth.verifyMail(userEmail, otp);
 
-      if (!http.apiError(status, message)) {
+      if (!http.apiError(status)) {
         clearLoading();
+        toast.success(message);
         setShow(true);
       } else {
         toast.error(message);
@@ -114,7 +114,6 @@ const VerifyEmail = ({ history }) => {
             onClick={handleSubmit}
             loading={loading}
             disabled={loading}
-            className={loading && "onload"}
             inverted
           >
             Verify

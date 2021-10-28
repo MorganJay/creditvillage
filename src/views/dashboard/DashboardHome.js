@@ -1,26 +1,63 @@
-import React from "react";
+import { useEffect, useState, useCallback } from "react";
 import styled from "styled-components";
 import { Route, Switch, Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 
-import NewDash from "./NewDash";
+import Loading from "components/dash/Loading";
+import UserDash from "components/dash/UserDash";
 import CreditScore from "./CreditScore";
 import AccountInfo from "./AccountInfo";
-import UserDash from "components/dash/UserDash";
 import Sidebar from "./../../components/dash/Sidebar";
 import DashboardHeader from "./../../components/headers/DashboardHeader";
 
 import auth from "services/authService";
+import userService from "services/userService";
+import { useUserContext } from "hooks";
 
-const DashboardHome = ({ setLinkAccountStep, match }) => {
+const DashboardHome = ({ match, history }) => {
   let { path } = match;
+  const userLoggedIn = auth.currentUser;
+  const { isFirstTimeUser, user, updateUserInfo, enableFirstTimeUser } =
+    useUserContext();
+  const [loading, setLoading] = useState(true);
 
-  if (!auth.currentUser) return <Redirect to="/auth/login" />;
+  const fetchUserDetails = useCallback(async () => {
+    if (!userLoggedIn || user) {
+      setLoading(false);
+      return null;
+    }
+    try {
+      const { data } = await userService.getUserInfo();
+      if (!data) toast.error("Error fetching user data");
+
+      updateUserInfo(data);
+      setLoading(false);
+    } catch (error) {
+      toast.error(error);
+    }
+  }, [updateUserInfo, userLoggedIn, user]);
+
+  const redirectUser = useCallback(async () => {
+    if (!user.firstName) {
+      enableFirstTimeUser();
+      history.replace("/profile/new");
+    }
+  }, [user, enableFirstTimeUser, history]);
+
+  useEffect(() => {
+    fetchUserDetails();
+    user && redirectUser();
+  }, [fetchUserDetails, redirectUser, user]);
+
+  if (!userLoggedIn) return <Redirect to="/auth/login" />;
+
+  if (loading) return <Loading />;
 
   return (
     <DashContainer className="d-flex">
-      <Sidebar />
-      <main>
-        <DashboardHeader />
+      <Sidebar name={user.firstName} />
+      <MainContent>
+        <DashboardHeader user={user} />
         <Switch>
           <Route
             exact
@@ -34,21 +71,13 @@ const DashboardHome = ({ setLinkAccountStep, match }) => {
           />
           <Route
             exact
-            path={`${path}/new`}
+            path={path}
             render={(props) => (
-              <NewDash
-                {...props}
-                setStep={(step) => setLinkAccountStep(step)}
-              />
+              <UserDash user={user} firstTimer={isFirstTimeUser} {...props} />
             )}
           />
-          <Route
-            exact
-            path={path}
-            render={(props) => <UserDash {...props} />}
-          />
         </Switch>
-      </main>
+      </MainContent>
     </DashContainer>
   );
 };
@@ -65,8 +94,10 @@ export const Container = styled.div`
 const DashContainer = styled.div`
   width: 100%;
   height: 100vh;
-  /* max-height: 900px; */
+  position: relative;
   main {
     width: 80%;
   }
 `;
+
+const MainContent = styled.main``;

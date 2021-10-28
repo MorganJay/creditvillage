@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+
 import auth from "services/authService";
 import http from "services/httpService";
 
 import MainWrap from "components/side/MainWrap";
 import SideWrap from "components/side/SideWrap";
-import React from "react";
 import {
   FormBox,
   HeadingOne,
@@ -52,7 +52,7 @@ const Login = () => {
         setFormData({ email: "", password: "" });
       } else {
         auth.loginWithJwt(data.token);
-        toast.success(message);
+        setFormData({ email: "", password: "" });
         window.location = "/home";
       }
     } catch (error) {
@@ -62,7 +62,6 @@ const Login = () => {
         toast.error(message);
         // setLoading(false);
       }
-
       // setLoading(false);
     }
   };
