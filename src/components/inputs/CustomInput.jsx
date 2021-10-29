@@ -2,9 +2,9 @@ import React from "react";
 import { FormGroup, Input } from "reactstrap";
 import styled from "styled-components";
 
-const CustomInput = ({ ...props }) => {
+const CustomInput = ({ className, ...props }) => {
   return (
-    <FormGroup>
+    <FormGroup className={className}>
       <FormInput {...props} />
     </FormGroup>
   );

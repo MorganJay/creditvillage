@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 import Speedometer from "assets/images/speedometer.svg";
@@ -67,7 +66,6 @@ const CardContainer = styled.div`
   justify-content: space-evenly;
   align-items: flex-end;
   flex-wrap: wrap;
-  /* padding-top: 3rem; */
   gap: 2rem;
   width: 100%;
   margin: 0 auto;

@@ -6,26 +6,10 @@ import { AiOutlineMobile } from "react-icons/ai";
 
 import { BankContainer } from "./ChooseBank";
 
-// import Image from "assets/images/banklogin.png";
-
 const ChooseBankLogin = ({ bank, handleNextStep }) => {
   return (
     <BankContainer>
       <div style={{ height: "70%", width: "100%" }} />
-      {/* <img
-        onClick={handleClose}
-        src={Image}
-        alt="Bank Header"
-        style={{
-          width: "100%",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          height: "65%",
-          backgroundSize: "cover",
-          cursor: "pointer",
-        }}
-      /> */}
       <OptionsContainer>
         <LoginOption onClick={handleNextStep}>
           <span className="mr-4">

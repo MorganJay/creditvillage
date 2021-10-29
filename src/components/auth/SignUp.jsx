@@ -10,23 +10,32 @@ import usePasswordToggle from "hooks/usePasswordToggle";
 
 import Image from "assets/images/create-account-abstract.svg";
 
-const SignUp = ({ history }) => {
+const SignUp = ({ history, setEmail }) => {
   const [Type, Toggle] = usePasswordToggle();
   const [ConfirmType, ConfirmToggle] = usePasswordToggle();
   const [showIcon, setShowIcon] = useState(false);
   const [showConfirmIcon, setShowConfirmIcon] = useState(false);
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log("submitting", e);
+    setEmail(formData.email);
     history.replace("/auth/verifyemail");
   };
 
   const handlePasswordChange = ({ target }) => {
     const { value, name } = target;
     const hideIcon = value.length < 1 ? false : true;
-
     name === "password" ? setShowIcon(hideIcon) : setShowConfirmIcon(hideIcon);
+    setFormData(data => ({ ...data, [name]: value }));
+  };
+
+  const handleChange = input => value => {
+    setFormData(data => ({ ...data, [input]: value }));
   };
 
   return (
@@ -44,6 +53,7 @@ const SignUp = ({ history }) => {
             placeholder="Email"
             autoComplete="off"
             className="mb-3"
+            onChange={e => handleChange("email")(e.target.value)}
             required
           />
           <PasswordInput
@@ -59,7 +69,7 @@ const SignUp = ({ history }) => {
           />
           <PasswordInput
             type={ConfirmType}
-            name="confirm-password"
+            name="confirmPassword"
             placeholder="Confirm password"
             autoComplete="off"
             onChange={handlePasswordChange}
@@ -83,7 +93,6 @@ const SignUp = ({ history }) => {
           </PrivacyTerms>
           <CreditButton
             styles={{
-              fontSize: "20px",
               fontWeight: "600",
               borderRadius: "50px",
               maxWidth: "480px",

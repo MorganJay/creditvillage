@@ -1,5 +1,5 @@
 import React from "react";
-import { HeadingTwo, Image, Paragraph, SideWrapper, Wrapper } from "styled";
+import { HeadingTwo, Image, Paragraph, SideWrapper, Wrapper } from "components/styled";
 
 const SideWrap = ({ createImage, heading, hasImage, text, children }) => {
   return (

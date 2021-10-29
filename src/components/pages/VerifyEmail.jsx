@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { Paragraph, Wrapper } from "styled";
+import { Paragraph, Wrapper } from "components/styled";
 
 import PinInput from "components/inputs/PinInput";
 import { CreditButton } from "components/buttons/Button";
 import SideWrap from "components/side/SideWrap";
 import MainWrap from "components/side/MainWrap";
-import Modal from "components/modal";
+import Modal from "components/modals";
 import UserIcon from "../../assets/images/user.png";
 
 const VerifyEmail = ({ history, email }) => {

@@ -6,7 +6,6 @@ import Home from "./views/Home";
 import Auth from "./views/auth/Auth";
 import DashboardHome from "./views/dashboard/DashboardHome";
 import Profile from "./views/dashboard/Profile";
-import UpdatedProfile from "./views/dashboard/UpdatedProfile";
 import Result from "./views/dashboard/Result";
 import LinkAccount from "./views/dashboard/LinkAccount";
 import LogoLink from "components/buttons/LogoLink";
@@ -22,8 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Modal /> */}
-      <Logo className="position-absolute" />
+      <Logo />
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/auth" component={Auth} />
@@ -33,16 +31,10 @@ function App() {
             <DashboardHome
               setLinkAccountStep={(step) => setLinkAccountStep(step)}
               {...props}
-              activity
             />
           )}
         />
-        <Route exact path="/profile" component={Profile} />
-        <Route
-          exact
-          path="/profile/updated"
-          render={(props) => <UpdatedProfile {...props} activity />}
-        />
+        <Route path="/profile" component={Profile} />
         <Route
           exact
           path="/result"
@@ -70,5 +62,7 @@ export default App;
 const Logo = styled(LogoLink)`
   left: 36px;
   top: 17px;
+  width: 51px;
   z-index: 100;
+  position: absolute;
 `;

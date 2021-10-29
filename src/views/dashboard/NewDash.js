@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 
 import LinkAccountButton from "components/buttons/LinkAccountButton";
-import NewDashBox from "components/modals/NewDashBox";
+import NewDashBox from "components/dash/NewDashBox";
 import { ReactComponent as Image } from "assets/images/accountverification.svg";
 
 const NewDash = ({ setStep }) => {
