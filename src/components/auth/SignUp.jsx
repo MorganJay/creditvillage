@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "reactstrap";
 import styled from "styled-components";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
 import CreditButton from "../buttons/Button";
 import CustomInput from "../inputs/CustomInput";
@@ -10,8 +10,8 @@ import PasswordInput from "../inputs/PasswordInput";
 
 import { useUserContext } from "hooks";
 import usePasswordToggle from "hooks/usePasswordToggle";
-import auth from "services/authService";
-import http from "services/httpService";
+// import auth from "services/authService";
+// import http from "services/httpService";
 
 import Image from "assets/images/create-account-abstract.svg";
 
@@ -52,34 +52,35 @@ const SignUp = ({ history }) => {
       setLoading(false);
       return alert("Passwords must match");
     }
+    history.replace("/auth/verifyemail");
+    // try {
+    //   const {
+    //     data: { status, message },
+    //   } = await auth.register(formData);
 
-    try {
-      const {
-        data: { status, message },
-      } = await auth.register(formData);
+    //   if (http.apiError(status)) {
+    //     toast.error(message);
+    //     setFormData({
+    //       email: "",
+    //       password: "",
+    //       confirmPassword: "",
+    //       termsChecked: false,
+    //     });
+    //     setLoading(false);
+    //   } else {
+    //     history.replace("/auth/verifyemail");
+    //   }
+    // } catch (error) {
+    //   if (http.expectedError(error, 400)) {
+    //     const { Password, Confirm_Password } = error.response.data.errors;
+    //     const message = Password ? Password[0] : Confirm_Password[0];
+    //     toast.error(message);
+    //     setLoading(false);
+    //   }
 
-      if (http.apiError(status)) {
-        toast.error(message);
-        setFormData({
-          email: "",
-          password: "",
-          confirmPassword: "",
-          termsChecked: false,
-        });
-        setLoading(false);
-      } else {
-        history.replace("/auth/verifyemail");
-      }
-    } catch (error) {
-      if (http.expectedError(error, 400)) {
-        const { Password, Confirm_Password } = error.response.data.errors;
-        const message = Password ? Password[0] : Confirm_Password[0];
-        toast.error(message);
-        setLoading(false);
-      }
-
-      setLoading(false);
-    }
+    //   setLoading(false);
+    // }
+    // setLoading(false);
   };
   return (
     <Wrapper className="d-flex">
@@ -176,7 +177,8 @@ const Sidebar = styled.aside`
   border-radius: 0px 50px 50px 0px;
   background-size: contain;
   max-width: 520px;
-  max-height: 900px;
+  min-height: 900px;
+  height: 100vh;
   width: 35%;
   padding: 9rem 3rem 0;
   h1 {

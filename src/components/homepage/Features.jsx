@@ -59,7 +59,7 @@ const Section = styled.section`
   }
 `;
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   display: flex;
   min-height: 100vh;
   max-height: fit-content;
@@ -71,7 +71,7 @@ const CardContainer = styled.div`
   margin: 0 auto;
 `;
 
-const Card = styled.div`
+export const Card = styled.div`
   padding: 4rem 1.5rem;
   box-shadow: 6px 6px 15px rgba(54, 2, 89, 0.2);
   border-radius: 20px;

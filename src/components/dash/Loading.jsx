@@ -33,11 +33,13 @@ const scaleYIn = keyframes`
 
 const LoadingText = styled.h1`
   position: absolute;
-  left: 50%;
   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   span {
     animation-name: ${scaleYIn};
     animation-iteration-count: infinite;
     animation-duration: 2s;
+    /* font-size: 2rem; */
   }
 `;

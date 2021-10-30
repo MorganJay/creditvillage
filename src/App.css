@@ -8,6 +8,10 @@
   width: 100%;
 }
 
+a {
+  color: unset;
+}
+
 .rotate {
   animation: rotation 1s infinite linear;
 }

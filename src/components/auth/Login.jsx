@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
+// import { toast } from "react-toastify";
 
-import auth from "services/authService";
-import http from "services/httpService";
+// import auth from "services/authService";
+// import http from "services/httpService";
 
 import MainWrap from "components/side/MainWrap";
 import SideWrap from "components/side/SideWrap";
@@ -37,33 +37,34 @@ const Login = () => {
     setFormData((data) => ({ ...data, [name]: value }));
   };
 
-  const apiError = (status, data) => status === "error" || !data.token;
+  // const apiError = (status, data) => status === "error" || !data.token;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const { data: responseData } = await auth.login(
-        formData.email,
-        formData.password
-      );
-      const { status, message, data } = responseData;
-      if (apiError(status, data)) {
-        toast.error(message);
-        setFormData({ email: "", password: "" });
-      } else {
-        auth.loginWithJwt(data.token);
-        setFormData({ email: "", password: "" });
-        window.location = "/home";
-      }
-    } catch (error) {
-      if (http.expectedError(error, 400)) {
-        const { Email, Password } = error.response.data.errors;
-        const message = Email ? Email[0] : Password[0];
-        toast.error(message);
-        // setLoading(false);
-      }
-      // setLoading(false);
-    }
+    window.location = "/home";
+    // try {
+    //   const { data: responseData } = await auth.login(
+    //     formData.email,
+    //     formData.password
+    //   );
+    //   const { status, message, data } = responseData;
+    //   if (apiError(status, data)) {
+    //     toast.error(message);
+    //     setFormData({ email: "", password: "" });
+    //   } else {
+    //     auth.loginWithJwt(data.token);
+    //     setFormData({ email: "", password: "" });
+    //     window.location = "/home";
+    //   }
+    // } catch (error) {
+    //   if (http.expectedError(error, 400)) {
+    //     const { Email, Password } = error.response.data.errors;
+    //     const message = Email ? Email[0] : Password[0];
+    //     toast.error(message);
+    //     // setLoading(false);
+    //   }
+    //   // setLoading(false);
+    // }
   };
 
   return (

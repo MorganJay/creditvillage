@@ -7,8 +7,8 @@ import GlassModal from "./../modals/GlassModal";
 import CreditButton from "components/buttons/Button";
 import CustomInput from "./../inputs/CustomInput";
 
-import http from "services/httpService";
-import user from "services/userService";
+// import http from "services/httpService";
+// import user from "services/userService";
 
 const NewUser = () => {
   const [formData, setFormData] = useState({});
@@ -25,30 +25,35 @@ const NewUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    console.log(formData);
+    // try {
+    //   const {
+    //     data: { status, message },
+    //   } = await user.createNewProfile(formData);
 
-    try {
-      const {
-        data: { status, message },
-      } = await user.createNewProfile(formData);
+    //   if (!http.apiError(status)) {
+    //     clearLoading();
+    //     toast.success(message);
+    //     window.location = "/home";
+    //   } else {
+    //     clearLoading();
+    //     toast.error(message);
+    //   }
+    // } catch (error) {
+    //   if (http.expectedError(error, 400)) {
+    //     const { FirstName, LastName, PhoneNumber } = error.response.data.errors;
+    //     const message = FirstName[0] || LastName[0] || PhoneNumber[0];
+    //     toast.error(message);
+    //     clearLoading();
+    //   }
 
-      if (!http.apiError(status)) {
-        clearLoading();
-        toast.success(message);
-        window.location = "/home";
-      } else {
-        clearLoading();
-        toast.error(message);
-      }
-    } catch (error) {
-      if (http.expectedError(error, 400)) {
-        const { FirstName, LastName, PhoneNumber } = error.response.data.errors;
-        const message = FirstName[0] || LastName[0] || PhoneNumber[0];
-        toast.error(message);
-        clearLoading();
-      }
-
+    //   clearLoading();
+    // }
+    toast.success("Profile Created");
+    setTimeout(() => {
       clearLoading();
-    }
+      window.location = "/home";
+    }, 1500);
   };
 
   return (

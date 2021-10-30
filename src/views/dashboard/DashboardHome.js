@@ -1,29 +1,29 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useCallback } from "react";
+import { Route, Switch } from "react-router-dom";
 import styled from "styled-components";
-import { Redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import Loading from "components/dash/Loading";
-// import UserDash from "components/dash/UserDash";
+import UserDash from "components/dash/UserDash";
 // import CreditScore from "./CreditScore";
 // import AccountInfo from "./AccountInfo";
 import Sidebar from "./../../components/dash/Sidebar";
-// import DashboardHeader from "./../../components/headers/DashboardHeader";
+import DashboardHeader from "./../../components/headers/DashboardHeader";
 
 import auth from "services/authService";
 import userService from "services/userService";
 import { useUserContext } from "hooks";
 
 const DashboardHome = ({ match, history }) => {
-  // let { path } = match;
+  let { path } = match;
   const userLoggedIn = auth.currentUser;
-  const { user, updateUserInfo, enableFirstTimeUser } =
+  const { isFirstTimeUser, user, updateUserInfo, enableFirstTimeUser } =
     useUserContext();
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const fetchUserDetails = useCallback(async () => {
     if (!userLoggedIn || user) {
-      setLoading(false);
+      // setLoading(false);
       return null;
     }
     try {
@@ -31,7 +31,7 @@ const DashboardHome = ({ match, history }) => {
       if (!data) toast.error("Error fetching user data");
 
       updateUserInfo(data);
-      setLoading(false);
+      // setLoading(false);
     } catch (error) {
       toast.error(error);
     }
@@ -45,30 +45,45 @@ const DashboardHome = ({ match, history }) => {
   }, [user, enableFirstTimeUser, history]);
 
   useEffect(() => {
-    fetchUserDetails();
-    user && redirectUser();
+    // fetchUserDetails();
+    // user && redirectUser();
   }, [fetchUserDetails, redirectUser, user]);
 
-  if (!userLoggedIn) return <Redirect to="/auth/login" />;
+  // if (!userLoggedIn) return <Redirect to="/auth/login" />;
 
-  if (loading) return <Loading />;
+  // if (loading) return <Loading  />;
 
   return (
     <DashContainer className="d-flex">
-      <Loading />
-      <Sidebar name={user.firstName} />
-      {/* <MainContent>
+      <Sidebar name={user?.firstName} />
+      <MainContent>
         <DashboardHeader user={user} />
         <Switch>
           <Route
             exact
-            path={`${path}/accountinformation`}
-            render={(props) => <AccountInfo {...props} />}
+            path={`${path}/contactus`}
+            render={(props) => <Loading />}
+          />
+          <Route exact path={`${path}/share`} render={(props) => <Loading />} />
+          <Route
+            exact
+            path={`${path}/settings`}
+            render={(props) => <Loading />}
           />
           <Route
             exact
-            path={`${path}/creditscore`}
-            render={(props) => <CreditScore {...props} />}
+            path={`${path}/activity`}
+            render={(props) => <Loading />}
+          />
+          <Route
+            exact
+            path={`${path}/linkaccounts`}
+            render={(props) => <Loading />}
+          />
+          <Route
+            exact
+            path={`${path}/report`}
+            render={(props) => <Loading />}
           />
           <Route
             exact
@@ -78,7 +93,7 @@ const DashboardHome = ({ match, history }) => {
             )}
           />
         </Switch>
-      </MainContent> */}
+      </MainContent>
     </DashContainer>
   );
 };
@@ -93,12 +108,15 @@ export const Container = styled.div`
 `;
 
 const DashContainer = styled.div`
-  width: 100%;
-  height: 100vh;
+  /* width: 100%; */
+  height: auto;
   position: relative;
+  overflow-x: hidden;
   main {
     width: 80%;
   }
 `;
 
-// const MainContent = styled.main``;
+const MainContent = styled.main`
+  padding: 1rem 0;
+`;

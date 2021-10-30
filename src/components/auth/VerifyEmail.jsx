@@ -60,31 +60,38 @@ const VerifyEmail = ({ history }) => {
   };
 
   const handleSubmit = async () => {
-    try {
-      setLoading(true);
-      const {
-        data: { status, message },
-      } = await auth.verifyMail(userEmail, otp);
+    setLoading(true);
+    // try {
+    //   setLoading(true);
+    //   const {
+    //     data: { status, message },
+    //   } = await auth.verifyMail(userEmail, otp);
 
-      if (!http.apiError(status)) {
-        clearLoading();
-        toast.success(message);
-        setShow(true);
-      } else {
-        toast.error(message);
-        clearLoading();
-      }
-    } catch (error) {
-      if (http.expectedError(error, 400)) {
-        const { Email, Token } = error.response.data.errors;
-        const message = Email ? Email[0] : Token[0];
-        toast.error(message);
-        clearLoading();
-      }
+    //   if (!http.apiError(status)) {
+    //     clearLoading();
+    //     toast.success(message);
+    //     setShow(true);
+    //   } else {
+    //     toast.error(message);
+    //     clearLoading();
+    //   }
+    // } catch (error) {
+    //   if (http.expectedError(error, 400)) {
+    //     const { Email, Token } = error.response.data.errors;
+    //     const message = Email ? Email[0] : Token[0];
+    //     toast.error(message);
+    //     clearLoading();
+    //   }
 
-      clearLoading();
-      //toast.error(error.response.data);
-    }
+    //   clearLoading();
+    //   //toast.error(error.response.data);
+    // }
+
+    setTimeout(() => {
+      toast.success("Email Verified");
+      setShow(true);
+    }, 1500);
+    clearLoading();
   };
 
   return (
