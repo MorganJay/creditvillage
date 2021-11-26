@@ -45,7 +45,6 @@ const StyledOtpInput = styled(OtpInput)`
       width: 2rem !important;
       height: 2rem !important;
     }
-  }
     &::placeholder {
       color: var(--darkblue);
       opacity: 1;
